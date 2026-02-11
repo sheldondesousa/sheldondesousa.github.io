@@ -274,6 +274,16 @@
             line-height: 1.8;
         }
 
+        .work-preview {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .work-preview.expanded {
+            max-height: 500px;
+        }
+
         /* About section */
         .about-content p {
             font-size: 1.05rem;
@@ -375,19 +385,34 @@
                             <div class="work-item">
                                 <h4>athenaOne Mobile</h4>
                                 <p class="work-category">Mobile Solutions - iOS &amp; Android</p>
-                                <p>Putting care in clinicians' pockets. A mobile platform serving almost 70,000 healthcare providers, enabling clinical decisions and actions anywhere, anytime. When a physician reviews critical labs while out of office, updates medications between rounds, or acts on assigned tasks, they're using tools designed to never compromise on speed or security. Every second saved is a moment returned to patient care.</p>
+                                <div class="work-preview" id="work1">
+                                    <p>Putting care in clinicians' pockets. A mobile platform serving almost 70,000 healthcare providers, enabling clinical decisions and actions anywhere, anytime. When a physician reviews critical labs while out of office, updates medications between rounds, or acts on assigned tasks, they're using tools designed to never compromise on speed or security. Every second saved is a moment returned to patient care.</p>
+                                </div>
+                                <button class="expand-toggle" onclick="toggleWork('work1', this)">
+                                    More <span class="chevron">&#9660;</span>
+                                </button>
                             </div>
 
                             <div class="work-item">
                                 <h4>Revenue Cycle Management</h4>
                                 <p class="work-category">Web Solutions - Interactive Widgets</p>
-                                <p>Interactive tools that surface the right clinical details at the right moment, helping medical coders process claims with confidence and accuracy. The result: practices get paid faster, administrative overhead shrinks, and revenue that funds patient care flows where it belongs.</p>
+                                <div class="work-preview" id="work2">
+                                    <p>Interactive tools that surface the right clinical details at the right moment, helping medical coders process claims with confidence and accuracy. The result: practices get paid faster, administrative overhead shrinks, and revenue that funds patient care flows where it belongs.</p>
+                                </div>
+                                <button class="expand-toggle" onclick="toggleWork('work2', this)">
+                                    More <span class="chevron">&#9660;</span>
+                                </button>
                             </div>
 
                             <div class="work-item">
                                 <h4>Mobile Accessibility</h4>
                                 <p class="work-category">Inclusive Design</p>
-                                <p>Healthcare for everyone means tools for everyone. VoiceOver support for athenaOne iOS doesn't just meet compliance standards, it opens doors. Visually impaired clinicians navigate patient data with the same speed and confidence as their sighted colleagues. Because delivering excellent care shouldn't be exclusive.</p>
+                                <div class="work-preview" id="work3">
+                                    <p>Healthcare for everyone means tools for everyone. VoiceOver support for athenaOne iOS doesn't just meet compliance standards, it opens doors. Visually impaired clinicians navigate patient data with the same speed and confidence as their sighted colleagues. Because delivering excellent care shouldn't be exclusive.</p>
+                                </div>
+                                <button class="expand-toggle" onclick="toggleWork('work3', this)">
+                                    More <span class="chevron">&#9660;</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -396,5 +421,17 @@
         </main>
     </div>
 
+    <script>
+        function toggleWork(id, button) {
+            const preview = document.getElementById(id);
+            preview.classList.toggle('expanded');
+            button.classList.toggle('expanded');
+            if (preview.classList.contains('expanded')) {
+                button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
+            } else {
+                button.innerHTML = 'More <span class="chevron">&#9660;</span>';
+            }
+        }
+    </script>
 </body>
 </html>
