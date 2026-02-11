@@ -112,7 +112,6 @@
         /* Main Content */
         .main-content {
             padding: 4rem;
-            max-width: 1100px;
             overflow-y: auto;
         }
 
@@ -121,6 +120,11 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
+            max-width: 1400px;
+        }
+
+        .about-grid > div {
+            max-width: 700px;
         }
 
         /* Header intro */
@@ -363,8 +367,10 @@
                 <div class="about-grid">
                     <div>
                         <h2 class="section-title" style="margin-top: 0; padding-top: 2rem;">About me</h2>
-                        <h4>Life in Product</h4>
-                        <p class="work-category" style="margin-bottom: 0.75rem;">Healthcare Technology &amp; Consumer Products</p>
+                        <div class="work-item" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                            <h4>Life in Product</h4>
+                            <p class="work-category">Healthcare Technology &amp; Consumer Products</p>
+                        </div>
                         <div class="about-content">
                             <p>I'm a product leader with 15+ years taking products from 0→1 to scale across healthcare technology, consumer electronics, and household goods.</p>
                             <p>Currently a Senior Product Manager at athenahealth, I've scaled mobile applications to 65,000+ monthly active users, built interactive clinical widgets for RCM, conceptualised and shipped AI-powered development workflows that compress delivery cycles from weeks to hours, and led cross-functional teams solving complex problems for clinicians, coders, and the patients they serve.</p>
