@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Experiments - Sheldon De Sousa</title>
+    <title>Design for Social Good - Sheldon De Sousa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -115,6 +115,49 @@
             padding: 4rem;
             max-width: 700px;
             overflow-y: auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.8rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: #000;
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb .separator {
+            margin: 0 0.5rem;
+            opacity: 0.3;
+        }
+
+        .breadcrumb .current {
+            opacity: 0.5;
+        }
+
+        /* Article content */
+        .article-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content p strong {
+            display: block;
+            margin-top: 2rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
         /* Header intro */
@@ -324,10 +367,10 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="index.html">Notes</a></li>
-                        <li><a href="about.html">About me</a></li>
-                        <li><a href="working-with-ai.html">Working with AI</a></li>
-                        <li><a href="social-experiments.html">Social Experiments</a></li>
+                        <li><a href="../index.html">Notes</a></li>
+                        <li><a href="../about.html">About me</a></li>
+                        <li><a href="../working-with-ai.html">Working with AI</a></li>
+                        <li><a href="../social-experiments.html">Social Experiments</a></li>
                     </ul>
                 </nav>
             </div>
@@ -338,26 +381,73 @@
         </aside>
 
         <!-- Main Content -->
-        <!-- Main Content -->
         <main class="main-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="../social-experiments.html">Social Experiments</a>
+                <span class="separator">&#9654;</span>
+                <span class="current">Design for Social Good</span>
+            </nav>
+
             <!-- Intro -->
             <div class="intro-header">
-                <h2>Social Experiments</h2>
-                <p>Design thinking for social impact</p>
+                <h2>Design for Social Good</h2>
+                <p>Tackling female literacy in India through the L.E.A.D programme</p>
             </div>
 
-            <!-- Experiments Section -->
-            <section id="experiments">
-                <article class="note">
-                    <h3>Design for Social Good</h3>
-                    <p class="meta">Tackling female literacy in India through the L.E.A.D programme</p>
-                    <div class="note-preview" style="max-height: none;">
-                        <p>A curious dive into designing for social good in an attempt to solve one of India's wicked problems — female literacy, both children and adults. This was an optional coursework assignment that I worked on and felt strongly about. I thought it would be a good opportunity to apply a design thinking approach to solving something as critical and complex as literacy in a developing country.</p>
-                    </div>
-                    <a href="experiments/design-for-social-good.html" class="expand-toggle">
-                        View more <span class="chevron">&#9654;</span>
-                    </a>
-                </article>
+            <!-- Article -->
+            <section class="article-content">
+                <p>A curious dive into designing for social good in an attempt to solve one of India's wicked problems — female literacy, both children and adults. This was an optional coursework assignment that I worked on and felt strongly about. I thought it would be a good opportunity to apply a design thinking approach to solving something as critical and complex as literacy in a developing country.</p>
+                <p>My intention was to explore the problem together with the intricacies that fuel it, illuminating readers about its complexity, while reimagining a solution that makes a dent in it. I believe that technological progress, particularly artificial intelligence, will play a huge role in bringing us closer and quicker to a utopian state.</p>
+
+                <p><strong>Introduction</strong></p>
+                <p>India is home to nearly 20% of the planet's human population. Over 1.4 billion (2025) people co-exist in the seventh largest country by land area. With a GDP of over $4.4 Trillion (2025), India has established itself as the 5th largest economy in the world.</p>
+                <p>Don't let those numbers fool you. A large population produces its fair share of difficulties. It creates a massive strain on access to and availability of drinking water, food, sanitation, healthcare, employment, infrastructure, public services, natural resources, and more.</p>
+                <p>Obviously, educating a populace of this size is an enormous and complex task. According to the National Statistical Commission (2018), a whopping 20% or 280 million Indians are uneducated. Disparities exist between urban and rural literacy rates at the national level - 90% and 77.5% respectively (2023). This differs significantly by state as well.</p>
+                <p>Further, India suffers from gender imbalance. Males have a higher literacy rate (87.2%) than females with a 12.5% gap. Rural and state dependencies impact this gap further. This imbalance permeates deeply into other facets of everyday life too.</p>
+                <p>Government initiatives like the Right to Education Act, NGOs, and Non-profits have helped improve enrolment rates for females in recent times. In fact, free education at the primary level has shown remarkable results. Unfortunately, drop-out rates at later stages of education are equally alarming. However, a primary education alone does not guarantee a better outcome in employment or income.</p>
+                <p>Vocational training centres have attempted to bridge skill gaps for advanced ages. While critically dependent on access and adoption, it hasn't produced the intended results due to gender disparities, financial issues, technology access, social norms, and domestic commitments of women. Worse, post-vocational training, employers prefer not to hire these women in spite of being skilled for many of the reasons listed above.</p>
+                <p>Having surfaced these issues, it is well acknowledged that literacy dispels ignorance and dependence while propelling citizens to become productive members of society and the economy. So, how might we improve the literacy and subsequently employment rates of women in India?</p>
+
+                <p><strong>A Wicked Problem</strong></p>
+                <p>India is a complex country with 28 states and 8 union territories, each with its own unique story, culture, heritage, social norms, religious denominations, festivals, natural resources, demographies, power dynamics, idiosyncrasies, and more. Tolerance and unity are not unanimously shared.</p>
+                <p>India is deep-rooted in tradition, customs, superstitions, and formality. Class and caste distinctions are still practiced. Gender inequality is a major issue. There is a strong preference for males who enjoy more autonomy than females. Social and communal ideologies benefit males over females.</p>
+                <p>Many females are subjected to the perils of child marriage, teenage pregnancy, domestic work, poor nutrition, exploitation, dowry, income discrimination, violence, etc. In addition, they are not permitted access to education in the same way as males.</p>
+                <p>Corporates prefer not to hire women for fear of attrition, restricted work hours, maternity regulations, protection policies, and demands in their family life.</p>
+                <p>The Indian government spends only 4.1% of its gross domestic product (GDP) on education compared to 3.8% by China, the world's second most populated country. What is important here, is that China's GDP is 4.1 times that of India. While the population sizes are similar, the educational budgets differ significantly.</p>
+                <p>In addition, the country suffers from widespread corruption, polarizing political ideologies, religious differences, infrastructural problems, inflation, joint-family systems, notable income and quality of life disparities, and more.</p>
+                <p>The interconnected nature of the many variables described above indicate a non-linear path to a solution. Problems like these cannot be defined simply and solving them isn't straightforward.</p>
+
+                <p><strong>Problem Statement</strong></p>
+                <p>Young girls, adolescents, and women have been subjected to social and economic discrimination for decades. Education is instrumental in addressing these issues while helping females achieve their full potential, and improving their quality of life.</p>
+                <p>However, its acceptance as a means to progress has been disproportionately adopted for various reasons. Hence, females have not been able to utilize educational programmes to improve their circumstances in society.</p>
+                <p>A lack of education increases female dependency on immediate family, in-laws, or male counterparts and very often limits their employment opportunities.</p>
+                <p>The issues begin in early childhood and continue into adulthood triggering a cyclical effect for subsequent generations.</p>
+
+                <p><strong>Hypothesis</strong></p>
+                <p>If we create a modular strategy to tackle issues at the local level while linking their implementation to state, regional, and central agencies along with monitoring, auditing, and support, we could lead a coordinated effort in bringing about profound change.</p>
+                <p>By joining hands, sharing information, learnings, best practices, and holding the system accountable, we could improve enrolment rates for educational programmes aimed at females of all age groups and ultimately their integration into the economy as productive members of society.</p>
+
+                <p><strong>The L.E.A.D Programme</strong></p>
+                <p>With limited access to subject matter experts, I relied on available resources to propose a solution. I settled on the idea of a L.E.A.D programme, which stands for Literacy and Employment through Access and Development.</p>
+                <p>L.E.A.D is a modular approach to addressing literacy in India. Operating across all levels of the country, the programme recognises the need for a coordinated effort in addressing this complex problem. In other words, it is a systemic approach to solving a multi-faceted problem.</p>
+                <p>The Central government in partnership with an independent international organisation, such as UNESCO, spearhead the programme. Together, they work with state governments, vocational institutions, NGOs, the private sector, and citizens to tackle illiteracy at scale.</p>
+                <p>Stakeholders to the mission form a value-chain. Each entity is responsible for and accountable to the mission's goal. In collaboration, they study situations as they filter through to the target locations - centre, region, state, city, district, village, etc.</p>
+                <p>Teams are adequately staffed and use a single digital collaboration tool to consolidate, communicate, and monitor the process. Research, information, best practices, case studies, and more are actively shared and leveraged throughout the value-chain.</p>
+                <p>L.E.A.D also runs support groups in parallel to help learners manage and deal with socio-cultural pressures to ensure learner retention in the programme. This includes conversations and awareness campaigns with family, prominent figures, and other members in the location of the learner to gain acceptance.</p>
+                <p>The programme focuses on action and outcomes, ensuring accountability through Objectives & Key Results (OKRs). It is based on the pillars of adaptation, inspection, collaboration, and transparency, which are critical to its success.</p>
+
+                <p><strong>What L.E.A.D Focuses On</strong></p>
+                <p>L.E.A.D focuses on building foundational literacy, numeracy, and conversational confidence; skills in digital awareness and interaction; critical life skills in hygiene, healthcare, civic sense, and financial literacy; knowledge around family planning and the importance of education in economic improvement; vocational skills relevant to industry, particularly in proximity to the learner's location; firm understanding and necessity of constant learning to raise economic status and skill relevancy; and support groups and networks to help learners continue their learning journey by mediating domestic conflicts and pressures.</p>
+
+                <p><strong>How AI Can Help</strong></p>
+                <p>Artificial intelligence can play a significant role in L.E.A.D through adaptive learning that meets learners where they are; voice-enabled learning to address barriers in reading ability; generating educational and instructional material curated for context and target audience; developing contextually aligned curricula; virtual AI tutors and chat assistants via services like WhatsApp; suggesting teaching strategies based on performance data; generating marketing material for awareness campaigns; cutting across national databases to find patterns and insights; running ML models to predict outcomes like drop-outs; real-time monitoring at a granular level; identifying lookalike learners for local study groups; and resource and budget allocation optimization.</p>
+
+                <p><strong>Conclusion</strong></p>
+                <p>L.E.A.D will work with agencies to develop and share impactful stories or documentaries of females who have overcome challenges through education. It will use these narratives to inspire others and advocate for social, cultural, and economic change.</p>
+                <p>The programme will lobby for workforce rights, ensuring females have an equal right to employment opportunities while also working to advance their presence in male-dominated industries. It will partner with media organisations to create and disseminate compelling narratives highlighting the importance of gender equality, female education, and employment through a multi-channel approach.</p>
+                <p>Messaging around financial independence and security will need to be communicated to women and their families. By raising awareness around financial planning and the implications of women contributing to the household, we could see a shift in attitude towards advancing women's participation in the workforce.</p>
+                <p>Finally, legal awareness is necessary for all stakeholders to ensure barriers or resistance to female advancement in education and employment will be seriously dealt with and punishable by law.</p>
             </section>
         </main>
     </div>
