@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sheldon De Sousa - Notes</title>
+    <title>Working with AI - Sheldon De Sousa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -338,466 +338,33 @@
         </aside>
 
         <!-- Main Content -->
+        <!-- Main Content -->
         <main class="main-content">
             <!-- Intro -->
             <div class="intro-header">
-                <h2>Things worth thinking about...</h2>
-                <p>Reflections on AI, product management, healthcare technology, and the intersection of innovation with human experience.</p>
+                <h2>Working with AI</h2>
+                <p>Leveraging AI for real-world applications</p>
             </div>
 
-            <!-- Notes/Writing Section -->
-            <!-- Notes/Writing Section -->
+            <!-- Articles Section -->
             <section id="notes">
                 <article class="note">
-                    <h3>Navigating healthcare in an AI world</h3>
-                    <p class="meta">December 13, 2025</p>
+                    <h3>AI-Powered Action Prediction</h3>
+                    <p class="meta">Accelerating clinical workflows through intelligent action recommendations</p>
                     <div class="note-preview" id="note1">
-                        <p>Imagine stepping into a room.</p>
-                        <p>You walk in, lie down, and drift off for a few minutes. While you sleep, scans and tests run. AI identifies abnormalities. Nanotechnology corrects what it can. Clinical decisions are made based on your preconfigured authorizations. You wake up and walk out the other side with a digital report that tells you what was found, what was fixed, and what ought to come next.</p>
-                        <p>Maybe you have a human overseeing things. Maybe you don't.</p>
-                        <p>I actually think that for populations excluded by access, cost, or clinician shortages, this system could be genuinely transformative.</p>
-                        <p>Two decades ago, banking required humans. Tellers processed your requests. Managers approved loans. Financial advisors built trust through conversation.</p>
-                        <p>Today, we bank using our mobile phones. Chatbots manage our circumstances. Algorithms approve mortgages. AI-advisors guide us with financial plans.</p>
-                        <p>The human touch was eliminated because convenience proved more valuable than familiarity. Perhaps the human interactions felt transactional, lacking quality, depth, or empathy.</p>
-                        <p>Maybe the clinician's presence has been a proxy for trust. Maybe, like banking, trust shifts to systems that are always available, always consistent, always learning, always welcoming.</p>
-                        <p>We've all experienced disengaged interactions at some point. They can seem more pronounced in healthcare. Contrary to popular belief, in some regions, cultures, or communities the medical experience appears mechanical, transactional, even dismissive.</p>
-                        <p>If healthcare professionals fail to create meaningful human connections, fail to be genuinely invested in a patient's care, the drift toward automation accelerates. And not the good kind.</p>
-                        <p>As product managers, designers, and technologists, we're tasked with defining not just how AI impacts human-centered experiences, but whether human intervention is elevated... or eliminated as unnecessary friction. Much of that is driven by how people 'feel' and 'think' about a service or process.</p>
-                        <p>So, the future really depends on how we respond now. It influences how we design systems around humans or humans around systems or just plain systems.</p>
+                        <p><strong>Problem</strong></p>
+                        <p>Clinical inbox workflows at athenahealth are highly repetitive yet context-dependent. Physicians, nurses, and medical assistants process hundreds of inbox items daily—lab results, patient cases, imaging reports, referrals. Currently, users manually navigate and select appropriate actions for every Inbox item, creating unnecessary interaction friction. On mobile devices especially, these extra taps compound inefficiencies, slowing task completion and reducing overall throughput. While not a blocker, this represents a significant opportunity: even saving one click per action, multiplied across thousands of daily interactions, could meaningfully improve productivity and user satisfaction.</p>
+                        <p><strong>Solution</strong></p>
+                        <p>This feature leverages machine learning to predict the most likely next action when a user opens an inbox item, surfacing that recommendation as a floating action button (FAB) within the detail screen. The prediction model analyzes historical behavioral patterns across multiple contextual inputs. When confidence exceeds 70%, the system displays the recommended action prominently while maintaining an "All Actions" override option, preserving user autonomy. The approach balances intelligent assistance with user control—nudging efficiency without forcing automation.</p>
+                        <p><strong>Impact</strong></p>
+                        <p>Success metrics target measurable workflow improvements: 10% reduction in task completion times, 15% increase in mobile action volume etc.</p>
+                        <p>The broader strategic value lies in establishing a foundation for intelligent workflow assistance across the platform. By demonstrating that ML can meaningfully reduce decision fatigue while respecting clinical judgment, this feature opens pathways for expanded AI integration throughout the athenahealth ecosystem, ultimately enabling clinicians to focus more energy on patient care rather than administrative navigation.</p>
                     </div>
                     <button class="expand-toggle" onclick="toggleNote('note1', this)">
                         More <span class="chevron">&#9660;</span>
                     </button>
                 </article>
-
-                <article class="note">
-                    <h3>Wasn't AI oversight the deal?</h3>
-                    <p class="meta">November 11, 2025</p>
-                    <div class="note-preview" id="note2">
-                        <p>The vision is inspirational isn't it?</p>
-                        <p>The future belongs to human judgment and AI delegation. AI will handle routine work while humans ascend to higher-order thinking. Humans become orchestrators, supervisors, and stewards.</p>
-                        <p>Yet, while preaching this ideal state we're also systematically dismantling the very roles we claim would define our future.</p>
-                        <p>We're removing supervisory and managerial layers, demarcating them as unnecessary friction points. They are the human layers bridging leadership with execution.</p>
-                        <p>So, what I find confusing, is that if AI positions humans as supervisors and orchestrators of AI tools, why are supervisory roles amongst the first casualties?</p>
-                        <p>You could say, "we don't need humans managing humans managing AI. We just need doers augmented by the power of AI."</p>
-                        <p>Right, flattening the org charts supposes that we can do more with less, and also manage more with less. But, how do we manage more with less? Why, with AI of course.</p>
-                        <p>So, is AI the new scaled supervisor, the economically feasible layer that monitors humans overseeing AI?</p>
-                        <p>This contradiction exposes a fundamental flaw in the elevation narrative. When we said humans would move up the value chain, we assumed oversight would be valued. Instead, the market reveals that supervision without execution isn't worth keeping. So, what happens when more and more work gets automated by AI?</p>
-                        <p>We're not going to draw a line in the sand and say, "That's it. No more. This is as far as AI goes."</p>
-                        <p>If that's the case, wouldn't increasingly delegated work ultimately pave the way for less execution and more supervision, which as we've established earlier, is unnecessary?</p>
-                        <p>If the architects of the AI revolution see human supervision as a waste, what does that reveal about the "cognitive partnership" we're being promised?</p>
-                        <p>Perhaps, human elevation is an illusion. Perhaps, what we are headed for is 'optimization' by natural selection...which raises another interesting paradox.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note2', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Does AI allow us to retain our identity?</h3>
-                    <p class="meta">November 04, 2025</p>
-                    <div class="note-preview" id="note3">
-                        <p>I must admit, the data is compelling. AI scribes save physicians approximately 2.5 hours per week and reduces burnout by over 30%. 90% of doctors report giving undivided attention to patients, up from 49% before adopting these AI tools.</p>
-                        <p>But beneath the efficiency gains, I wonder about a philosophical shift. Are physicians moving from authorship to approval? Are they giving up their voice, their professional identity?</p>
-                        <p>Traditionally, writing clinical notes was an act of synthesis, deciding what is significant, connecting the dots, and expressing clinical reasoning. It's the kind of cognitive work that makes physicians... well physicians.</p>
-                        <p>Now, AI generates the notes, and physicians review and approve them. But, the doctor's voice, what they 'really' say, what they emphasize, what they downplay, how they reason and more, is being translated through AI's interpretation of the physician-patient encounter.</p>
-                        <p>The doctor spoke to the patient. But the AI speaks for the doctor in the medical record. I only raise this example because I work in healthcare. But, it extends to other industries just as well.</p>
-                        <p>I see us discussing AI on the periphery. We talk about accuracy and efficiency as if that's all we need to focus on. But, I wonder if we're missing something important - the loss of voice and authenticity in the long run.</p>
-                        <p>Over time, do all doctors begin to sound the same? Does individual clinical style, especially those developed through years of experience, ultimately get homogenized? And what happens when physicians change their AI documentation vendors? Do their styles and voices change too?</p>
-                        <p>When the medical record says "Dr. Jane Smith," are we perusing 'The' Dr. Jane Smith's notes or Dr. Jane Smith, ver 1.6.10 for now?</p>
-                        <p>But, it's not just doctors is it? It applies to everyone of us.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note3', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Are we losing meaningful work to AI?</h3>
-                    <p class="meta">October 17, 2025</p>
-                    <div class="note-preview" id="note4">
-                        <p>A week ago, I shared my discomfort with AI-accelerated product development, feeling alienated as AI handled much of my execution work. I entertained the possibility that cognitive atrophy would set in with prolonged use, and that I was in some way giving up critical thinking, or at least, a good part of it.</p>
-                        <p>Deeper introspection revealed something more nuanced. Here's what I find interesting.</p>
-                        <p>Philosopher Andy Clark describes "cognitive offloading" as redistributing cognitive effort to tools so that we can optimize for what humans do best, which is think, solve, create, or connect ideas. We've always done this. We write in diaries to extend memory. We use spreadsheets to manage complexity. AI is no different. It is now part of our thinking system.</p>
-                        <p>So perhaps this is not cognitive atrophy after all, but cognitive elevation. Perhaps I need to find fulfilment in orchestrating intelligence rather than simply executing it?</p>
-                        <p>But, at the same time, Karl Marx's warning about alienation of work hangs over. When AI takes over synthesis, analytical thinking, and brainstorming, I find it difficult to see myself in the final product, at least entirely. In essence, I've given up the work that I find meaningful.</p>
-                        <p>AI creates a conflict between two humanistic values. While it can enhance us by extending our cognitive reach beyond what we could achieve alone, it can also diminish us by reducing engagement in our work.</p>
-                        <p>AI is undeniably a tool, an extension of my thinking system. But is it stealing meaningful work from me? Or is the new 'meaningful work' metacognition - thinking about thinking? And is that meaningful enough?</p>
-                        <p>I don't have the answers yet. But I think the questions matter.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note4', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Yes, I am an AI Optimist</h3>
-                    <p class="meta">October 9, 2025</p>
-                    <div class="note-preview" id="note5">
-                        <p>I'm an AI optimist. There I said it. Not because I think technology will magically solve all our problems, but because I've seen what's possible when innovation meets intention.</p>
-                        <p>AI has the potential to improve lives, whether that's accelerating medical breakthroughs or making education more accessible or helping us solve food security and climate change. To me, that's the real promise of this technology.</p>
-                        <p>But optimism doesn't mean blind faith. It means believing in what's possible while staying vigilant about how we get there.</p>
-                        <p>That's why I care deeply about ethical, safe, and respectful AI, systems that protect privacy, minimize bias, and serve people equitably.</p>
-                        <p>The challenge ahead is to keep pushing boundaries, responsibly. To build an AI future that reflects our best selves. After all, it is we who determine that future.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note5', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Visible AI or valuable AI</h3>
-                    <p class="meta">September 10, 2025</p>
-                    <div class="note-preview" id="note6">
-                        <p>In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realized, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive bot/callout that interrupts or undermines users. And certainly not in noble professions.</p>
-                        <p>When AI supports clinicians subtly, surfacing insights at the right time and giving them autonomy to engage with it on their own terms, it strengthens confidence rather than resistance. Over time, consistency and reliability build trust, and with trust comes adoption.</p>
-                        <p>Yet the rush to deliver "AI-enabled" features risks losing sight of this balance. More isn't always better. The goal shouldn't be to make AI visible, but to make it valuable, a collaborative partner that empowers people to do their best work without noise or intimidation.</p>
-                        <p>But, here's where I have an extended issue. It extends to any application of AI. Building trust could lead to complacency, and that's where serious errors creep in. Dependency on humans to evaluate AI-generated content thoroughly is risky and an opportunity for disaster.</p>
-                        <p>That's why AI needs to be introduced with caution. It's not about putting it out there in the wild for brownie points. It's about ensuring diligence in its use.</p>
-                        <p>Are businesses simply transferring accountability to consumers of AI? Who in the value chain is responsible for errors? Is it the model owner, the business that built the logic around it, or the ultimate user?</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note6', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>AI should never be intrusive</h3>
-                    <p class="meta">September 3, 2025</p>
-                    <div class="note-preview" id="note7">
-                        <p>In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realized, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive agent that interrupts or undermines users, and certainly not in noble professions.</p>
-                        <p>When AI supports clinicians subtly, surfacing insights at the right time and giving them autonomy to engage on their own terms, it strengthens confidence rather than resistance. Over time, consistency and reliability build trust, and with trust comes adoption.</p>
-                        <p>Yet the rush to deliver "AI-enabled" features risks losing sight of this balance. More isn't always better. The goal shouldn't be to make AI visible, but to make it valuable, a collaborative partner that empowers people to do their best work without noise or intimidation.</p>
-                        <p>But here's where I have another issue. Building trust could lead to complacency, and that's where serious errors creep in. Dependency on humans to evaluate AI-generated content thoroughly is risky and an opportunity for disaster. That's why AI needs to be introduced with caution. It's not about putting it out there in the wild. It's about ensuring diligence in its use.</p>
-                        <p>This extends to any application of AI. Are businesses simply transferring accountability to consumers of AI? Who in the value chain is responsible for errors? Is it the model owners, the businesses that build the logic around them, or the ultimate users?</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note7', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Getting philosophical about AI</h3>
-                    <p class="meta">July 04, 2025</p>
-                    <div class="note-preview" id="note8">
-                        <p>Recently, I ran an experiment with a single developer, and some AI tools. The goal was to build a feature with little to no code and demonstrate accelerated build cycles through efficiency gains. What typically takes a sprint was done in a matter of hours.</p>
-                        <p>Encouraged by the initial results, I expanded the scope. From PRD to stories to development to unit tests to TRR/PRR documentation. All AI-driven with human oversight.</p>
-                        <p>But here's what caught me off-guard. I felt less challenged, less involved. I felt like I moved from critical thinking to oversight. AI did the tedious work while I simply reviewed, nudged, and approved.</p>
-                        <p>I began to question myself about the philosophical edge of artificial intelligence.</p>
-                        <p>Philosophers Andy Clark and David Chalmers argue that our minds extend into our tools. A calculator extends computation; AI extends strategic thinking. We therefore enhance human capability by building a cognitive partnership with it.</p>
-                        <p>Supposedly, I'm not losing my skills. I'm evolving them to work with a powerful prosthetic.</p>
-                        <p>But, Karl Marx warned that when we lose connection to meaningful work, we lose something essential to human flourishing. When AI handles the intellectual heavy lifting, I'm alienated from the process.</p>
-                        <p>From a humanist perspective, I have to ask, am I being slowly stripped of deeper reasoning and creativity? In essence, am I still flourishing as a human?</p>
-                        <p>Therefore, do we become better PMs because we're freed from grunt work? Or are we slowly losing the critical thinking muscles that made us valuable in the first place?</p>
-                        <p>For the record, I'm still an AI optimist. But, my optimism is directed at AI solving important issues in food security, climate change, accessible healthcare, and education.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note8', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Innovation isn't always loud</h3>
-                    <p class="meta">April 05, 2025</p>
-                    <div class="note-preview" id="note9">
-                        <p>Too often, teams become enamoured with bright, shiny opportunities - features conceived not out of necessity, but out of novelty. Roadmaps fill up with items no user ever asked for or needed, but which happen to include the latest trend or appeal to an enthusiastic HIPPO's pet interest.</p>
-                        <p>These items dominate conversations. Take AI for example. It is a powerful tool. But embedding it into any product just so it's "AI-powered" is like putting caviar on a tiramisu. It's richer than before, but does not make you better off.</p>
-                        <p>There is a quiet dignity in building what users truly need. They are humble solutions to real problems. Not glamorous. Not keynote worthy. Just incredible value, built backstage. This requires discipline, restraint, and occasionally, the ability to say, "No". And that, in the end, is valuable innovation.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note9', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>AI and Healthcare</h3>
-                    <p class="meta">March 18, 2025</p>
-                    <div class="note-preview" id="note10">
-                        <p>I consider myself a realist, swaying contently and peacefully between the realms of optimism and skepticism. But, in healthcare, I'm cautiously optimistic, dare I say hopeful, about the future of AI on the industry.</p>
-                        <p>To think about what companies are doing today is nothing short of fascinating. They're exploring early detection of diseases, personalised treatment plans based on patient DNA and clinical history, virtual assistants giving patients medical guidance, and accelerated drug discovery. Others are building precision tools for AI-assisted surgeries and even predictive analytics built on AI algorithms that foresee health issues and offer preventive advice.</p>
-                        <p>These are just a few examples of what companies like PathAI, Tempus, Babylon Health, Medtronic, and Google DeepMind are working on. This progress holds great potential for humanity. As AI continues to evolve, bigger breakthroughs in medical technology can be expected in the near-term. That's the optimistic me looking eagerly into the next five years.</p>
-                        <p>Meanwhile, the equally stubborn skeptic in me worries about things like data privacy, security, and manipulation. AI for healthcare cannot operate in isolation and its success or efficacy depends on strong collaboration and partnerships.</p>
-                        <p>So, how does all this work at scale? How will electronic health records or population health data be shared within and between private and public networks, nationally, or across borders, while maintaining confidentiality and trust? Getting to an ideal state demands deeper thought and preparation sooner than later.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note10', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Ship something, and ship it quick</h3>
-                    <p class="meta">January 05, 2025</p>
-                    <div class="note-preview" id="note11">
-                        <p>Too often, MVPs aren't strategic bets — they're just hurried guesses packaged in design. It's not uncommon to begin product conversations on MVPs with "Let's build this to address that" We're more excited by ideas materialising than critically evaluating them.</p>
-                        <p>Somewhere between whiteboards and sprints, we skip pertinent questions like: "What's the least we can invest to test this theory?", "What happens if users actually like it?", "Do we have a sustainable model?", even if it's briefly entertained.</p>
-                        <p>An MVP isn't just a test of whether something fits — it's a test of whether it's worth building at all. Shipping features frequently isn't a definitive sign of a healthy backlog. Sometimes, it's smoke and mirrors.</p>
-                        <p>An MVP is a calculated decision and a summation of tireless iterations that answered critical questions. MVPs are bets on a hypothesis and should be grounded in evidence rather than hope or self-fulfilment.</p>
-                        <p>Meanwhile, I can guarantee our friends in engineering want the hours they clocked to be worthwhile. If there is no promise of success, I can bet you they'll lose confidence in time or you may have to look over your shoulder in the parking lot when things go sideways ;)</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note11', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Socio-economic impact of AI</h3>
-                    <p class="meta">October 12, 2024</p>
-                    <div class="note-preview" id="note12">
-                        <p>AI will impact almost every sphere of life as we know it. If your life changed with the advent of the smart phones, internet, or social media, you can bet changes will be far more profound when we embrace self-driving cars, robotic assistants, digital clones, neurotechnology, and more.</p>
-                        <p>Though it may take time, a decade if we're lucky, we will still have to deal with more elementary use cases of AI in the shorter-term. For instance, jobs that can easily be automated to save resources in exchange for a higher return on investment.</p>
-                        <p>What happens to cashiers, translators, customer service, factory workers, or data entry folks? How do they compete with the future of AI?</p>
-                        <p>A few years ago, I commented on a LinkedIn post about the impact of AI on jobs. A professor from a prominent US university was quick to chime in that more jobs would be created because of AI and that my view was in error.</p>
-                        <p>While it's true that more jobs will be created, these jobs will essentially be new to market. So, what do we do in the short-term as AI capabilities are released, proliferate, and scaled? The major burden will fall on those who have passed a point in their life where they can "try something new" or will typically require significant time to re-skill.</p>
-                        <p>So, what and where's the plan? Shouldn't we have one before rather than after? The last time unemployment levels spiked severely was just after the Great Depression in 1929. The effects of which were felt around the world. That episode delivered Hitler to us. What sort of revolution can we expect this time?</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note12', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>The what and who of feedback</h3>
-                    <p class="meta">September 15, 2024</p>
-                    <div class="note-preview" id="note13">
-                        <p>Sitting through user feedback meetings can be a bit overwhelming. This is particularly true when you have either too little or too much feedback to go over. But, what is the right amount? Fact is, there is no definitive answer. We would need to evaluate, both, quantity and quality of feedback as well.</p>
-                        <p>Too little feedback could mean you have a wonderful product with little scope for improvement, But it could also mean you have a product that users don't care much for. Too much feedback either means your product has a lot of holes in it or you have a very passionate user base demanding more from you.</p>
-                        <p>The trouble I have with feedback is largely concentrated around its source. Is it coming from the most valuable users or from those brining up the rear? Don't get me wrong. It's possible that low adoptive users may turn into prospective enthusiasts if their needs were catered to. And that's a judgement call.</p>
-                        <p>Yet, I find PMs and UX folks impulsive in addressing any sort of feedback. Perhaps it expands their jobs to be done. But, acting on any feedback could swing things the other way for other users who didn't take issue.</p>
-                        <p>So, to me, the origin of that feedback is equally important, if not more. And unless we know where that's coming from, acting on any and all feedback can be counter-productive.</p>
-                        <p>Having said that, there are still a few gems that creep in from the most unexpected sources. In my opinion, it's worth socializing questionable feedback with your loyal users before building upon it.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note13', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Conversations over presentations</h3>
-                    <p class="meta">August 13, 2024</p>
-                    <div class="note-preview" id="note14">
-                        <p>Presentations can be polished, informative, and visually stimulating. But, they tend to become an avalanche of one-way information dumps, especially when attendees are not fully aware of the intricacies driving the flow. The devil is always in the details.</p>
-                        <p>By contrast, conversations spark ideas, and ideas garner more conversation which makes for engaging meetings. That's why I prefer a one or two pager, socialized a couple of days prior. It gives attendees an opportunity to form a perspective, to think deeply, to raise intelligent questions, and build on a topic of discussion.</p>
-                        <p>Alas, formality and rigid tradition will always deliver an outcome of pseudo-agility, pseudo-productivity, or pseudo-innovation.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note14', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Can we really prioritize?</h3>
-                    <p class="meta">July 15, 2024</p>
-                    <div class="note-preview" id="note15">
-                        <p>Prioritization is a skill in time management and decision-making, ensuring that the most important and impactful tasks are addressed first. But, this reasoning is predicated on being in control of the variables related to those tasks.</p>
-                        <p>What happens when those variables aren't yours to control? How do you prioritize when the variables pertinent to you are flexible for others?</p>
-                        <p>For prioritization to work, one must have control over what influences the goal or at least have a goal that's shared with dependent stakeholders. Else, prioritization is just another plan with good intentions.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note15', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Designing for good</h3>
-                    <p class="meta">June 01, 2024</p>
-                    <div class="note-preview" id="note16">
-                        <p>I believe that all product should have a positive impact on the individual, the community, and the environment.</p>
-                        <p>Product is an outcome of design. And design is an outcome of thought, an idea. If an idea is compromised, it finds its way into the product. Designing for good demands purity of intent. It includes byproducts of a product's application, even its disposal.</p>
-                        <p>Designing for good shifts the focus from selfish commercial interests to positive outcomes, again, for the individual, the community, and the environment.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note16', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Artificial intelligence: Augment or disguise?</h3>
-                    <p class="meta">May 22, 2024</p>
-                    <div class="note-preview" id="note17">
-                        <p>Artificial Intelligence (AI) can add value to many industries like healthcare, finance, transportation, education, home automation, manufacturing, analytics, and more.</p>
-                        <p>Its introduction into our world was predicated on the enhancement of human life and context. Removing repetitive, non-productive, or labour intensive tasks, while improving efficiency and accuracy, is widely acknowledged as an inevitable outcome.</p>
-                        <p>Moreover, AI is intended to augment human competence. It is not supposed to be a substitute for human ineptitude.</p>
-                        <p>Take job applications for instance. Social media is rife with curated GPT prompts for resume or cover letter optimisation. But, aren't we essentially pitting the AI of an optimisation engine against that of an application tracking system?</p>
-                        <p>The bigger question is, "What's the game plan when you show up for the interview?"</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note17', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Being ethically objective</h3>
-                    <p class="meta">May 01, 2024</p>
-                    <div class="note-preview" id="note18">
-                        <p>Product managers need to be objective in their decisions. Eliminating one's personal beliefs, choices, or preferences from what's evidently right for the user and product is a difficult task.</p>
-                        <p>Objectivity ensures selfishness, prejudice and bias are held accountable by factual evidence. But, basing decisions on fact alone is not enough because objectivity need not be morally, socially, or environmentally grounded. Therefore, objectivity requires an ethical compass.</p>
-                        <p>Objectivity and ethics serve as beacons of integrity, guiding us toward actions and judgments that are both fair and morally upright.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note18', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>A tale of decision making</h3>
-                    <p class="meta">March 10, 2024</p>
-                    <div class="note-preview" id="note19">
-                        <p>Product managers are portrayed to be custodians of a product, nested within some sort of multi-functionary network of dependent relationships.</p>
-                        <p>Experts call them mini CEOs, managing the lifecycle, setting priorities, problem-solving, balancing needs of users, business, technology, performing research work, managing stakeholders, and ultimately, leading without authority. But, what do they do most of the time?</p>
-                        <p>The more I assess my workdays, the more I'm led to believe that it comes down to a never-ending story of gut feels and calculated decision making.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note19', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Significance of the PRD</h3>
-                    <p class="meta">February 25, 2024</p>
-                    <div class="note-preview" id="note20">
-                        <p>Addressing the significance of a Product Requirements Document (PRD) in product development may seem elementary, yet it's often overlooked or left insufficient.</p>
-                        <p>This artefact outlines the vision, feature list, priorities, scope, risks, and purpose for the team and beyond. It becomes a living document, a communication tool, a source of truth, and the glue that keeps people on the same page.</p>
-                        <p>I must admit, I have been guilty of negligence when it comes to the PRD. I therefore say, for the sake of humanity, this document needs to be signed-off before commissioning a project. If not, I'd advise brushing up on a few seasons of Law &amp; Order, Boston Legal, or Suits.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note20', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Thinking longer and slower</h3>
-                    <p class="meta">January 29, 2024</p>
-                    <div class="note-preview" id="note21">
-                        <p>When we build anything, it is imperative that we have a vision. That vision becomes a blueprint that guides the project.</p>
-                        <p>When we hurry through the process, we risk building for the short term with a somewhat inferior foundation. Inevitably, the pressure to accommodate more value within its compromised structure increases exponentially as the product grows.</p>
-                        <p>We need to think long and slow before committing to development. Perhaps heed Albert Einstein - "If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions".</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note21', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Listening is an art</h3>
-                    <p class="meta">December 1, 2023</p>
-                    <div class="note-preview" id="note22">
-                        <p>"When the listener is totally present, the speaker often communicates differently...Sometimes we block the flow of information being offered and compromise on true listening. Our critical mind may kick in, taking note of what we agree with and what we don't, or what we like and dislike. We may look for reasons to distrust the speaker or make them wrong.</p>
-                        <p>Formulating an opinion is not listening. Neither is preparing a response, or defending our position or attacking another's. To listen impatiently is to hear nothing at all."</p>
-                        <p>- Rick Rubin</p>
-                        <p>I couldn't agree more. Often, we evaluate, decide, and formulate before the information we receive is given an opportunity to be considered. We listen to judge and respond, hardly ever to consume and comprehend.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note22', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Question without assumption</h3>
-                    <p class="meta">November 15, 2023</p>
-                    <div class="note-preview" id="note23">
-                        <p>We must adopt a child-like curiosity in product development. We fill gaps in understanding with cultivated assumptions based on our personal biases and experiences.</p>
-                        <p>Children have the luxury of no preconceived notions, limited experiential exposure, and therefore exhibit an openness to question the obvious, the very obvious adults take for granted.</p>
-                        <p>It's really the 'silly' questions that make a profound impact.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note23', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>The usability-help equation</h3>
-                    <p class="meta">October 15, 2023</p>
-                    <div class="note-preview" id="note24">
-                        <p>I dare say that the amount of help resources we depend on for our digital applications is a good measure of its level of usability.</p>
-                        <p>I don't mean the absence of helpful content is a sign of great product work either. I am perfectly aware of the heuristics of good UI design.</p>
-                        <p>I just mean that the more dependent we are on users learning how to use a product, the further we are from building something truly worthwhile.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note24', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>The perfect product</h3>
-                    <p class="meta">October 01, 2023</p>
-                    <div class="note-preview" id="note25">
-                        <p>I've always believed that a product is built with the implicit understanding that it will be improved upon. There is always a functionality, an experience, or a metric that can be pushed a little further.</p>
-                        <p>Product development is about building and updating a product to address the evolving needs of users, extending it across segments or borders in the interest of growth.</p>
-                        <p>But, when saturation creeps in and innovation begins to dry up, it's not just the product that needs to evolve.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note25', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>The trouble with change</h3>
-                    <p class="meta">September 15, 2023</p>
-                    <div class="note-preview" id="note26">
-                        <p>You'd think that most people would appreciate change, especially when it's for the better. But, just because it's better does not mean it's necessarily welcome.</p>
-                        <p>Somehow, change is interconnected with peoples comfort zones and vested interests. When these spaces are threatened by the possibility of change, people don't always react positively.</p>
-                        <p>It's almost as if change is encouraged to knock, just as long as it's at someone else's door when it doesn't suit us.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note26', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Complexity of elevators</h3>
-                    <p class="meta">August 30, 2023</p>
-                    <div class="note-preview" id="note27">
-                        <p>For some time now, I've been struggling to understand the relationship between people and elevators.</p>
-                        <p>We have the affordance, we have the signifier. Yet, some of us call the elevator to us and others tell the elevator in which direction they wish to go.</p>
-                        <p>It wasn't supposed to be rocket science. Yet, I'm consistently greeted by the all too familiar, "Is it going up or down?".</p>
-                        <p>Interpretation is such a crucial part of design. While we can plan for almost every obvious circumstance, there is always someone who sees it differently.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note27', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Socially unreliable</h3>
-                    <p class="meta">August 10, 2023</p>
-                    <div class="note-preview" id="note28">
-                        <p>I created my first social media account more than a decade ago. To me, it served as a mechanism to share updates, stories, and memories with the people I considered important to me.</p>
-                        <p>But, somehow as humans, we've turned an incredible opportunity to connect into a disruptive path to instigate, tarnish, bully, cheat, mislead, and more. We've managed to create alternate realities, divide ourselves, and inspire distrust.</p>
-                        <p>When I think of impressionable minds being subjected to idealism, aggression, destruction, and just plain stupidity, it worries me. Worse, algorithms endorse content that keeps users engaged. Strangely, audiences are drawn to aggression, violence, sex, and division.</p>
-                        <p>That motivates more production of trending content and the vicious circle continues, expanding with every iteration.</p>
-                        <p>The solution lies at the brittle intersection of personal creative freedom, choice, and business value. Ironically, these very concepts may have been the foundation on which the good intentions of social media were built on in the first place.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note28', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Beware the checkbox bandits</h3>
-                    <p class="meta">July 25, 2023</p>
-                    <div class="note-preview" id="note29">
-                        <p>Ignorance and negligence are acceptance to those who hide behind checkboxes. I instead, advocated for transparency. Let users know what they signed up for. Burying data usage in 'Terms and Conditions' is as bad, if not worse, than pre-selecting checkboxes.</p>
-                        <p>Checkboxes are sometimes mischief-makers in our digital explorations. They can get us into hot water with unwelcome emails, sales calls, malware, and mysterious subscriptions.</p>
-                        <p>Very often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Many do not change the defaults. They simply presume that we live in an ideal world. Well, we do not.</p>
-                        <p>So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for being so gung-ho to dive in that we just cross our fingers and hope for the best?</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note29', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Minimalism in design</h3>
-                    <p class="meta">June 9, 2023</p>
-                    <div class="note-preview" id="note30">
-                        <p>Minimalism is the absence of distraction for the sake of clarity, purpose, and focus. As a lifestyle it encourages us to seek simplicity and meaning over consumerism. It guides us to be truly appreciative of what matters most - relationships, peace, experiences, time, space, and so on.</p>
-                        <p>In design too, it is the omission of the non-essential. It is a conscious decision and a difficult path at that. It demands restraint, confidence, and concerted effort. It drives us to make mindful choices, to focus on outcomes over sophistication and tradition.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note30', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-            </section>            </section>
+            </section>
         </main>
     </div>
 
@@ -807,24 +374,13 @@
             const notePreview = document.getElementById(noteId);
             notePreview.classList.toggle('expanded');
             button.classList.toggle('expanded');
-            
+
             if (notePreview.classList.contains('expanded')) {
-                button.innerHTML = 'Less <span class="chevron">▼</span>';
+                button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
             } else {
-                button.innerHTML = 'More <span class="chevron">▼</span>';
+                button.innerHTML = 'More <span class="chevron">&#9660;</span>';
             }
         }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
