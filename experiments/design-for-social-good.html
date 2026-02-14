@@ -160,6 +160,33 @@
             font-size: 1.1rem;
         }
 
+        .article-content img {
+            cursor: pointer;
+        }
+
+        .image-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-overlay.active {
+            display: flex;
+        }
+
+        .image-overlay img {
+            width: 150%;
+            max-width: none;
+        }
+
         /* Header intro */
         .intro-header {
             margin-bottom: 4rem;
@@ -428,7 +455,7 @@
                 <p>If we create a modular strategy to tackle issues at the local level while linking their implementation to state, regional, and central agencies along with monitoring, auditing, and support, we could lead a coordinated effort in bringing about profound change.</p>
                 <p>By joining hands, sharing information, learnings, best practices, and holding the system accountable, we could improve enrolment rates for educational programmes aimed at females of all age groups and ultimately their integration into the economy as productive members of society.</p>
 
-                <img src="../Images/LEAD Overview.png" alt="L.E.A.D Programme Overview" style="width: 100%; margin: 2rem 0;">
+                <img src="../Images/LEAD Overview.png" alt="L.E.A.D Programme Overview" style="width: 100%; margin: 2rem 0;" onclick="document.getElementById('imageOverlay').classList.add('active')">
 
                 <p><strong>The L.E.A.D Programme</strong></p>
                 <p>With limited access to subject matter experts, I relied on available resources to propose a solution. I settled on the idea of a L.E.A.D programme, which stands for Literacy and Employment through Access and Development.</p>
@@ -452,6 +479,10 @@
                 <p>Finally, legal awareness is necessary for all stakeholders to ensure barriers or resistance to female advancement in education and employment will be seriously dealt with and punishable by law.</p>
             </section>
         </main>
+    </div>
+
+    <div id="imageOverlay" class="image-overlay" onclick="this.classList.remove('active')">
+        <img src="../Images/LEAD Overview.png" alt="L.E.A.D Programme Overview">
     </div>
 </body>
 </html>
