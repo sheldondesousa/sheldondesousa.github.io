@@ -171,20 +171,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             cursor: pointer;
             justify-content: center;
             align-items: center;
+            overflow: auto;
         }
 
         .image-overlay.active {
             display: flex;
         }
 
-        .image-overlay img {
-            width: 150%;
-            max-width: none;
+        .image-overlay-box {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 85%;
+            max-height: 90vh;
+            overflow: auto;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-overlay-box img {
+            width: 100%;
+            display: block;
         }
 
         /* Header intro */
@@ -482,7 +493,9 @@
     </div>
 
     <div id="imageOverlay" class="image-overlay" onclick="this.classList.remove('active')">
-        <img src="../Images/LEAD Overview.png" alt="L.E.A.D Programme Overview">
+        <div class="image-overlay-box" onclick="event.stopPropagation()">
+            <img src="../Images/LEAD Overview.png" alt="L.E.A.D Programme Overview">
+        </div>
     </div>
 </body>
 </html>
