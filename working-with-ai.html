@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCEERXTRF4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCEERXTRF4');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Working with AI - Sheldon De Sousa</title>
@@ -371,7 +379,7 @@
                 </article>
 
                 <article class="note">
-                    <h3>AI-Integrated Feature Development</h3>
+                    <h3>AI-Enhanced Feature Development</h3>
                     <p class="meta">Reimagining cross-functional collaboration through intelligent workflow integration</p>
                     <div class="note-preview" id="note0">
                         <p><strong>Problem</strong></p>
@@ -439,6 +447,9 @@
 
             if (notePreview.classList.contains('expanded')) {
                 button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
+                const article = button.closest('.note');
+                const title = article ? article.querySelector('h3').textContent : noteId;
+                gtag('event', 'article_expand', { article_title: title, page: 'Working with AI' });
             } else {
                 button.innerHTML = 'More <span class="chevron">&#9660;</span>';
             }
