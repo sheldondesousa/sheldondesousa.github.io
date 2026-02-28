@@ -393,6 +393,29 @@
                 </article>
 
                 <article class="note">
+                    <h3>"Death by Grooming" - A Quarterly Ritual</h3>
+                    <p class="meta">How a 3-hour Teams call replaced 3 days of release planning</p>
+                    <div class="note-preview" id="note3">
+                        <p><strong>Problem</strong></p>
+                        <p>Every quarter at athena, over 200 teams across the organization gather for what's internally known as the BURP — Bottom Up Release Plan. For three days, scrum teams sit in closed rooms anchoring on OKRs, writing EPICs, user stories, and acceptance criteria, then slotting them into 7-8 defined sprints for the upcoming release.</p>
+                        <p>The complexity compounds quickly. Cross-team dependencies demand closer inspection of timelines and readiness. Story points need to align with bandwidth. Functional-to-technical work ratios must be factored in. And with all of this happening in real-time across a room full of engineers, product managers, and stakeholders, it's no surprise that teams have a name for it: Death by Grooming.</p>
+                        <p><strong>Solution</strong></p>
+                        <p>Rather than replacing the ritual entirely, I decided to redesign it — using a tool the team already lived in and adding an AI layer on top.</p>
+                        <p>I asked the scrum team to join a structured Microsoft Teams call with a defined agenda and clear guardrails to keep the conversation focused. No drift. No tangents. We moved through our planned scope in sequence, and three hours later, we had a complete meeting transcript.</p>
+                        <p>That transcript became the raw input for a carefully structured GenAI prompt. The output: full PRDs with user stories and acceptance criteria, already estimated, with resource allocations mapped against the development team's known bandwidth and functional-technical work split. Not just documentation, an actual release plan, ready to action.</p>
+                        <p>From there, MCP handled the rest. Work was pushed directly to Confluence and all stories were extracted into their respective Jira epics.</p>
+                        <p><strong>Impact</strong></p>
+                        <p>We saved over 18 hours of planning and discussion time. We closed out documentation for 90% of functional items planned — a figure many teams struggle with even after the full three-day event.</p>
+                        <p>But the real shift was less visible. The team wasn't exhausted. They were informed and ready to go. The AI layer together with the MCP layer transformed the transcript into structure and eliminated the documentation work, leaving more time for deliberation and constructive planning.</p>
+                        <p>What had been a gruelling, multi-day commitment became a focused, single-session workflow.</p>
+                        <p>Death by Grooming doesn't have to be the cost of staying organized. The expressway exists — you just have to be willing to take it.</p>
+                    </div>
+                    <button class="expand-toggle" onclick="toggleNote('note3', this)">
+                        More <span class="chevron">&#9660;</span>
+                    </button>
+                </article>
+
+                <article class="note">
                     <h3>AI-Enhanced Feature Development</h3>
                     <p class="meta">Reimagining cross-functional collaboration through intelligent workflow integration</p>
                     <div class="note-preview" id="note0">
@@ -448,28 +471,6 @@
                     </button>
                 </article>
 
-                <article class="note">
-                    <h3>"Death by Grooming" - A Quarterly Ritual</h3>
-                    <p class="meta">How a 3-hour Teams call replaced 3 days of release planning</p>
-                    <div class="note-preview" id="note3">
-                        <p><strong>Problem</strong></p>
-                        <p>Every quarter at athena, over 200 teams across the organization gather for what's internally known as the BURP — Bottom Up Release Plan. For three days, scrum teams sit in closed rooms anchoring on OKRs, writing EPICs, user stories, and acceptance criteria, then slotting them into 7-8 defined sprints for the upcoming release.</p>
-                        <p>The complexity compounds quickly. Cross-team dependencies demand closer inspection of timelines and readiness. Story points need to align with bandwidth. Functional-to-technical work ratios must be factored in. And with all of this happening in real-time across a room full of engineers, product managers, and stakeholders, it's no surprise that teams have a name for it: Death by Grooming.</p>
-                        <p><strong>Solution</strong></p>
-                        <p>Rather than replacing the ritual entirely, I decided to redesign it — using a tool the team already lived in and adding an AI layer on top.</p>
-                        <p>I asked the scrum team to join a structured Microsoft Teams call with a defined agenda and clear guardrails to keep the conversation focused. No drift. No tangents. We moved through our planned scope in sequence, and three hours later, we had a complete meeting transcript.</p>
-                        <p>That transcript became the raw input for a carefully structured GenAI prompt. The output: full PRDs with user stories and acceptance criteria, already estimated, with resource allocations mapped against the development team's known bandwidth and functional-technical work split. Not just documentation, an actual release plan, ready to action.</p>
-                        <p>From there, MCP handled the rest. Work was pushed directly to Confluence and all stories were extracted into their respective Jira epics.</p>
-                        <p><strong>Impact</strong></p>
-                        <p>We saved over 18 hours of planning and discussion time. We closed out documentation for 90% of functional items planned — a figure many teams struggle with even after the full three-day event.</p>
-                        <p>But the real shift was less visible. The team wasn't exhausted. They were informed and ready to go. The AI layer together with the MCP layer transformed the transcript into structure and eliminated the documentation work, leaving more time for deliberation and constructive planning.</p>
-                        <p>What had been a gruelling, multi-day commitment became a focused, single-session workflow.</p>
-                        <p>Death by Grooming doesn't have to be the cost of staying organized. The expressway exists — you just have to be willing to take it.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note3', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
             </section>
         </main>
     </div>
