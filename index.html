@@ -118,6 +118,95 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
+        /* Search box */
+        .search-label {
+            display: block;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            margin-bottom: 0.4rem;
+            color: #000;
+        }
+
+        .search-input-wrap {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 0.4rem;
+        }
+
+        .search-input-wrap input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0.35rem 0.5rem;
+            font-size: 0.8rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: transparent;
+            min-width: 0;
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 0.4rem;
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1;
+            display: none;
+        }
+
+        .search-clear:hover { color: #000; }
+
+        .search-go {
+            display: block;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 0.35rem 0;
+            font-size: 0.8rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .search-go:hover { opacity: 0.75; }
+
+        /* Search result states */
+        .note.search-match { order: -1; }
+
+        .note.search-dimmed {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        #notes { display: flex; flex-direction: column; }
+
+        .keyword-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 0.1rem 0.45rem;
+            border-radius: 2px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+
+        mark.search-highlight {
+            background: #ffe066;
+            color: inherit;
+            padding: 0 1px;
+            border-radius: 2px;
+        }
+
         /* Main Content */
         .main-content {
             padding: 4rem;
@@ -349,6 +438,16 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">My Notes</a></li>
+                        <li>
+                            <div style="margin-top: 0.6rem;">
+                                <label class="search-label" for="notes-search">Search Notes</label>
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="e.g. AI, product…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                        </li>
                         <li><a href="about.html">About me</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
@@ -898,6 +997,131 @@
                 }
             });
         });
+
+        // --- Notes Search ---
+        const searchInput = document.getElementById('notes-search');
+        const clearBtn = document.getElementById('search-clear-btn');
+
+        // Store original text content of each note for reset
+        const noteOriginals = new Map();
+        document.querySelectorAll('.note').forEach(note => {
+            noteOriginals.set(note, note.querySelector('.note-preview').innerHTML);
+        });
+
+        searchInput.addEventListener('input', function () {
+            clearBtn.style.display = this.value.length ? 'inline' : 'none';
+        });
+
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') runSearch();
+        });
+
+        function runSearch() {
+            const raw = searchInput.value.trim();
+            if (!raw) { clearSearch(); return; }
+
+            const words = raw.toLowerCase().split(/\s+/).filter(Boolean);
+            const exactPhrase = raw.toLowerCase();
+            const notes = document.querySelectorAll('.note');
+
+            notes.forEach(note => {
+                // Restore original HTML before re-highlighting
+                note.querySelector('.note-preview').innerHTML = noteOriginals.get(note);
+                // Remove any existing keyword tag
+                const existingTag = note.querySelector('.keyword-tag');
+                if (existingTag) existingTag.remove();
+            });
+
+            const results = [];
+            notes.forEach(note => {
+                const preview = note.querySelector('.note-preview');
+                const fullText = preview.textContent.toLowerCase();
+                const hasExact = fullText.includes(exactPhrase);
+                const matchedWords = words.filter(w => fullText.includes(w));
+                if (matchedWords.length > 0) {
+                    results.push({ note, hasExact, matchedWords });
+                }
+            });
+
+            // Sort: exact phrase matches first, then partial word matches
+            results.sort((a, b) => {
+                if (a.hasExact && !b.hasExact) return -1;
+                if (!a.hasExact && b.hasExact) return 1;
+                return b.matchedWords.length - a.matchedWords.length;
+            });
+
+            const matchedNotes = new Set(results.map(r => r.note));
+
+            // Apply dim to non-matching notes, reorder matching ones to top
+            const section = document.getElementById('notes');
+            notes.forEach(note => {
+                if (matchedNotes.has(note)) {
+                    note.classList.remove('search-dimmed');
+                    note.classList.add('search-match');
+                } else {
+                    note.classList.add('search-dimmed');
+                    note.classList.remove('search-match');
+                    section.appendChild(note); // move non-matches to end
+                }
+            });
+
+            // Move matches to top in sorted order
+            results.forEach(({ note, matchedWords }) => {
+                section.insertBefore(note, section.firstChild);
+
+                // Add "Keyword Match" tag to h3
+                const h3 = note.querySelector('h3');
+                const tag = document.createElement('span');
+                tag.className = 'keyword-tag';
+                tag.textContent = 'Keyword Match';
+                h3.appendChild(tag);
+
+                // Highlight matched words in preview text
+                const preview = note.querySelector('.note-preview');
+                let html = preview.innerHTML;
+                matchedWords.forEach(word => {
+                    const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    const regex = new RegExp(`(${escaped})`, 'gi');
+                    html = html.replace(regex, '<mark class="search-highlight">$1</mark>');
+                });
+                preview.innerHTML = html;
+
+                // Auto-expand matched note
+                const btn = note.querySelector('.expand-toggle');
+                if (!preview.classList.contains('expanded')) {
+                    preview.classList.add('expanded');
+                    btn.classList.add('expanded');
+                    btn.innerHTML = 'Less <span class="chevron">&#9660;</span>';
+                }
+            });
+        }
+
+        function clearSearch() {
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+
+            const notes = document.querySelectorAll('.note');
+            const section = document.getElementById('notes');
+
+            // Restore original order, HTML, and collapsed state
+            const originalOrder = Array.from(noteOriginals.keys());
+            originalOrder.forEach(note => section.appendChild(note));
+
+            notes.forEach(note => {
+                note.classList.remove('search-match', 'search-dimmed');
+                // Remove keyword tag
+                const tag = note.querySelector('.keyword-tag');
+                if (tag) tag.remove();
+                // Restore original preview HTML
+                note.querySelector('.note-preview').innerHTML = noteOriginals.get(note);
+                // Collapse back
+                const preview = note.querySelector('.note-preview');
+                const btn = note.querySelector('.expand-toggle');
+                preview.classList.remove('expanded');
+                btn.classList.remove('expanded');
+                btn.innerHTML = 'More <span class="chevron">&#9660;</span>';
+            });
+        }
     </script>
 </body>
 </html>
