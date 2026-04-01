@@ -111,6 +111,10 @@
             border-bottom-color: #000;
         }
 
+        .sidebar nav a.active {
+            font-weight: 700;
+        }
+
         .sidebar footer {
             font-size: 0.75rem;
             opacity: 0.5;
@@ -434,7 +438,7 @@
                 
                 <nav>
                     <ul>
-                        <li><a href="index.html">My Notes</a></li>
+                        <li><a href="index.html" class="active">My Notes</a></li>
                         <li>
                             <div class="search-row">
                                 <div class="search-input-wrap">
@@ -1032,8 +1036,8 @@
             notes.forEach(note => {
                 const preview = note.querySelector('.note-preview');
                 const fullText = preview.textContent.toLowerCase();
-                const hasExact = fullText.includes(exactPhrase);
-                const matchedWords = words.filter(w => fullText.includes(w));
+                const hasExact = new RegExp(`\\b${exactPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(fullText);
+                const matchedWords = words.filter(w => new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(fullText));
                 if (matchedWords.length > 0) {
                     results.push({ note, hasExact, matchedWords });
                 }
@@ -1077,7 +1081,7 @@
                 let html = preview.innerHTML;
                 matchedWords.forEach(word => {
                     const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-                    const regex = new RegExp(`(${escaped})`, 'gi');
+                    const regex = new RegExp(`\\b(${escaped})\\b`, 'gi');
                     html = html.replace(regex, '<mark class="search-highlight">$1</mark>');
                 });
                 preview.innerHTML = html;
