@@ -124,10 +124,9 @@
             overflow-y: auto;
         }
 
-        /* Two-column layout for about page */
+        /* Single-column layout for about page */
         .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: block;
             gap: 4rem;
         }
 
@@ -321,10 +320,7 @@
                 padding: 2rem;
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+
         }
 
         @media (max-width: 600px) {
@@ -399,17 +395,14 @@
             <!-- About Me Section -->
             <section id="about">
                 <div class="about-grid">
-                    <div>
-                        <div class="about-content">
-                            <p>I've been in product management for 15+ years taking products from 0→1 to scale across healthcare technology, electronics, and consumer goods.</p>
-                            <p>Currently a Senior Product Manager at athenahealth, I've scaled mobile applications to 65,000+ monthly active users, built interactive clinical widgets that streamlined RCM workflows, conceptualised and deployed AI-powered development and GTM workflows that compress delivery cycles from weeks to hours, and helped make mobile platforms accessible to users with visual disabilities.</p>
-                            <p>Before healthcare, I spent a decade in consumer electronics working with major global brands. I've launched sleep products for global retailers like Costco, Amazon, and Walmart, and led digital customer acquisition strategies for a boutique marketing firm.</p>
-                            <p>I write here about product strategy, AI, and technology, with a hint of philosophy—asking questions that don't have easy answers yet. If that sounds like your kind of conversation, let's talk.</p>
-                        </div>
+                    <div class="about-content">
+                        <p>I've been in product management for 15+ years taking products from 0→1 to scale across healthcare technology, electronics, and consumer goods.</p>
+                        <p>Currently a Senior Product Manager at athenahealth, I've scaled mobile applications to 65,000+ monthly active users, built interactive clinical widgets that streamlined RCM workflows, conceptualised and deployed AI-powered development and GTM workflows that compress delivery cycles from weeks to hours, and helped make mobile platforms accessible to users with visual disabilities.</p>
+                        <p>Before healthcare, I spent a decade in consumer electronics working with major global brands. I've launched sleep products for global retailers like Costco, Amazon, and Walmart, and led digital customer acquisition strategies for a boutique marketing firm.</p>
+                        <p>I write here about product strategy, AI, and technology, with a hint of philosophy—asking questions that don't have easy answers yet. If that sounds like your kind of conversation, let's talk.</p>
                     </div>
 
-                    <div>
-                        <h2 class="section-title" style="margin-top: 0; padding-top: 0;">Work</h2>
+                    <h2 class="section-title">Work</h2>
                         <div class="work-list">
                             <div class="work-item">
                                 <h4>Applied AI/ML</h4>
@@ -455,7 +448,6 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
                 </div>
             </section>
         </main>
