@@ -119,12 +119,11 @@
         }
 
         /* Search box */
-        .search-label {
-            display: block;
-            font-size: 14px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            margin-bottom: 0.4rem;
-            color: #000;
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.6rem;
         }
 
         .search-input-wrap {
@@ -133,15 +132,15 @@
             border: 1px solid #ccc;
             border-radius: 3px;
             overflow: hidden;
-            margin-bottom: 0.4rem;
+            flex: 1;
         }
 
         .search-input-wrap input {
             flex: 1;
             border: none;
             outline: none;
-            padding: 0.35rem 0.5rem;
-            font-size: 0.8rem;
+            padding: 0.28rem 0.4rem;
+            font-size: 0.75rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: transparent;
             min-width: 0;
@@ -151,8 +150,8 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0 0.4rem;
-            font-size: 0.85rem;
+            padding: 0 0.35rem;
+            font-size: 0.75rem;
             color: #999;
             line-height: 1;
             display: none;
@@ -161,18 +160,16 @@
         .search-clear:hover { color: #000; }
 
         .search-go {
-            display: block;
-            width: 100%;
             background: #000;
             color: #fff;
             border: none;
-            padding: 0.35rem 0;
-            font-size: 0.8rem;
+            padding: 0.28rem 0.55rem;
+            font-size: 0.75rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
             border-radius: 3px;
+            white-space: nowrap;
         }
 
         .search-go:hover { opacity: 0.75; }
@@ -439,10 +436,9 @@
                     <ul>
                         <li><a href="index.html">My Notes</a></li>
                         <li>
-                            <div style="margin-top: 0.6rem;">
-                                <label class="search-label" for="notes-search">Search Notes</label>
+                            <div class="search-row">
                                 <div class="search-input-wrap">
-                                    <input type="text" id="notes-search" placeholder="e.g. AI, product…" autocomplete="off">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
                                     <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
                                 </div>
                                 <button class="search-go" onclick="runSearch()">Go</button>
