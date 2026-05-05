@@ -385,6 +385,34 @@
             <!-- Articles Section -->
             <section id="notes">
                 <article class="note">
+                    <h3>Building a Bootstrapped Product Management Command Center</h3>
+                    <p class="meta">May 5, 2026</p>
+                    <div class="note-preview" id="note4">
+                        <p>I've always found it fascinating that when someone shares their screen, the first few things you notice are their cluttered desktop and their backlog of unopened emails. It's either a sneak peek into their mind, their workday, or both.</p>
+                        <p>For me, the next illuminating thing to watch for are their browser tabs. And PMs tend to have many of them open. 15 Jira tickets. 6 Confluence pages, 5 Amplitude dashboards, 4 Excel sheets, 3 PowerPoint decks, a year-old research paper, and a Fond points program to grease someone's palms. I've seen worse.</p>
+                        <p>The less glamorous truth is that we context switch constantly. But, we've all imagined a single place where everything can be referenced at a click.</p>
+                        <p>So, after a recent Codex learning session, I hypothesised about building something like that. Dependencies aside, I stitched some of my frequented applications together.</p>
+                        <p>Here's what ended up inside it:</p>
+                        <ul>
+                            <li>Jira, with a live sprint view, stories with acceptance criteria, comments, and alerts when stories get updated</li>
+                            <li>Confluence with quick access to every page I've authored</li>
+                            <li>Amplitude with analytics embedded for every project or feature I work on</li>
+                            <li>Task management with a personal task list, a Kanban board to track progress, and an Eisenhower matrix for prioritisation</li>
+                            <li>A drag and drop Roadmap builder with a built in RICE model, including features and epics for quick socialising</li>
+                        </ul>
+                        <p>Most of it in one place. I would have loved to integrate Teams and Outlook, but I had to skip those.</p>
+                        <p>The architecture includes a React frontend, a Node.js backend handling API calls, and browser localStorage. I brought in design components from Figma and eventually published a case study to Confluence using MCP through Codex.</p>
+                        <p>But here's what's interesting.</p>
+                        <p>I'm not a developer. A few years ago, building something like this would be nearly impossible. It would mean scoping a project, finding engineering resources or buying a subscription, and probably settling for something simpler than what I had in mind.</p>
+                        <p>Instead, I described a problem. Worked with Codex. Iterated. A few hours later, I had something running.</p>
+                        <p>The barrier to building isn't technical anymore. It's believing you're allowed to.</p>
+                    </div>
+                    <button class="expand-toggle" onclick="toggleNote('note4', this)">
+                        More <span class="chevron">&#9660;</span>
+                    </button>
+                </article>
+
+                <article class="note">
                     <h3>Accelerated AI in Product Management</h3>
                     <p class="meta">Addressing Andrew Ng's view on product bottlenecks</p>
                     <div class="note-preview" id="note00">
