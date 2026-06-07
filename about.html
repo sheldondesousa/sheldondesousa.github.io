@@ -402,24 +402,49 @@
             .hamburger {
                 display: flex;
             }
-            .sidebar-collapsible {
+            .sidebar-backdrop {
                 display: none;
-                padding: 0.75rem 1.25rem 1.25rem;
-                border-top: 1px solid #eee;
-                max-height: calc(100vh - 64px);
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.25);
+                z-index: 99;
+            }
+            .sidebar-collapsible {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #fff;
+                border-left: 1px solid #000;
+                padding: 2rem 1.5rem 5rem;
+                transform: translateX(110%);
+                transition: transform 0.35s ease;
+                z-index: 100;
                 overflow-y: auto;
+                display: block;
             }
             .sidebar.nav-open .sidebar-collapsible {
-                display: block;
+                transform: translateX(0);
             }
             .sidebar footer {
                 display: none;
             }
             .sidebar.nav-open footer {
                 display: block;
-                margin-top: 1.25rem;
-                padding: 1.25rem 1.25rem 1rem;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #fff;
+                padding: 1rem 1.5rem;
                 border-top: 1px solid #eee;
+                border-left: 1px solid #000;
+                z-index: 100;
+                margin-top: 0;
+                font-size: 14px;
             }
             .main-content {
                 padding: 1.5rem;
@@ -564,13 +589,31 @@
 
     <script>
         function toggleNav(btn) {
-            btn.closest('.sidebar').classList.toggle('nav-open');
+            const sidebar = btn.closest('.sidebar');
+            sidebar.classList.toggle('nav-open');
+            let backdrop = document.querySelector('.sidebar-backdrop');
+            if (sidebar.classList.contains('nav-open')) {
+                if (!backdrop) {
+                    backdrop = document.createElement('div');
+                    backdrop.className = 'sidebar-backdrop';
+                    document.body.appendChild(backdrop);
+                }
+                backdrop.style.display = 'block';
+                backdrop.onclick = function() {
+                    sidebar.classList.remove('nav-open');
+                    backdrop.style.display = 'none';
+                };
+            } else {
+                if (backdrop) backdrop.style.display = 'none';
+            }
         }
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.sidebar nav a').forEach(function(link) {
                 link.addEventListener('click', function() {
                     var s = link.closest('.sidebar');
                     if (s) s.classList.remove('nav-open');
+                    var backdrop = document.querySelector('.sidebar-backdrop');
+                    if (backdrop) backdrop.style.display = 'none';
                 });
             });
         });
