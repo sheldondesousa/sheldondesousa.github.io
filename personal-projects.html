@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploring AI - Sheldon De Sousa</title>
+    <title>Personal Projects - Sheldon De Sousa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -501,7 +501,7 @@
                         <li><a href="about.html">About me</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
-                        <li><a href="personal-projects.html" class="active">Exploring AI</a></li>
+                        <li><a href="personal-projects.html" class="active">Personal Projects</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -518,7 +518,7 @@
         <main class="main-content">
             <!-- Intro -->
             <div class="intro-header">
-                <h2>Exploring AI</h2>
+                <h2>Personal Projects</h2>
                 <p>A running log of experiments, ideas, and apps built at the edge of what I know.</p>
             </div>
 
@@ -528,17 +528,17 @@
                     <h3>Building a web app</h3>
                     <p class="meta">June 9, 2026</p>
                     <div class="note-preview" id="proj1">
-                        <p>I used to work in Pune, India. It's a tier 2 city, which means it carries all the chaos of a metropolis without quite enough infrastructure to absorb it. My commute to the office was short. But short didn't mean calm.</p>
-                        <p>Every morning, the road offers the same education. Horns without reason. Vehicles threading gaps that don't exist. A kind of ambient aggression that nobody seems to notice anymore, because it's just the texture of the day. It struck me at some point that nobody stops. Not physically, not mentally. There's a pressure baked into ordinary life here that most people have simply accepted as normal.</p>
+                        <p>I used to work in Pune, India. It's a tier 2 city, which means it carries all the chaos of a metropolis without quite enough infrastructure to absorb it. My commute to the office was short, but never calm.</p>
+                        <p>Every morning, the roads offered the same education. Horns without reason. Vehicles threading gaps that didn't exist. A kind of ambient aggression that nobody seems to notice anymore, because it's just how things work. It struck me at some point that nobody stops. Not physically, not mentally. There's a pressure baked into ordinary life that most people have simply accepted as normal.</p>
                         <p>I didn't want to accept it.</p>
-                        <p>I'd been experimenting with AI in my work as a product manager, curious about what becomes possible when you remove friction from thinking. So when this idea surfaced, building something to address it felt natural. Not as a side project in the traditional sense. More as a question I wanted to answer: could I build something real, by myself, that might actually help?</p>
-                        <p>Hush started from a simple premise. People are overwhelmed. They don't breathe. And most wellness apps make that problem worse. Noisy, gamified, full of nudges designed to keep you inside them longer. I wanted the opposite. A space defined by what it leaves out.</p>
+                        <p>I'd been experimenting with AI in my work as a product manager, curious about what becomes possible when you remove friction from thinking. So when this idea surfaced, building something to address it felt natural. This wasn't just a side project. It was more a question I wanted to answer: could I build something real, by myself, that might actually help?</p>
+                        <p>Hush started from a simple premise. People are overwhelmed. They don't breathe. And most wellness apps make that problem worse. They are noisy, gamified, full of nudges designed to keep you inside them longer. I wanted the opposite. A space defined by what it leaves out.</p>
                         <div style="background-color:#fafaf9;border-radius:8px;padding:5%;margin:1.5rem 0;">
                             <img src="Images/MarketingPage_WhyHush.png" alt="Why Hush" style="width:100%;display:block;border-radius:6px;">
                         </div>
-                        <p>I built it with Claude Code. Beyond the breathing exercises, I added a set of simple meditation techniques. Soft Focus, Body Scan, Loving-Kindness, Five Senses Grounding. Small practices that ask very little but return something real. Each one designed to be picked up in a moment and put down just as easily.</p>
-                        <p>What surprised me about building with Claude Code wasn't the speed, though that was real. It was how the collaboration changed the nature of building itself. I could hold the intention, the philosophy, the feeling I wanted the app to carry, while Claude helped me execute it. The result is eight evidence-based breathing techniques, canvas animations timed to breath, and a recommender that matches technique to emotional state. All of it designed to disappear once you're in a session.</p>
-                        <p>The visual language followed the same logic. Minimal. Spacious. If the interface is doing its job, you stop noticing it.</p>
+                        <p>I built it with Claude Code.</p>
+                        <p>What surprised me about building with Claude Code wasn't the speed, though that was real. It was how the collaboration changed the nature of building itself. I managed the intention, the philosophy, the feeling I wanted the app to convey, while Claude helped me execute it. The result is eight evidence-based breathing techniques, canvas animations timed to breath, and a recommender that matches technique to emotional state. All of it designed to disappear once you're in a session.</p>
+                        <p>The visual language followed the same logic - Minimal and Spacious. If the interface is doing its job, you stop noticing it.</p>
                         <p>I don't think one app changes a culture. But I think individuals can choose, moment by moment, to slow down. Hush is my attempt to make that choice a little easier. To offer a pause in a world that's forgotten how to take one.</p>
                     </div>
                     <button class="expand-toggle" onclick="toggleNote('proj1', this)">
@@ -558,7 +558,7 @@
                 button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
                 const article = button.closest('.note');
                 const title = article ? article.querySelector('h3').textContent : noteId;
-                gtag('event', 'article_expand', { article_title: title, page: 'Exploring AI' });
+                gtag('event', 'article_expand', { article_title: title, page: 'Personal Projects' });
             } else {
                 button.innerHTML = 'More <span class="chevron">&#9660;</span>';
             }
