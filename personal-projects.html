@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploring AI - Sheldon De Sousa</title>
+    <title>Personal Projects - Sheldon De Sousa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -501,7 +501,7 @@
                         <li><a href="about.html">About me</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
-                        <li><a href="personal-projects.html" class="active">Exploring AI</a></li>
+                        <li><a href="personal-projects.html" class="active">Personal Projects</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -518,7 +518,7 @@
         <main class="main-content">
             <!-- Intro -->
             <div class="intro-header">
-                <h2>Exploring AI</h2>
+                <h2>Personal Projects</h2>
                 <p>A running log of experiments, ideas, and apps built at the edge of what I know.</p>
             </div>
 
@@ -558,7 +558,7 @@
                 button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
                 const article = button.closest('.note');
                 const title = article ? article.querySelector('h3').textContent : noteId;
-                gtag('event', 'article_expand', { article_title: title, page: 'Exploring AI' });
+                gtag('event', 'article_expand', { article_title: title, page: 'Personal Projects' });
             } else {
                 button.innerHTML = 'More <span class="chevron">&#9660;</span>';
             }
