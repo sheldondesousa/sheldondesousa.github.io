@@ -525,6 +525,23 @@
             <!-- Projects Section -->
             <section id="projects">
                 <article class="note">
+                    <h3>Building a World Cup Predictor</h3>
+                    <p class="meta">A weekend experiment in Elo ratings and Poisson distributions</p>
+                    <div class="note-preview" id="proj2">
+                        <p>Last week I sat in on a conversation between friends, all neck deep in predictions, numerical tables, and gut feelings about the FIFA 2026 World Cup. I wasn't really following the match talk. I was thinking about a Clinical Inbox prediction model I'd been sketching at work for a while — one I'd shelved because I couldn't justify an ROI consistent with the effort it needed.</p>
+                        <p>Shelving it professionally didn't stop me from wanting to build something, though. And the football conversation seemed like a worthy enough excuse.</p>
+                        <p>I want to be clear about the intent here. This wasn't an attempt to compete with the serious forecasters, or with Paul the octopus, for that matter. Real prediction models are a different order of complexity entirely — big data, machine learning, supercomputers, statistical modelling weighing thousands of variables: injuries, form, tactics, fatigue accumulated over a tournament. That's a different game.</p>
+                        <p>Mine was a small subset of that. I pulled historical international football results off Kaggle, then layered Elo ratings and Poisson distributions on top — exactly the kind of mathematics I wish I'd paid more attention to in school. In less than an hour, Claude Code and I had a working model.</p>
+                        <p>It doesn't weigh fitness, form streaks, or any of the finer variables the advanced models factor in. It works to the extent that my own knowledge permits, and not further. That turned out to be the real lesson. I got some experience out of the exercise, sure, but the sharper takeaway was seeing the exact boundary of my own competence.</p>
+                        <p>I'm not a data scientist. I'm not a mathematician. If I were good at either, I'd have used the same hour to build something closer to what the people who do this professionally build — maybe even rivaling it. I'd have known which variables mattered, what to tweak, what to clean up, what algorithm actually fit the problem. That's domain knowledge, and no amount of AI substitutes for it. AI didn't close that gap for me. If anything, it made the gap easier to see. Every decision in the build still needed a level of judgment the tool couldn't supply.</p>
+                        <p>I think this is exactly where product management is heading. AI will amplify PMs, aspiring ones included, but only as far as their product sense already extends. It won't hand anyone the judgment or expertise they don't already have. That will become obvious as roles start to blur. Quality "AI-powered" work is really just a reflection of how much sense the person behind it brings to the table — and I suspect, at least in the near term, we're quietly building an age of pseudo-competence, where we assume the tool covers for whatever we're missing.</p>
+                    </div>
+                    <button class="expand-toggle" onclick="toggleNote('proj2', this)">
+                        More <span class="chevron">&#9660;</span>
+                    </button>
+                </article>
+
+                <article class="note">
                     <h3>Building Hush: A Break From the Noise</h3>
                     <p class="meta">What a chaotic commute in Pune taught me about building a wellness app that does less, not more</p>
                     <div class="note-preview" id="proj1">
