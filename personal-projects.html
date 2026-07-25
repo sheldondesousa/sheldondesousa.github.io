@@ -525,6 +525,23 @@
             <!-- Projects Section -->
             <section id="projects">
                 <article class="note">
+                    <h3>Building a Hydration App: Knowing Where the Knowledge Runs Out</h3>
+                    <p class="meta">A weekend project on tracking water intake, and the domain knowledge no app can substitute for</p>
+                    <div class="note-preview" id="proj3">
+                        <p>I'd noticed people consistently complain about not consuming enough drinking water during the day. The topic was a frequent favourite at work. Folks would be sure to bring in their personal bottles and plant them on their desks. Some even sported bottles with tracking indicators. The trouble with that sophisticated piece of tech was that most people spent a lot of their time away from their desks.</p>
+                        <p>None of that had much to do with why I built this. I just wanted a weekend project, the way some people spend a weekend gardening or fixing a bike. No brief, no user research, no ROI conversation with myself. Just an idea and a couple of days to see how far I could take it.</p>
+                        <p>Hydration seemed like a reasonable place to start. It's simple enough to scope in a weekend, and personal enough that I'd actually use it. Track water intake, calculate a sensible daily target from basic bio-data, remind me when I'm behind. Nothing that hasn't been done before. That wasn't the point.</p>
+                        <p>I built it with Expo and React Native, targeting Android first, with the same stack able to stretch to web and iOS later. Local storage instead of a backend. Google sign-in without a native module. On-device reminders and a small gamified layer.</p>
+                        <p>What I hadn't fully appreciated before going in was how quickly a "simple" hydration calculation stops being simple. Biomarkers, activity, climate, and a many other variable factors all pull on the number in different directions, and the research behind how they interact is not something I have any real grounding in. I built a formula that's reasonable. I can't call it validated. But, it covered planned activity and local weather conditions. Although, integration with personal tracking devices would have been a better way to go.</p>
+                        <p>That's really the lesson of this one. I could build the app. The interface, the state management, the reminders, the mechanics, all of it came together in a weekend. What I couldn't build my way past was domain knowledge I simply don't have. That still needs someone who actually understands the physiology, and right now, that isn't me.</p>
+                        <p>That said, I might decide, if time permits to take it a further. For now, I'm just happy working with Claude Code and Codex to build experience before taking on something serious.</p>
+                    </div>
+                    <button class="expand-toggle" onclick="toggleNote('proj3', this)">
+                        More <span class="chevron">&#9660;</span>
+                    </button>
+                </article>
+
+                <article class="note">
                     <h3>Building a World Cup Predictor</h3>
                     <p class="meta">A weekend experiment in Elo ratings and Poisson distributions</p>
                     <div class="note-preview" id="proj2">
