@@ -88,11 +88,11 @@ The usability-help equation
 October 15, 2023
 --------------------------------------------------------------------------------
 
-I dare say that the amount of help resources we depend on for our digital applications is a good measure of its level of usability.
+I dare say the amount of help content a digital product leans on is a fair measure of its usability.
 
-I don't mean the absence of helpful content is a sign of great product work either. I am perfectly aware of the heuristics of good UI design.
+That's not to say the absence of help content signals great product work. I'm well aware of the heuristics of good UI design.
 
-I just mean that the more dependent we are on users learning how to use a product, the further we are from building something truly worthwhile.
+It's that the more dependent we are on users learning how to use something, the further that product sits from being truly worthwhile.
 
 
 --------------------------------------------------------------------------------
