@@ -226,17 +226,15 @@ The what and who of feedback
 September 15, 2024
 --------------------------------------------------------------------------------
 
-Sitting through user feedback meetings can be a bit overwhelming. This is particularly true when you have either too little or too much feedback to go over. But, what is the right amount? Fact is, there is no definitive answer. We would need to evaluate, both, quantity and quality of feedback as well.
+Sitting through user feedback meetings can be overwhelming, particularly when you have either too little or too much to go through. But what's the right amount? Truth is, there's no definitive answer. We need to weigh both the quantity and quality of the feedback.
 
-Too little feedback could mean you have a wonderful product with little scope for improvement, But it could also mean you have a product that users don't care much for. Too much feedback either means your product has a lot of holes in it or you have a very passionate user base demanding more from you.
+Too little could mean you have a wonderful product with little scope for improvement. But it could also mean you have a product users don't care much for. Too much either means your product has real holes in it, or you have a passionate user base demanding more.
 
-The trouble I have with feedback is largely concentrated around its source. Is it coming from the most valuable users or from those brining up the rear? Don't get me wrong. It's possible that low adoptive users may turn into prospective enthusiasts if their needs were catered to. And that's a judgement call.
+My issues with feedback are largely concentrated around its source. Is it coming from your most valuable users, or from those bringing up the rear? Don't get me wrong, low-adoption users may well turn into prospective enthusiasts if their needs are addressed.
 
-Yet, I find PMs and UX folks impulsive in addressing any sort of feedback. Perhaps it expands their jobs to be done. But, acting on any feedback could swing things the other way for other users who didn't take issue.
+Yet I find PMs impulsive about acting on feedback, perhaps because it gives them something to chase. But acting on any feedback could swing things the other way for users who never took issue in the first place.
 
-So, to me, the origin of that feedback is equally important, if not more. And unless we know where that's coming from, acting on any and all feedback can be counter-productive.
-
-Having said that, there are still a few gems that creep in from the most unexpected sources. In my opinion, it's worth socializing questionable feedback with your loyal users before building upon it.
+Having said that, a few gems do creep in from unexpected sources. They're worth socializing with loyal users. Sometimes, they're the type of opportunities the silent majority haven't raised.
 
 
 --------------------------------------------------------------------------------
