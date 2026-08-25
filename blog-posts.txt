@@ -10,9 +10,9 @@ Minimalism in design
 June 9, 2023
 --------------------------------------------------------------------------------
 
-Minimalism is the absence of distraction for the sake of clarity, purpose, and focus. As a lifestyle it encourages us to seek simplicity and meaning over consumerism. It guides us to be truly appreciative of what matters most - relationships, peace, experiences, time, space, and so on.
+Minimalism is the absence of distraction for the sake of clarity, purpose, and focus. As a lifestyle it encourages us to seek simplicity and meaning over consumerism. It asks us to be truly appreciative of what matters most - relationships, peace, experiences, time, space, and so on.
 
-In design too, it is the omission of the non-essential. It is a conscious decision and a difficult path at that. It demands restraint, confidence, and concerted effort. It drives us to make mindful choices, to focus on outcomes over sophistication and tradition.
+In design too, it is the omission of what's non-essential. It is a conscious decision and a difficult path at that. It demands restraint, confidence, and concerted effort. It drives us to make mindful choices, to see the beauty in purity and the value in necessity.
 
 
 --------------------------------------------------------------------------------
@@ -20,13 +20,13 @@ Beware the checkbox bandits
 July 25, 2023
 --------------------------------------------------------------------------------
 
-Ignorance and negligence are acceptance to those who hide behind checkboxes. I instead, advocated for transparency. Let users know what they signed up for. Burying data usage in 'Terms and Conditions' is as bad, if not worse, than pre-selecting checkboxes.
-
 Checkboxes are sometimes mischief-makers in our digital explorations. They can get us into hot water with unwelcome emails, sales calls, malware, and mysterious subscriptions.
 
-Very often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Many do not change the defaults. They simply presume that we live in an ideal world. Well, we do not.
+Our ignorance and negligence become acceptance to those who hide behind them. Checkboxes have always been small acts of consent, wrapped in the illusion of triviality.
 
-So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for being so gung-ho to dive in that we just cross our fingers and hope for the best?
+Often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Other times, they hide in defaults. Most folks accept the status quo. They simply presume that we live in an ideal world where good intentions are exchanged as frequently as handshakes.
+
+So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for diving in and hoping for the best?
 
 
 --------------------------------------------------------------------------------
@@ -190,11 +190,11 @@ Designing for good
 June 01, 2024
 --------------------------------------------------------------------------------
 
-I believe that all product should have a positive impact on the individual, the community, and the environment.
+All products should have a positive impact on the individual, the community, and the environment.
 
-Product is an outcome of design. And design is an outcome of thought, an idea. If an idea is compromised, it finds its way into the product. Designing for good demands purity of intent. It includes byproducts of a product's application, even its disposal.
+Product is an outcome of design. And design is an outcome of creative thought. Thoughts are compromised by intent. So, designing for good demands purity of intent.
 
-Designing for good shifts the focus from selfish commercial interests to positive outcomes, again, for the individual, the community, and the environment.
+Designing for good shifts the focus from selfish commercial interests to genuine positive outcomes. That includes byproducts of a product's application, even its disposal.
 
 
 --------------------------------------------------------------------------------
