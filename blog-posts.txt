@@ -20,13 +20,13 @@ Beware the checkbox bandits
 July 25, 2023
 --------------------------------------------------------------------------------
 
-Ignorance and negligence are acceptance to those who hide behind checkboxes. I instead, advocated for transparency. Let users know what they signed up for. Burying data usage in 'Terms and Conditions' is as bad, if not worse, than pre-selecting checkboxes.
-
 Checkboxes are sometimes mischief-makers in our digital explorations. They can get us into hot water with unwelcome emails, sales calls, malware, and mysterious subscriptions.
 
-Very often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Many do not change the defaults. They simply presume that we live in an ideal world. Well, we do not.
+Our ignorance and negligence become acceptance to those who hide behind them. Checkboxes have always been small acts of consent, wrapped in the illusion of triviality.
 
-So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for being so gung-ho to dive in that we just cross our fingers and hope for the best?
+Often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Other times, they hide in defaults. Most folks accept the status quo. They simply presume that we live in an ideal world where good intentions are exchanged as frequently as handshakes.
+
+So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for diving in and hoping for the best?
 
 
 --------------------------------------------------------------------------------
