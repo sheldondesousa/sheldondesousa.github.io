@@ -42,7 +42,7 @@ When I think of impressionable minds being subjected to idealism, aggression, de
 
 That motivates more production of trending content and the vicious circle continues, expanding with every iteration.
 
-It's a difficult problem to solve because throttling any dynamic has consequences. For instance, rejection of questionable content could push the boundaries of personal choice, freedom of expression, repressive action, and more. Further, restrictive practices could inhibit content creation and consumption, resulting in negative business value.
+It's a difficult problem to solve because throttling any dynamic has consequences. For instance, rejection of content pushes at the boundaries of personal choice, freedom of expression, repressive action, and more. Further, restrictive practices could inhibit content creation and consumption, resulting in negative business value.
 
 The solution lies at some brittle intersection of many critical pieces. That's what makes this so hard to solve. It isn't one broken part we can isolate and fix. It's several fragile ones, each essential, each easily damaged by too much pressure on the others.
 
