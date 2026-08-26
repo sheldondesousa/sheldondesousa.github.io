@@ -146,11 +146,15 @@ Significance of the PRD
 February 25, 2024
 --------------------------------------------------------------------------------
 
-Addressing the significance of a Product Requirements Document (PRD) in product development may seem elementary, yet it's often overlooked or left insufficient.
+The significance of a Product Requirements Document (PRD) seems obvious. Yet it's one of the most consistently overlooked artefacts in product development.
 
-This artefact outlines the vision, feature list, priorities, scope, risks, and purpose for the team and beyond. It becomes a living document, a communication tool, a source of truth, and the glue that keeps people on the same page.
+AI pundits argue that the PRD is dead, that a prototype says more than any document ever could. And there's some truth in it. A prototype can surface things a spec can't.
 
-I must admit, I have been guilty of negligence when it comes to the PRD. I therefore say, for the sake of humanity, this document needs to be signed-off before commissioning a project. If not, I'd advise brushing up on a few seasons of Law & Order, Boston Legal, or Suits.
+But a prototype answers 'does this work?' It doesn't answer 'why are we building this, for whom, and at what cost of everything else we're not building?'
+
+That's still the PRD's job. This artefact outlines the vision, feature list, priorities, scope, risks, and purpose for the team, and for everyone downstream. It becomes a living document, a communication tool, a source of truth, and the glue that keeps people pointed in the same direction.
+
+I'll admit it. I've been guilty of PRD negligence myself. Which is exactly why I've come around to a hard rule: no project gets commissioned without a signed-off PRD. Skip it, and you'd better brush up on a few seasons of Law & Order, Boston Legal, or Suits.
 
 
 --------------------------------------------------------------------------------
