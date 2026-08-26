@@ -46,7 +46,7 @@ It's a difficult problem to solve because throttling any dynamic has consequence
 
 The solution lies at some brittle intersection of many critical pieces. That's what makes this so hard to solve. It isn't one broken part we can isolate and fix. It's several fragile ones, each essential, each easily damaged by too much pressure on the others.
 
-Loosen restrictions and freedom flourishes, but so does harm. Tighten them and harm recedes, but so does the very openness that made the platforms worth building.
+Loosen restrictions and freedom flourishes, but so does harm. Tighten them and harm reduces, but so does the very openness that made the platforms worth building.
 
 
 --------------------------------------------------------------------------------
