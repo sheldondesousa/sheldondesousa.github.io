@@ -6,7 +6,7 @@ Chronological order: Oldest to Newest
 
 
 --------------------------------------------------------------------------------
-Minimalism in design
+Minimalism in Design
 June 9, 2023
 --------------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ In design too, it is the omission of what's non-essential. It is a conscious dec
 
 
 --------------------------------------------------------------------------------
-Beware the checkbox bandits
+Beware the Checkbox Bandits
 July 25, 2023
 --------------------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ So, who do we blame - the businesses that disclose their intentions, albeit disc
 
 
 --------------------------------------------------------------------------------
-Socially unreliable
+Socially Unreliable
 August 10, 2023
 --------------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ The solution lies at the brittle intersection of personal creative freedom, choi
 
 
 --------------------------------------------------------------------------------
-Complexity of elevators
+Complexity of Elevators
 August 30, 2023
 --------------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ Interpretation is such a crucial part of design. While we can plan for almost ev
 
 
 --------------------------------------------------------------------------------
-The trouble with change
+The Trouble with Change
 September 15, 2023
 --------------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ It's almost as if change is encouraged to knock, just as long as it's at someone
 
 
 --------------------------------------------------------------------------------
-The perfect product
+The Perfect Product
 October 01, 2023
 --------------------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ But, when saturation creeps in and innovation begins to dry up, it's not just th
 
 
 --------------------------------------------------------------------------------
-The usability-help equation
+The Usability-Help Equation
 October 15, 2023
 --------------------------------------------------------------------------------
 
@@ -96,7 +96,7 @@ It's that the more dependent we are on users learning how to use something, the 
 
 
 --------------------------------------------------------------------------------
-Children ask the best silly questions
+Children Ask the Best Silly Questions
 November 15, 2023
 --------------------------------------------------------------------------------
 
@@ -108,7 +108,7 @@ It's really the 'silly' questions that have the most profound effect. They poke 
 
 
 --------------------------------------------------------------------------------
-Listening is an art
+Listening Is an Art
 December 1, 2023
 --------------------------------------------------------------------------------
 
@@ -122,7 +122,7 @@ I couldn't agree more. Often, we evaluate, decide, and formulate before the info
 
 
 --------------------------------------------------------------------------------
-Thinking longer and slower
+Thinking Longer and Slower
 January 29, 2024
 --------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ I must admit, I have been guilty of negligence when it comes to the PRD. I there
 
 
 --------------------------------------------------------------------------------
-A tale of decision making
+A Tale of Decision Making
 March 10, 2024
 --------------------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ The more I assess my workdays, the more I'm led to believe that it comes down to
 
 
 --------------------------------------------------------------------------------
-Being ethically objective
+Being Ethically Objective
 May 01, 2024
 --------------------------------------------------------------------------------
 
@@ -170,7 +170,7 @@ Objectivity and ethics serve as beacons of integrity, guiding us toward actions 
 
 
 --------------------------------------------------------------------------------
-Artificial intelligence: Augment or disguise?
+Artificial Intelligence: Augment or Disguise?
 May 22, 2024
 --------------------------------------------------------------------------------
 
@@ -186,7 +186,7 @@ The bigger question is, "What's the game plan when you show up for the interview
 
 
 --------------------------------------------------------------------------------
-Designing for good
+Designing for Good
 June 01, 2024
 --------------------------------------------------------------------------------
 
@@ -198,7 +198,7 @@ It shifts the focus from selfish commercial interests to genuine positive outcom
 
 
 --------------------------------------------------------------------------------
-Can we really prioritize?
+Can We Really Prioritize?
 July 15, 2024
 --------------------------------------------------------------------------------
 
@@ -210,7 +210,7 @@ For prioritization to work, one must have control over what influences the goal 
 
 
 --------------------------------------------------------------------------------
-Conversations over presentations
+Conversations Over Presentations
 August 13, 2024
 --------------------------------------------------------------------------------
 
@@ -222,7 +222,7 @@ Unfortunately, we rely on tradition because it sits well within our comfort zone
 
 
 --------------------------------------------------------------------------------
-The what and who of feedback
+The What and Who of Feedback
 September 15, 2024
 --------------------------------------------------------------------------------
 
@@ -238,7 +238,7 @@ Having said that, a few gems do creep in from unexpected sources. They're worth 
 
 
 --------------------------------------------------------------------------------
-Socio-economic impact of AI
+Socio-Economic Impact of AI
 October 12, 2024
 --------------------------------------------------------------------------------
 
@@ -258,7 +258,7 @@ So, what and where's the plan? Shouldn't we have one before rather than after? T
 
 
 --------------------------------------------------------------------------------
-Ship something, and ship it quick
+Ship Something, and Ship It Quick
 January 05, 2025
 --------------------------------------------------------------------------------
 
@@ -290,7 +290,7 @@ So, how does all this work at scale? How will electronic health records or popul
 
 
 --------------------------------------------------------------------------------
-Innovation isn't always loud
+Innovation Isn't Always Loud
 April 05, 2025
 --------------------------------------------------------------------------------
 
@@ -302,7 +302,7 @@ There is a quiet dignity in building what users truly need. They are humble solu
 
 
 --------------------------------------------------------------------------------
-Getting philosophical about AI
+Getting Philosophical About AI
 July 04, 2025
 --------------------------------------------------------------------------------
 
@@ -328,7 +328,7 @@ For the record, I'm still an AI optimist. But, my optimism is directed at AI sol
 
 
 --------------------------------------------------------------------------------
-AI should never be intrusive
+AI Should Never Be Intrusive
 September 3, 2025
 --------------------------------------------------------------------------------
 
@@ -344,7 +344,7 @@ This extends to any application of AI. Are businesses simply transferring accoun
 
 
 --------------------------------------------------------------------------------
-Visible AI or valuable AI
+Visible AI or Valuable AI
 September 10, 2025
 --------------------------------------------------------------------------------
 
@@ -362,7 +362,7 @@ Are businesses simply transferring accountability to consumers of AI? Who in the
 
 
 --------------------------------------------------------------------------------
-Yes, I am an AI Optimist
+Yes, I Am an AI Optimist
 October 9, 2025
 --------------------------------------------------------------------------------
 
@@ -378,7 +378,7 @@ The challenge ahead is to keep pushing boundaries, responsibly. To build an AI f
 
 
 --------------------------------------------------------------------------------
-Are we losing meaningful work to AI?
+Are We Losing Meaningful Work to AI?
 October 17, 2025
 --------------------------------------------------------------------------------
 
@@ -400,7 +400,7 @@ I don't have the answers yet. But I think the questions matter.
 
 
 --------------------------------------------------------------------------------
-Does AI allow us to retain our identity?
+Does AI Allow Us to Retain Our Identity?
 November 04, 2025
 --------------------------------------------------------------------------------
 
@@ -424,7 +424,7 @@ But, it's not just doctors is it? It applies to everyone of us.
 
 
 --------------------------------------------------------------------------------
-Wasn't AI oversight the deal?
+Wasn't AI Oversight the Deal?
 November 11, 2025
 --------------------------------------------------------------------------------
 
@@ -444,7 +444,7 @@ If the architects of this revolution don't see where the line gets drawn, maybe 
 
 
 --------------------------------------------------------------------------------
-Navigating healthcare in an AI world
+Navigating Healthcare in an AI World
 December 13, 2025
 --------------------------------------------------------------------------------
 
