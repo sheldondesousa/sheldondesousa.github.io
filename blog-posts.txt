@@ -306,13 +306,13 @@ Getting philosophical about AI
 July 04, 2025
 --------------------------------------------------------------------------------
 
-Recently, I ran an experiment with a single developer, and some AI tools. The goal was to build a feature with little to no code and demonstrate accelerated build cycles through efficiency gains. What typically takes a sprint was done in a matter of hours.
+Recently, I ran an experiment with a single developer, and some AI tools. The goal was to build a feature with little to no code and demonstrate accelerated build cycles through efficiency gains. What typically takes a sprint (roughly 14days) was done in a matter of hours.
 
 Encouraged by the initial results, I expanded the scope. From PRD to stories to development to unit tests to TRR/PRR documentation. All AI-driven with human oversight.
 
-But here's what caught me off-guard. I felt less challenged, less involved. I felt like I moved from critical thinking to oversight. AI did the tedious work while I simply reviewed, nudged, and approved.
+In between, I began to question myself about the philosophical edge of artificial intelligence.
 
-I began to question myself about the philosophical edge of artificial intelligence.
+Here's what caught me off-guard. I felt less challenged, less involved cognitively. I felt like I moved from critical thinking to oversight, which is the ultimate objective of embedded-AI. It did the tedious work while I simply reviewed, nudged, and approved. But, was that enough?
 
 Philosophers Andy Clark and David Chalmers argue that our minds extend into our tools. A calculator extends computation; AI extends strategic thinking. We therefore enhance human capability by building a cognitive partnership with it.
 
