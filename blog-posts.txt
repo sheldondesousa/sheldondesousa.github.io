@@ -432,7 +432,7 @@ But, who needs humans managing other humans? Where's the value in managing an in
 
 We can do more with less, manage more with less. And manage that "less" with more AI.
 
-Which leaves us with an uncomfortable question: if AI can supervise more efficiently than humans, then oversight was never the safe seat we were promised. It was just another task awaiting automation.
+Which leaves us with an obvious question: if AI can supervise more efficiently than humans, then oversight was never the safe seat we were promised. It was just another task awaiting automation.
 
 That's the flaw in the elevation narrative. We were told humans would move up the value chain because oversight would be valued. But, as more gets automated, oversight gets consolidated.
 
