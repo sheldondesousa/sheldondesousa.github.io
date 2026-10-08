@@ -11,7 +11,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Sheldon De Sousa</title>
+    <title>Papers - Sheldon De Sousa</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -131,13 +131,8 @@
         /* Main Content */
         .main-content {
             padding: 4rem;
+            max-width: 700px;
             overflow-y: auto;
-        }
-
-        /* Single-column layout for about page */
-        .about-grid {
-            display: block;
-            gap: 4rem;
         }
 
         /* Header intro */
@@ -147,7 +142,6 @@
             padding-top: 2rem;
             border-top: 2px solid #000;
             border-bottom: 1px solid #000;
-            max-width: 572px;
         }
 
         .intro-header h2 {
@@ -259,7 +253,6 @@
         /* Work section - more compact */
         .work-list {
             margin-bottom: 4rem;
-            max-width: 572px;
         }
 
         .work-item {
@@ -293,21 +286,7 @@
             line-height: 1.8;
         }
 
-        .work-preview {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .work-preview.expanded {
-            max-height: 500px;
-        }
-
         /* About section */
-        .about-content {
-            max-width: 572px;
-        }
-
         .about-content p {
             font-size: 1.025rem; /* 16.4px */
             line-height: 1.8;
@@ -471,7 +450,7 @@
             .meta {
                 font-size: 14px;
             }
-            .note p, .about-content p, .work-item p {
+            .note p {
                 font-size: 18px;
             }
         }
@@ -483,10 +462,13 @@
             .intro-header h2 {
                 font-size: 28px;
             }
-            .note p, .about-content p, .work-item p {
+            .note h3 {
+                font-size: 24px;
+            }
+            .note p {
                 font-size: 18px;
             }
-            .meta, .work-category {
+            .meta {
                 font-size: 14px;
             }
             .sidebar .tagline {
@@ -516,11 +498,11 @@
                 <nav>
                     <ul>
                         <li><a href="index.html">My Notes</a></li>
-                        <li><a href="about.html" class="active">About me</a></li>
+                        <li><a href="about.html">About me</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
                         <li><a href="personal-projects.html">Build Experiments</a></li>
-                        <li><a href="papers.html">Papers</a></li>
+                        <li><a href="papers.html" class="active">Papers</a></li>
                     </ul>
                 </nav>
                 </div>
@@ -533,59 +515,25 @@
         </aside>
 
         <!-- Main Content -->
+        <!-- Main Content -->
         <main class="main-content">
             <!-- Intro -->
             <div class="intro-header">
-                <h2>About me</h2>
-                <p>Bridging product, people, and purpose, I'm adding AI to that equation and asking what it means to build responsibly.</p>
+                <h2>Papers</h2>
+                <p>Longer write-ups and case studies from the things I build and explore.</p>
             </div>
 
-            <!-- About Me Section -->
-            <section id="about">
-                <div class="about-grid">
-                    <div class="about-content">
-                        <div class="note-preview" id="about-body">
-                            <p>I've spent 17+ years in product management asking one question in a lot of different ways: How do I make a difference?</p>
-                            <p>That question has taken me from consumer electronics to healthcare software technology, launching sleep products for big box stores and leading digital acquisition strategy along the way.</p>
-                            <p>At athenahealth, I've scaled mobile applications to 66,000+ monthly active users, deployed clinical widgets in revenue cycle applications to meaningfully reduce burden, and built accessibility into mobile clinical platforms for users with visual disabilities.</p>
-                            <p>Since early 2025, I've dedicated more time to experimentation in artificial intelligence (AI) for internal and external use cases that address speed, efficiency, and productivity.</p>
-                            <p>More recently, I've been designing a contextually-aware, conversational EHR with agentic capabilities. Basically, a smart system that doesn't just surface information, but understands, responds, and acts when you want it to.</p>
-                            <p>My webpage is where I write here about product, strategy, AI, and the harder questions underneath all of it. If that's something that interests you, you're in the right place.</p>
-                        </div>
-                        <button class="expand-toggle" onclick="toggleNote('about-body', this)">
-                            More <span class="chevron">&#9660;</span>
-                        </button>
+            <section id="papers">
+                <article class="note">
+                    <h3>Designing for Resilience in On-Device AI</h3>
+                    <p class="meta">A case study on Uncork, a personal on-device AI wine sommelier built on Gemma 4 E2B</p>
+                    <div class="note-preview" style="max-height: none;">
+                        <p>Standing in a wine store basement with no reception, I wondered what an on-device language model could really do offline. This paper is a self-taught journey from consumer friction to functional edge AI, covering the design, the data calls, caching and the trade-offs along the way.</p>
                     </div>
-
-                    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; max-width: 572px;">
-
-                    <h2 class="section-title">Work</h2>
-                        <div class="work-list">
-                            <div class="work-item">
-                                <h4>Applied AI/ML</h4>
-                                <p class="work-category">Innovation &amp; Research</p>
-                                <p>In building the future of intelligent healthcare, I'm working on a contextually-aware conversational EHR that retrieves, summarises, and acts. I also lead AI experimentation across product development and clinical workflows. This includes AI-integrated development using MCPs that compress sprint-level work into hours, generation of product management upstream and downstream documentation, predictive models that surface actionable insights for clinicians. The goal isn't just smarter software, it's augmenting clinicians with machine-like speed and precision so that they can focus on what matters most: their patients.</p>
-                            </div>
-
-                            <div class="work-item">
-                                <h4>athenaOne Mobile App</h4>
-                                <p class="work-category">iOS &amp; Android</p>
-                                <p>We're putting care in clinicians' pockets. A mobile platform serving over 67,000 monthly-active healthcare providers, enabling clinical decision support and efficiencies anywhere, anytime. When a physician reviews tasks while out of office, replies to patient inquiries, or acts on assigned tasks, they're using tools designed for flexibility, never compromising on accuracy, speed or security. Every second saved is a moment returned to patient care and reduced burnout.</p>
-                            </div>
-
-                            <div class="work-item">
-                                <h4>Revenue Cycle Management</h4>
-                                <p class="work-category">Web Solutions - Interactive Widgets</p>
-                                <p>I've built interactive tools that surface the right clinical information at the right moment, helping medical coders process claims with confidence, speed, and accuracy. The result: practices get paid faster, administrative overhead shrinks, and revenue that funds patient care flows where it belongs.</p>
-                            </div>
-
-                            <div class="work-item">
-                                <h4>Mobile Accessibility</h4>
-                                <p class="work-category">Inclusive Design</p>
-                                <p>Healthcare for everyone means tools for everyone. I've helped users with visual impairments leverage VoiceOver support in the athenaOne iOS app to practice medicine. Visually impaired clinicians navigate patient data with the same confidence as their sighted colleagues. Because, we believe delivering excellent care shouldn't be exclusive.</p>
-                            </div>
-                        </div>
-                </div>
+                    <a href="papers/uncork/index.html" class="expand-toggle" onclick="gtag('event', 'view_paper', { article_title: 'Designing for Resilience in On-Device AI', page: 'Papers' })">
+                        Read <span class="chevron">&#9660;</span>
+                    </a>
+                </article>
             </section>
         </main>
     </div>
@@ -620,31 +568,6 @@
                 });
             });
         });
-
-        function toggleNote(id, button) {
-            const preview = document.getElementById(id);
-            preview.classList.toggle('expanded');
-            button.classList.toggle('expanded');
-            if (preview.classList.contains('expanded')) {
-                button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
-            } else {
-                button.innerHTML = 'More <span class="chevron">&#9660;</span>';
-            }
-        }
-
-        function toggleWork(id, button) {
-            const preview = document.getElementById(id);
-            preview.classList.toggle('expanded');
-            button.classList.toggle('expanded');
-            if (preview.classList.contains('expanded')) {
-                button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
-                const workItem = button.closest('.work-item');
-                const title = workItem ? workItem.querySelector('h4').textContent : id;
-                gtag('event', 'work_expand', { article_title: title, page: 'About Me' });
-            } else {
-                button.innerHTML = 'More <span class="chevron">&#9660;</span>';
-            }
-        }
     </script>
 </body>
 </html>
