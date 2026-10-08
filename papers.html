@@ -487,6 +487,8 @@
         .paper a { color: #7A2331; }
         .paper figure { margin: 2rem 0; }
         .paper figure img { display: block; width: 100%; height: auto; margin: 0 0 12px; border: 1px solid #2B2320; border-radius: 6px; }
+        .paper .img-group { border: 1px solid #2B2320; border-radius: 6px; overflow: hidden; margin: 0 0 12px; }
+        .paper .img-group img { border: 0; border-radius: 0; margin: 0; }
         .paper figcaption { color: #9A8F82; font-size: .85rem; text-align: center; }
         .paper .table-wrap { overflow-x: auto; margin: 1.6rem 0; }
         .paper table { border-collapse: collapse; width: 100%; font-size: .88rem; line-height: 1.45; }
@@ -576,7 +578,7 @@
 <p>The first version didn&#39;t use retrieval at all. It centred everything on Gemma: the model answered from its own training data, and only fell back to the Kaggle database, one call after the other, when Gemma turned up nothing conclusive.</p>
 <p>That solution morphed into parallel lookups from Kaggle, Cache, Web search, and finally RAG. But, only after testing results confirmed the need to switch.</p>
 <h2 id="4-the-fallback-chain-engineering-for-resilience">4. The Fallback Chain: Engineering for Resilience</h2>
-<figure><img src="papers/uncork/images/first-vs-final-data-calls-v1.svg" alt="Diagram: first version of the data calls, a linear flow from user question to Gemma, with Kaggle only as a fallback"><img src="papers/uncork/images/first-vs-final-data-calls-v2.svg" alt="Diagram: final version, with Gemma and Kaggle in parallel, then local cache, then user-invoked web search"><figcaption>First vs. final version of the app&#39;s data calls</figcaption></figure>
+<figure><div class="img-group"><img src="papers/uncork/images/first-vs-final-data-calls-v1.svg" alt="Diagram: first version of the data calls, a linear flow from user question to Gemma, with Kaggle only as a fallback"><img src="papers/uncork/images/first-vs-final-data-calls-v2.svg" alt="Diagram: final version, with Gemma and Kaggle in parallel, then local cache, then user-invoked web search"></div><figcaption>First vs. final version of the app&#39;s data calls</figcaption></figure>
 <h3 id="41-the-strategic-pivot-from-full-llm-to-hybrid-architecture">4.1 The Strategic Pivot: From Full-LLM to Hybrid Architecture</h3>
 <p>The defining challenge of Uncork was not just building an AI app, but managing the inherent volatility of on-device intelligence.</p>
 <p>The first version didn&#39;t use retrieval at all. It centred everything on Gemma: the model answered from its own training data, and only fell back to the Kaggle database when Gemma turned up nothing conclusive.</p>
