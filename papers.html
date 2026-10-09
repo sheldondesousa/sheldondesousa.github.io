@@ -617,7 +617,8 @@
 <p>Whenever a web search turned up something, that result was written back into the local database, so the app&#39;s offline coverage grew over time, reducing the dependency on the web.</p>
 <figure><img src="papers/uncork/images/cache-growth-loop.svg?v=3" alt="Diagram: every web search result is saved to DB-2, so offline coverage grows"><figcaption>DB-2 growth loop · web search result feeds the offline database</figcaption></figure>
 <h3 id="44-measuring-and-fixing-latency">4.4 Measuring and Fixing Latency</h3>
-<p><span>The architecture changes in 4.1 through 4.3 were shaped by real numbers, not just observations. DB-1&#39;s SQLite query was nearly instant. The Gemma model took roughly 3s (mode) to initialise. </span></p>
+<p><span>DB-1&#39;s SQLite query was nearly instant. The Gemma model is loaded into GPU with a CPU fallback and takes roughly 3s (mode) to initialise.</span></p>
+<p>A splash screen with a progress bar and annotations was built to run for 3.5s covering the model loading.</p>
 <p>For the open-ended conversation, responses stream as tokens arrive, so the user sees text after 400ms instead of a blank screen. Earlier implementations batched the conversation block, which put response times between 8s and 18s.</p>
 <p>I added response-time tracking for Gemma, measuring how long it takes to deliver a response after a user sends a message. This covers the open-ended chat, not the guided Q1-Q3 flow. It&#39;s a measure of sustained responsiveness across a conversation of 10 turns, not just the first reply. Response time settled quickly after the first turn, closely conforming to Doherty&#39;s law.</p>
 <p><strong>O<strong></strong></strong><strong>pen </strong><strong>C</strong><strong>onversation</strong><strong> </strong><strong>T</strong><strong>im</strong><strong>e</strong><strong> </strong><strong>T</strong><strong>r</strong><strong>ac</strong><strong>k</strong><strong>i</strong><strong>ng</strong></p>
