@@ -615,7 +615,7 @@
 <p>I reduced the fetch to the top 3 results and stripped HTML tags and entities from each snippet, which brought the same payload down to about <strong>3,400 characters</strong>.</p>
 <p>Since web was dependent on network connectivity, the very use case I was building around, I thought I could use those pockets of opportunity to build a database that extended Gemma and DB-1&#39;s knowledge.</p>
 <p>Whenever a web search turned up something, that result was written back into the local database, so the app&#39;s offline coverage grew over time, reducing the dependency on the web.</p>
-<figure><img src="papers/uncork/images/cache-growth-loop.svg?v=2" alt="Diagram: every web search result is saved to DB-2, so offline coverage grows"><figcaption>DB-2 growth loop · web search result feeds the offline database</figcaption></figure>
+<figure><img src="papers/uncork/images/cache-growth-loop.svg?v=3" alt="Diagram: every web search result is saved to DB-2, so offline coverage grows"><figcaption>DB-2 growth loop · web search result feeds the offline database</figcaption></figure>
 <h3 id="44-measuring-and-fixing-latency">4.4 Measuring and Fixing Latency</h3>
 <p><span>The architecture changes in 4.1 through 4.3 were shaped by real numbers, not just observations. DB-1&#39;s SQLite query was nearly instant. The Gemma model took 2.9s (modal value) to initialise. </span></p>
 <p><span>A splash screen was built to run for 3.5s to cover the model loading into GPU/CPU memory, with annotations that kept the user aware, before they landed on the Chat tab. </span></p>
