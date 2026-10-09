@@ -476,7 +476,7 @@
             }
         }
         /* Paper */
-        .paper h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 1rem; padding-top: 1.2rem; border-top: 1px solid rgba(43,35,32,.1); font-family: 'Playfair Display', serif; }
+        .paper h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 1rem; padding-top: 48px; border-top: 1px solid rgba(43,35,32,.1); font-family: 'Playfair Display', serif; }
         .paper h2:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
         .paper h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 .5rem; color: #7A2331; font-family: 'Playfair Display', serif; }
         .paper p, .paper li { font-size: 1.025rem; line-height: 1.8; margin: 0 0 1.2rem; }
@@ -566,18 +566,18 @@
 <h2 id="2-two-gaps-and-an-opportunity">2. Two Gaps and an Opportunity</h2>
 <p>The vision came from two frictions, and one selfish motivation:</p>
 <p><strong>A. The Connectivity Gap (The &quot;Blackout&quot; Problem)</strong></p>
-<p>In many high-intent shopping environments, say a physical wine store, network connectivity can be unreliable or non-existent. For a user looking for immediate, contextual guidance, a &quot;Cloud-only&quot; AI is useless.</p>
+<p>In many high-intent shopping environments, network connectivity can be unreliable or non-existent. For a user looking for immediate, contextual guidance, a &quot;Cloud-only&quot; AI is useless.</p>
 <p><strong>B. The Expertise Gap (The &quot;Non-Expert&quot; Problem)</strong></p>
-<p>Wine is a category defined by complexity and jargon. For a consumer who is not an expert, it can be quite daunting. The problem wasn&#39;t just about finding a name; it was about finding a recommendation based on unique preferences, even when the user lacks the vocabulary to express them.</p>
+<p>Wine is a category defined by complexity and jargon. For a consumer who is not an expert, it can be quite daunting. The problem isn&#39;t just about finding a name; it is about finding a recommendation based on unique preferences, even when the user lacks the vocabulary to express them.</p>
 <p><strong>C. The Technical Opportunity</strong></p>
-<p>Beyond solving a practical problem, there was a real motivation to experiment: the opportunity to explore the emerging landscape of <strong>on-device language models</strong> and their potential for specialised, private, and offline intelligence.</p>
+<p>Beyond solving a practical problem, there was a real motivation to experiment: the opportunity to explore the emerging landscape of <strong>on-device language models</strong> and their potential for personalised, private, and offline intelligence.</p>
 <h2 id="3-scoping-the-solution-choosing-the-ingredients">3. Scoping the Solution: Choosing the Ingredients</h2>
-<p>I was building for my own device, a Google Pixel Fold 10 Pro, which meant writing the app natively in Kotlin. In selecting a model, I tested Gemma 4 E4B, the larger of the two on-device variants, considered better for reasoning. It ran into problems that I couldn&#39;t fully diagnose at the time. So I moved to <strong>Gemma 4 E2B</strong> instead, which ran reliably, and built the rest of the app around it. I will attempt swapping it with E4B in phase 2.</p>
+<p>I was building for my own device, a Google Pixel Fold 10 Pro, which meant writing the app natively in Kotlin. In selecting a model, I tested Gemma 4 E4B, the larger of the two on-device variants, considered better for reasoning. It ran into problems that I couldn&#39;t fully diagnose at the time. So I moved to <strong>Gemma 4 E2B</strong> instead, which ran reliably, and built the rest of the app around it. I will attempt swapping it with E4B at a later point to explore differences.</p>
 <p>Running a language model locally gives the application independence from the cloud, but it also introduces a much tighter memory, context, and inference budget than a frontier model served remotely. A small local model could provide useful intelligence, but only if the rest of the product was designed around its limits.</p>
-<p>Further research led to a <strong>Kaggle dataset</strong> of roughly 119,000 wine reviews. The Kaggle dataset was chosen as an independent, <strong>SQLite-queryable fallback</strong> for whenever Gemma turned up nothing conclusive. But, it had real limitations: it was last updated in 2017, a genuine constraint. The dataset also carried unnecessary data columns and limited synthesised information. A lot of what mattered was nested in long-form text.</p>
+<p>Further research led to a <strong>Kaggle dataset</strong> of roughly 119,000 wine reviews. The Kaggle dataset was chosen as an independent, <strong>SQLite-queryable fallback</strong> for whenever Gemma turned up nothing conclusive. But, it had its own limitations: it was last updated in 2017. The dataset also carried unnecessary data columns and limited synthesised information. A lot of what mattered was nested in long-form text.</p>
 <p>Regardless, I was in an inquisitive mood and needed some hard data to ground the deterministic and conversational flow.</p>
-<p>The first version didn&#39;t use retrieval at all. It centred everything on Gemma: the model answered from its own training data, and only fell back to the Kaggle database, one call after the other, when Gemma turned up nothing conclusive.</p>
-<p>That solution morphed into parallel lookups from Kaggle, Cache, Web search, and finally RAG. But, only after testing results confirmed the need to switch.</p>
+<p>The first version didn&#39;t use retrieval at all. It centred everything on Gemma: the model answered from its own training data, and only fell back to the Kaggle database, when Gemma turned up nothing conclusive.</p>
+<p>That solution morphed into parallel lookups from Kaggle, Cache, Web search, and finally RAG. But, only after testing results confirmed the need to switch. Very often results were made up or didn&#39;t match search constraints.</p>
 <h2 id="4-the-fallback-chain-engineering-for-resilience">4. The Fallback Chain: Engineering for Resilience</h2>
 <figure><div class="img-group"><img src="papers/uncork/images/first-vs-final-data-calls-v1.svg" alt="Diagram: first version of the data calls, a linear flow from user question to Gemma, with Kaggle only as a fallback"><img src="papers/uncork/images/first-vs-final-data-calls-v2.svg" alt="Diagram: final version, with Gemma and Kaggle in parallel, then local cache, then user-invoked web search"></div><figcaption>First vs. final version of the app&#39;s data calls</figcaption></figure>
 <h3 id="41-the-strategic-pivot-from-full-llm-to-hybrid-architecture">4.1 The Strategic Pivot: From Full-LLM to Hybrid Architecture</h3>
