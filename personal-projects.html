@@ -233,6 +233,13 @@
         .note th { color: #6E645A; font-weight: 600; border-bottom: 1px solid #2B2320; }
         .note p.table-lead { margin-bottom: 0; }
 
+        .note details.stack-accordion { margin: 0.75rem 0 1.5rem; border-top: 1px solid #2B2320; border-bottom: 1px solid rgba(43,35,32,.1); }
+        .note details.stack-accordion summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: .7em 0; font-weight: 600; font-size: 1.025rem; }
+        .note details.stack-accordion summary::-webkit-details-marker { display: none; }
+        .note details.stack-accordion summary::after { content: '+'; font-size: 1.25rem; line-height: 1; opacity: .6; }
+        .note details.stack-accordion[open] summary::after { content: '\2212'; }
+        .note details.stack-accordion .table-wrap { margin: 0 0 1rem; }
+
         .note-preview {
             max-height: 200px;
             overflow: hidden;
@@ -569,8 +576,10 @@
                         <p>The project (HYL01) is simple enough to scope, or so I thought. It's meant to calculate a sensible daily target from basic bio-data, track water intake during the day, and remind me when I'm behind. Nothing that hasn't been done before. And so I wrote the PRD.</p>
                         <p>I built it in React Native, targeting Android first. What I hadn't fully appreciated before going in was how quickly a "simple" hydration calculation stops being simple. Biomarkers, activity, climate, medical history, health circumstances, and other variable factors all pull on the number in different directions. Additionally, the research behind how they interact with each other is not something I have any real grounding in.</p>
                         <p>I built a formula that's reasonable. I can't call it validated. But, it covered planned activity for the day and included local weather conditions. Integration with personal tracking devices was left out of scope.</p>
-                        <p class="table-lead"><strong>Tech stack</strong></p>
+                        <details class="stack-accordion">
+                        <summary>Tech stack</summary>
                         <div class="table-wrap"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Framework</td><td>Expo 57 and React Native 0.86 (React 19, TypeScript)</td></tr><tr><td>Navigation</td><td>React Navigation</td></tr><tr><td>Graphics</td><td>react-native-svg</td></tr><tr><td>State</td><td>zustand</td></tr><tr><td>Local data</td><td>SQLite (expo-sqlite)</td></tr><tr><td>Sign-in</td><td>Google OAuth (expo-auth-session) with expo-secure-store</td></tr><tr><td>Reminders*</td><td>expo-notifications</td></tr><tr><td>Location autocomplete</td><td>Google Places</td></tr><tr><td>Backend</td><td>None</td></tr></tbody></table></div>
+                        </details>
                         <h4>What the App Does</h4>
                         <p>Hydration Tracker works out a target that fits you. Offers multiple ways to record consumption, then makes meeting it feel like fun.</p>
                         <ul>
