@@ -131,13 +131,8 @@
         /* Main Content */
         .main-content {
             padding: 4rem;
+            max-width: 700px;
             overflow-y: auto;
-        }
-
-        /* Single-column layout for about page */
-        .about-grid {
-            display: block;
-            gap: 4rem;
         }
 
         /* Header intro */
@@ -147,7 +142,6 @@
             padding-top: 2rem;
             border-top: 2px solid #000;
             border-bottom: 1px solid #000;
-            max-width: 572px;
         }
 
         .intro-header h2 {
@@ -259,7 +253,6 @@
         /* Work section - more compact */
         .work-list {
             margin-bottom: 4rem;
-            max-width: 572px;
         }
 
         .work-item {
@@ -293,21 +286,7 @@
             line-height: 1.8;
         }
 
-        .work-preview {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .work-preview.expanded {
-            max-height: 500px;
-        }
-
         /* About section */
-        .about-content {
-            max-width: 572px;
-        }
-
         .about-content p {
             font-size: 1.025rem; /* 16.4px */
             line-height: 1.8;
@@ -471,7 +450,7 @@
             .meta {
                 font-size: 14px;
             }
-            .note p, .about-content p, .work-item p {
+            .note p {
                 font-size: 18px;
             }
         }
@@ -483,16 +462,40 @@
             .intro-header h2 {
                 font-size: 28px;
             }
-            .note p, .about-content p, .work-item p {
+            .note h3 {
+                font-size: 24px;
+            }
+            .note p {
                 font-size: 18px;
             }
-            .meta, .work-category {
+            .meta {
                 font-size: 14px;
             }
             .sidebar .tagline {
                 font-size: 20px;
             }
         }
+        /* Paper */
+        .paper h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 1rem; padding-top: 48px; border-top: 1px solid rgba(43,35,32,.1); font-family: 'Playfair Display', serif; }
+        .paper h2:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+        .paper h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 .5rem; color: #7A2331; font-family: 'Playfair Display', serif; }
+        .paper p, .paper li { font-size: 1.025rem; line-height: 1.8; margin: 0 0 1.2rem; }
+        .paper ul, .paper ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
+        .paper a { color: #7A2331; }
+        .paper figure { margin: 2rem 0; }
+        .paper figure img { display: block; width: 100%; height: auto; margin: 0 0 12px; border: 1px solid #2B2320; border-radius: 6px; }
+        .paper .img-group { border: 1px solid #2B2320; border-radius: 6px; overflow: hidden; margin: 0 0 12px; }
+        .paper .img-group img { border: 0; border-radius: 0; margin: 0; }
+        .paper figcaption { color: #9A8F82; font-size: .85rem; text-align: center; }
+        .paper p.callout { background: rgba(154,143,130,.16); border-left: 4px solid #74716C; border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: .95rem; line-height: 1.7; }
+        .paper td p, .paper th p { font-size: inherit; line-height: inherit; margin: 0; }
+        .paper .table-wrap { overflow-x: auto; margin: 2rem 0; }
+        .paper table { border-collapse: collapse; width: 100%; font-size: .88rem; line-height: 1.45; }
+        .paper th, .paper td { padding: .55em .7em; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(43,35,32,.1); }
+        .paper th { color: #6E645A; font-weight: 600; border-bottom: 1px solid #2B2320; }
+        .paper p.table-lead { margin-bottom: 0; }
+        .paper p.table-lead + .table-wrap { margin-top: .75rem; }
+        .paper .blur-overlay { position: relative; filter: blur(6px); opacity: .85; user-select: none; pointer-events: none; }
 
         /* Search box */
         .search-row { display: flex; align-items: center; gap: 0.3rem; }
@@ -577,59 +580,51 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Intro -->
             <div class="intro-header">
                 <h2>About me</h2>
-                <p>Bridging product, people, and purpose, I'm adding AI to that equation and asking what it means to build responsibly.</p>
             </div>
 
-            <!-- About Me Section -->
-            <section id="about">
-                <div class="about-grid">
-                    <div class="about-content">
-                        <div class="note-preview" id="about-body">
-                            <p>I've spent 17+ years in product management asking one question in a lot of different ways: How do I make a difference?</p>
-                            <p>That question has taken me from consumer electronics to healthcare software technology, launching sleep products for big box stores and leading digital acquisition strategy along the way.</p>
-                            <p>At athenahealth, I've scaled mobile applications to 66,000+ monthly active users, deployed clinical widgets in revenue cycle applications to meaningfully reduce burden, and built accessibility into mobile clinical platforms for users with visual disabilities.</p>
-                            <p>Since early 2025, I've dedicated more time to experimentation in artificial intelligence (AI) for internal and external use cases that address speed, efficiency, and productivity.</p>
-                            <p>More recently, I've been designing a contextually-aware, conversational EHR with agentic capabilities. Basically, a smart system that doesn't just surface information, but understands, responds, and acts when you want it to.</p>
-                            <p>My webpage is where I write here about product, strategy, AI, and the harder questions underneath all of it. If that's something that interests you, you're in the right place.</p>
-                        </div>
-                        <button class="expand-toggle" onclick="toggleNote('about-body', this)">
-                            More <span class="chevron">&#9660;</span>
-                        </button>
-                    </div>
+            <article class="paper">
+<p>I've spent 17+ years in product management, taking products from first idea to scale across consumer electronics, digital growth and healthcare software. Until August 2026 I was a Senior Manager of Product Management at athenahealth, where I scaled a mobile app from 21,000 to 68,000+ monthly active users, built internal tools used by 1,200+ medical coders, and led work to bring AI into product development and clinical workflows.</p>
+<p>I'm not a software engineer. With AI coding tools, Codex and Claude Code, I build my own products to find out what the technology can and can't do. My latest, Uncork, is an offline AI sommelier that runs a small language model on my phone. I wrote up what worked, what failed, and where the app had to take control away from the model. Prompting alone left its answers to wine-knowledge questions at 2 out of 8 across three rounds; grounding it in verified data is what lifted later results.</p>
+<div class="note-preview" id="about-body">
+<p>Much of my experimentation happens on-device. I run open models locally, including Gemma 4 26B-A4B, Muse Glimmer and Qwen3.6-35B-A3B, for personal and sensitive tasks, because some work shouldn't leave my own machine.</p>
+<p>I'm optimistic about what AI could do for food security, healthcare, education and climate change. I explored the education case in a design project on female literacy in India. That optimism comes with conditions. The benefits only arrive if these systems are honest, accountable and fairly deployed, which is why I've completed coursework in AI ethics and governance and write in my Notes about sycophancy, human oversight and who is accountable when AI is wrong.</p>
+<p>I'm also not an ML engineer, and I try to be clear about where my knowledge stops. Most of what I write comes from that boundary: where AI helps, where it doesn't, and what it takes for people to trust it.</p>
+<p>This site is where I document the experiments, the case studies and the harder questions underneath them.</p>
+<p><strong>Explore:</strong> <a href="working-with-ai.html">Working with AI</a> | <a href="personal-projects.html">Vibe-Coding</a> | <a href="papers.html">Papers</a> | <a href="index.html">Notes</a> | <a href="social-experiments.html">Social Experiments</a></p>
+<p><strong>Contact:</strong> <a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+</div>
+<button class="expand-toggle" onclick="toggleNote('about-body', this)">
+    More <span class="chevron">&#9660;</span>
+</button>
 
-                    <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; max-width: 572px;">
+<h2 id="work">Work</h2>
 
-                    <h2 class="section-title">Work</h2>
-                        <div class="work-list">
-                            <div class="work-item">
-                                <h4>Applied AI/ML</h4>
-                                <p class="work-category">Innovation &amp; Research</p>
-                                <p>In building the future of intelligent healthcare, I'm working on a contextually-aware conversational EHR that retrieves, summarises, and acts. I also lead AI experimentation across product development and clinical workflows. This includes AI-integrated development using MCPs that compress sprint-level work into hours, generation of product management upstream and downstream documentation, predictive models that surface actionable insights for clinicians. The goal isn't just smarter software, it's augmenting clinicians with machine-like speed and precision so that they can focus on what matters most: their patients.</p>
-                            </div>
+<h3>Uncork: an offline AI sommelier</h3>
+<p><em>Personal project, 2026</em></p>
+<p>A pocket wine advisor that runs a small language model on-device. I built it with AI coding tools, evaluated it across multiple eval runs, and wrote the case study: where the model should be trusted, where the system should take over, and what the evals showed. Compact card generation dropped from 48 seconds to about 7. <a href="papers.html">Read the case study</a> (work in progress).</p>
 
-                            <div class="work-item">
-                                <h4>athenaOne Mobile App</h4>
-                                <p class="work-category">iOS &amp; Android</p>
-                                <p>We're putting care in clinicians' pockets. A mobile platform serving over 67,000 monthly-active healthcare providers, enabling clinical decision support and efficiencies anywhere, anytime. When a physician reviews tasks while out of office, replies to patient inquiries, or acts on assigned tasks, they're using tools designed for flexibility, never compromising on accuracy, speed or security. Every second saved is a moment returned to patient care and reduced burnout.</p>
-                            </div>
+<h3>Building with AI coding tools</h3>
+<p><em>Personal projects, 2025-2026</em></p>
+<p>Hush (a breathing app), Hydrolog (a hydration tracker), a World Cup predictor and a PM dashboard, each built with AI coding tools as a way to learn where AI-assisted building breaks. The consistent lesson: AI amplified my product judgement, but it couldn't supply domain knowledge I didn't have. See the <a href="personal-projects.html">Vibe-Coding</a> page.</p>
 
-                            <div class="work-item">
-                                <h4>Revenue Cycle Management</h4>
-                                <p class="work-category">Web Solutions - Interactive Widgets</p>
-                                <p>I've built interactive tools that surface the right clinical information at the right moment, helping medical coders process claims with confidence, speed, and accuracy. The result: practices get paid faster, administrative overhead shrinks, and revenue that funds patient care flows where it belongs.</p>
-                            </div>
+<h3>AI-assisted product workflows</h3>
+<p><em>athenahealth, 2025-2026</em></p>
+<p>Designed and ran workflows that connect LLMs to Jira, Confluence and Figma through MCP, spanning requirements, build and release. In one quarterly planning exercise, a structured three-hour call replaced three days, saving 18+ hours and closing out documentation for 90% of the planned functional items. The case studies were presented at athenahealth's public zone review and adopted by internal teams. I also led a conversational, agentic EHR concept, a 2026 hackathon finalist.</p>
 
-                            <div class="work-item">
-                                <h4>Mobile Accessibility</h4>
-                                <p class="work-category">Inclusive Design</p>
-                                <p>Healthcare for everyone means tools for everyone. I've helped users with visual impairments leverage VoiceOver support in the athenaOne iOS app to practice medicine. Visually impaired clinicians navigate patient data with the same confidence as their sighted colleagues. Because, we believe delivering excellent care shouldn't be exclusive.</p>
-                            </div>
-                        </div>
-                </div>
-            </section>
+<h3>Internal tools for medical coders (revenue cycle management)</h3>
+<p><em>athenahealth, 2021-2023</em></p>
+<p>Shipped interactive web widgets inside the revenue cycle applications that surfaced the right clinical information in context for 1,200+ medical coders. Coders completed 1.5 additional tasks per day, a 10% efficiency gain, bringing turnaround time closer to two working days.</p>
+
+<h3>athenaOne Mobile: from 0 to 68,000+ monthly active users</h3>
+<p><em>athenahealth, 2021-2026</em></p>
+<p>Built the Android app from zero to 5,600+ monthly active users, 27% above the launch target. Then designed the mobile go-to-market and engagement framework that grew monthly active users from 21,000 to 68,000+ over three years, at 85% retention.</p>
+
+<h3>Accessibility in clinical software</h3>
+<p><em>athenahealth</em></p>
+<p>Led work that let clinicians with visual disabilities use the athenaOne mobile app with VoiceOver, so that navigating patient data didn't depend on sight.</p>
+            </article>
         </main>
     </div>
 
