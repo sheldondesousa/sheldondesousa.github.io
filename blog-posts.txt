@@ -28,7 +28,7 @@ Our ignorance and negligence become acceptance to those who hide behind them. Ch
 
 Often, they hide in plain sight with dark intentions nested in extended documentation. Most people do not peruse through pages of legal content. Other times, they hide in defaults. Most folks accept the status quo. They simply presume that we live in an ideal world where good intentions are exchanged as frequently as handshakes.
 
-So, who do we blame - the businesses that disclose their intentions, albeit discretely, or us, for diving in and hoping for the best?
+So, who do we blame - the businesses that disclose their intentions, albeit discreetly, or us, for diving in and hoping for the best?
 
 
 --------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ When I think of impressionable minds being subjected to idealism, aggression, de
 
 That motivates more production of trending content and the vicious circle continues, expanding with every iteration.
 
-It's a difficult problem to solve because every lever has consequences in a different domain. Restrict content, and you're making a judgment call on someone's freedom of expression — an ethical line, not a technical one. Restrict too broadly, and you inhibit the creation and consumption that gives platforms their business value. Don't restrict at all, and you're complicit in the harm you can clearly see happening.
+It's a difficult problem to solve because every lever has consequences in a different domain. Restrict content, and you're making a judgement call on someone's freedom of expression — an ethical line, not a technical one. Restrict too broadly, and you inhibit the creation and consumption that gives platforms their business value. Don't restrict at all, and you're complicit in the harm you can clearly see happening.
 
 The solution lies at some brittle intersection of many critical pieces. That's what makes this so hard to solve. It isn't one broken part we can isolate and fix. It's several fragile ones, each essential, each easily damaged by too much pressure on the others.
 
@@ -52,13 +52,13 @@ Loosen restrictions and freedom flourishes, but so does harm. Tighten them and h
 
 
 --------------------------------------------------------------------------------
-Complexity of Elevators
+Complexity of Lifts
 August 30, 2023
 --------------------------------------------------------------------------------
 
-For some time now, I've been struggling to understand the relationship between people and elevators.
+For some time now, I've been struggling to understand the relationship between people and lifts.
 
-We have the affordance, we have the signifier. Yet, some of us call the elevator to us and others tell the elevator in which direction they wish to go.
+We have the affordance, we have the signifier. Yet, some of us call the lift to us and others tell the lift in which direction they wish to go.
 
 It wasn't supposed to be rocket science. Yet, I'm consistently greeted by the all too familiar, "Is it going up or down?".
 
@@ -178,7 +178,7 @@ Product managers need to be objective in their decisions. Eliminating one's pers
 
 Objectivity ensures selfishness, prejudice and bias are held accountable by factual evidence. But, basing decisions on fact alone is not enough because objectivity need not be morally, socially, or environmentally grounded. Therefore, objectivity requires an ethical compass.
 
-Objectivity and ethics serve as beacons of integrity, guiding us toward actions and judgments that are fair and just.
+Objectivity and ethics serve as beacons of integrity, guiding us toward actions and judgements that are fair and just.
 
 
 --------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ Its introduction into our world was predicated on the enhancement of human life 
 
 Moreover, AI is intended to augment human competence. It is not supposed to be a substitute for human ineptitude.
 
-Take job applications for instance. Social media is rife with curated GPT prompts for resume or cover letter optimisation. But, aren't we essentially pitting the AI of an optimisation engine against that of an application tracking system?
+Take job applications for instance. Social media is rife with curated GPT prompts for CV or cover letter optimisation. But, aren't we essentially pitting the AI of an optimisation engine against that of an application tracking system?
 
 The bigger question is, "What's the game plan when you show up for the interview?"
 
@@ -210,15 +210,15 @@ It shifts the focus from selfish commercial interests to genuine positive outcom
 
 
 --------------------------------------------------------------------------------
-Can We Really Prioritize?
+Can We Really Prioritise?
 July 15, 2024
 --------------------------------------------------------------------------------
 
-Prioritization is a skill in time management and decision-making, ensuring that the most important and impactful tasks are addressed first. But, this reasoning is predicated on being in control of the variables related to those tasks.
+Prioritisation is a skill in time management and decision-making, ensuring that the most important and impactful tasks are addressed first. But, this reasoning is predicated on being in control of the variables related to those tasks.
 
-What happens when those variables aren't yours to control? How do you prioritize when the variables pertinent to you are flexible for others?
+What happens when those variables aren't yours to control? How do you prioritise when the variables pertinent to you are flexible for others?
 
-For prioritization to work, one must have control over what influences the goal or at least have a goal that's shared with dependent stakeholders. Else, prioritization is just another plan with good intentions.
+For prioritisation to work, one must have control over what influences the goal or at least have a goal that's shared with dependent stakeholders. Else, prioritisation is just another plan with good intentions.
 
 
 --------------------------------------------------------------------------------
@@ -226,9 +226,9 @@ Conversations Over Presentations
 August 13, 2024
 --------------------------------------------------------------------------------
 
-Presentations can be polished, informative, and visually stimulating. But, they tend to become an avalanche of one-way information dumps, especially when attendees are not fully aware of the intricacies driving the flow. Most folks follow along, hoping to connect the dots and form an opinion quick enough to vocalize their attention.
+Presentations can be polished, informative, and visually stimulating. But, they tend to become an avalanche of one-way information dumps, especially when attendees are not fully aware of the intricacies driving the flow. Most folks follow along, hoping to connect the dots and form an opinion quick enough to vocalise their attention.
 
-By contrast, conversations spark ideas, and ideas garner more conversation which makes for engaging meetings. A one or two pager, socialized a couple of days prior gives attendees an opportunity to familiarize themselves, to form a perspective, to think deeply, to raise intelligent questions, and build on the topic of discussion.
+By contrast, conversations spark ideas, and ideas garner more conversation which makes for engaging meetings. A one or two pager, socialised a couple of days prior gives attendees an opportunity to familiarise themselves, to form a perspective, to think deeply, to raise intelligent questions, and build on the topic of discussion.
 
 Unfortunately, we rely on tradition because it sits well within our comfort zone. The HIPPO will have its way while time and engagement remain the enemy of a good idea.
 
@@ -246,7 +246,7 @@ My issues with feedback are largely concentrated around its source. Is it coming
 
 Yet I find PMs impulsive about acting on feedback, perhaps because it gives them something to chase. But acting on any feedback could swing things the other way for users who never took issue in the first place.
 
-Having said that, a few gems do creep in from unexpected sources. They're worth socializing with loyal users. Sometimes, they're the type of opportunities the silent majority haven't raised.
+Having said that, a few gems do creep in from unexpected sources. They're worth socialising with loyal users. Sometimes, they're the type of opportunities the silent majority haven't raised.
 
 
 --------------------------------------------------------------------------------
@@ -282,7 +282,7 @@ An MVP isn't just a test of whether something fits — it's a test of whether it
 
 An MVP is a calculated decision and a summation of tireless iterations that answered critical questions. MVPs are bets on a hypothesis and should be grounded in evidence rather than hope or self-fulfilment.
 
-Meanwhile, I can guarantee our friends in engineering want the hours they clocked to be worthwhile. If there is no promise of success, I can bet you they'll lose confidence in time or you may have to look over your shoulder in the parking lot when things go sideways ;)
+Meanwhile, I can guarantee our friends in engineering want the hours they clocked to be worthwhile. If there is no promise of success, I can bet you they'll lose confidence in time or you may have to look over your shoulder in the car park when things go sideways ;)
 
 
 --------------------------------------------------------------------------------
@@ -290,13 +290,13 @@ AI and Healthcare
 March 18, 2025
 --------------------------------------------------------------------------------
 
-I consider myself a realist, swaying contently and peacefully between the realms of optimism and skepticism. But, in healthcare, I'm cautiously optimistic, dare I say hopeful, about the future of AI on the industry.
+I consider myself a realist, swaying contently and peacefully between the realms of optimism and scepticism. But, in healthcare, I'm cautiously optimistic, dare I say hopeful, about the future of AI on the industry.
 
 To think about what companies are doing today is nothing short of fascinating. They're exploring early detection of diseases, personalised treatment plans based on patient DNA and clinical history, virtual assistants giving patients medical guidance, and accelerated drug discovery. Others are building precision tools for AI-assisted surgeries and even predictive analytics built on AI algorithms that foresee health issues and offer preventive advice.
 
 These are just a few examples of what companies like PathAI, Tempus, Babylon Health, Medtronic, and Google DeepMind are working on. This progress holds great potential for humanity. As AI continues to evolve, bigger breakthroughs in medical technology can be expected in the near-term. That's the optimistic me looking eagerly into the next five years.
 
-Meanwhile, the equally stubborn skeptic in me worries about things like data privacy, security, and manipulation. AI for healthcare cannot operate in isolation and its success or efficacy depends on strong collaboration and partnerships.
+Meanwhile, the equally stubborn sceptic in me worries about things like data privacy, security, and manipulation. AI for healthcare cannot operate in isolation and its success or efficacy depends on strong collaboration and partnerships.
 
 So, how does all this work at scale? How will electronic health records or population health data be shared within and between private and public networks, nationally, or across borders, while maintaining confidentiality and trust? Getting to an ideal state demands deeper thought and preparation sooner than later.
 
@@ -318,7 +318,7 @@ Getting Philosophical About AI
 July 04, 2025
 --------------------------------------------------------------------------------
 
-Recently, I ran an experiment with a single developer, and some AI tools. The goal was to build a feature with little to no code and demonstrate accelerated build cycles through efficiency gains. What typically takes a sprint (roughly 14days) was done in a matter of hours.
+Recently, I ran an experiment with a single developer, and some AI tools. The goal was to build a feature with little to no code and demonstrate accelerated build cycles through efficiency gains. What typically takes a sprint (roughly 14 days) was done in a matter of hours.
 
 Encouraged by the initial results, I expanded the scope. From PRD to stories to development to unit tests to TRR/PRR documentation. All AI-driven with human oversight.
 
@@ -344,7 +344,7 @@ AI Should Never Be Intrusive
 September 3, 2025
 --------------------------------------------------------------------------------
 
-In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realized, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive agent that interrupts or undermines users, and certainly not in noble professions.
+In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realised, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive agent that interrupts or undermines users, and certainly not in noble professions.
 
 When AI supports clinicians subtly, surfacing insights at the right time and giving them autonomy to engage on their own terms, it strengthens confidence rather than resistance. Over time, consistency and reliability build trust, and with trust comes adoption.
 
@@ -360,7 +360,7 @@ Visible AI or Valuable AI
 September 10, 2025
 --------------------------------------------------------------------------------
 
-In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realized, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive bot/callout that interrupts or undermines users. And certainly not in noble professions.
+In healthcare technology, particularly in electronic health records (EHRs), AI has immense potential to ease the cognitive and administrative load on clinicians. But for that potential to be realised, AI must first earn trust. That starts with empathy in design, where AI is introduced as a helpful, quiet assistant, not an annoying, intrusive bot/callout that interrupts or undermines users. And certainly not in noble professions.
 
 When AI supports clinicians subtly, surfacing insights at the right time and giving them autonomy to engage with it on their own terms, it strengthens confidence rather than resistance. Over time, consistency and reliability build trust, and with trust comes adoption.
 
@@ -384,7 +384,7 @@ AI has the potential to improve lives, whether that's accelerating medical break
 
 But optimism doesn't mean blind faith. It means believing in what's possible while staying vigilant about how we get there.
 
-That's why I care deeply about ethical, safe, and respectful AI, systems that protect privacy, minimize bias, and serve people equitably.
+That's why I care deeply about ethical, safe, and respectful AI, systems that protect privacy, minimise bias, and serve people equitably.
 
 The challenge ahead is to keep pushing boundaries, responsibly. To build an AI future that reflects our best selves. After all, it is we who determine that future.
 
@@ -398,7 +398,7 @@ A week ago, I shared my discomfort with AI-accelerated product development, feel
 
 Deeper introspection revealed something more nuanced. Here's what I find interesting.
 
-Philosopher Andy Clark describes "cognitive offloading" as redistributing cognitive effort to tools so that we can optimize for what humans do best, which is think, solve, create, or connect ideas. We've always done this. We write in diaries to extend memory. We use spreadsheets to manage complexity. AI is no different. It is now part of our thinking system.
+Philosopher Andy Clark describes "cognitive offloading" as redistributing cognitive effort to tools so that we can optimise for what humans do best, which is think, solve, create, or connect ideas. We've always done this. We write in diaries to extend memory. We use spreadsheets to manage complexity. AI is no different. It is now part of our thinking system.
 
 So perhaps this is not cognitive atrophy after all, but cognitive elevation. Perhaps I need to find fulfilment in orchestrating intelligence rather than simply executing it?
 
@@ -422,13 +422,13 @@ But beneath the efficiency gains, I wonder about a philosophical shift. Are phys
 
 Traditionally, writing clinical notes was an act of synthesis, deciding what is significant, connecting the dots, and expressing clinical reasoning. It's the kind of cognitive work that makes physicians... well physicians.
 
-Now, AI generates the notes, and physicians review and approve them. But, the doctor's voice, what they 'really' say, what they emphasize, what they downplay, how they reason and more, is being translated through AI's interpretation of the physician-patient encounter.
+Now, AI generates the notes, and physicians review and approve them. But, the doctor's voice, what they 'really' say, what they emphasise, what they downplay, how they reason and more, is being translated through AI's interpretation of the physician-patient encounter.
 
 The doctor spoke to the patient. But the AI speaks for the doctor in the medical record. I only raise this example because I work in healthcare. But, it extends to other industries just as well.
 
 I see us discussing AI on the periphery. We talk about accuracy and efficiency as if that's all we need to focus on. But, I wonder if we're missing something important - the loss of voice and authenticity in the long run.
 
-Over time, do all doctors begin to sound the same? Does individual clinical style, especially those developed through years of experience, ultimately get homogenized? And what happens when physicians change their AI documentation vendors? Do their styles and voices change too?
+Over time, do all doctors begin to sound the same? Does individual clinical style, especially those developed through years of experience, ultimately get homogenised? And what happens when physicians change their AI documentation vendors? Do their styles and voices change too?
 
 When the medical record says "Dr. Jane Smith," are we perusing 'The' Dr. Jane Smith's notes or Dr. Jane Smith, ver 1.6.10 for now?
 
@@ -440,7 +440,7 @@ Wasn't AI Oversight the Deal?
 November 11, 2025
 --------------------------------------------------------------------------------
 
-The vision is inspirational. The future belongs to human judgment and AI delegation. AI handles the laborious, repetitive work while humans ascend to higher-order thinking. We become orchestrators, stewards, supervisors.
+The vision is inspirational. The future belongs to human judgement and AI delegation. AI handles the laborious, repetitive work while humans ascend to higher-order thinking. We become orchestrators, stewards, supervisors.
 
 But, who needs humans managing other humans? Where's the value in managing an inefficient, emotional, exhaustible resource. The opportunity lies in commanding tireless agreeable AI.
 
@@ -452,7 +452,7 @@ That's the flaw in the elevation narrative. We were told humans would move up th
 
 Oversight doesn't become a safe harbour. It becomes the next thing in the pipeline to be rooted out.
 
-If the architects of this revolution don't see where the line gets drawn, maybe elevation was never the destination. Maybe what we're calling "cognitive partnership" is just a runway before optimization does what optimization does best - natural selection.
+If the architects of this revolution don't see where the line gets drawn, maybe elevation was never the destination. Maybe what we're calling "cognitive partnership" is just a runway before optimisation does what optimisation does best - natural selection.
 
 
 --------------------------------------------------------------------------------
@@ -462,7 +462,7 @@ December 13, 2025
 
 Imagine stepping into a room.
 
-You walk in, lie down, and drift off for a few minutes. While you sleep, scans and tests run. AI identifies abnormalities. Nanotechnology corrects what it can. Clinical decisions are made based on your preconfigured authorizations. You wake up and walk out the other side with a digital report that tells you what was found, what was fixed, and what ought to come next.
+You walk in, lie down, and drift off for a few minutes. While you sleep, scans and tests run. AI identifies abnormalities. Nanotechnology corrects what it can. Clinical decisions are made based on your preconfigured authorisations. You wake up and walk out the other side with a digital report that tells you what was found, what was fixed, and what ought to come next.
 
 Maybe you have a human overseeing things. Maybe you don't.
 
@@ -480,7 +480,7 @@ We've all experienced disengaged interactions at some point. They can seem more 
 
 If healthcare professionals fail to create meaningful human connections, fail to be genuinely invested in a patient's care, the drift toward automation accelerates. And not the good kind.
 
-As product managers, designers, and technologists, we're tasked with defining not just how AI impacts human-centered experiences, but whether human intervention is elevated... or eliminated as unnecessary friction. Much of that is driven by how people 'feel' and 'think' about a service or process.
+As product managers, designers, and technologists, we're tasked with defining not just how AI impacts human-centred experiences, but whether human intervention is elevated... or eliminated as unnecessary friction. Much of that is driven by how people 'feel' and 'think' about a service or process.
 
 So, the future really depends on how we respond now. It influences how we design systems around humans or humans around systems or just plain systems.
 
