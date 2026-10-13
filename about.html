@@ -505,9 +505,17 @@
 
         /* Thick separator between search and menu items */
         .sidebar nav li.nav-separator {
-            border-top: 3px solid #000;
+            border-top: 2px solid #000;
             margin: 0.9rem 0 0.9rem;
             height: 0;
+        }
+
+        /* Mobile: keep search visible in the fixed top bar */
+        .mobile-search { display: none; }
+        @media (max-width: 768px) {
+            body { padding-top: 116px; }
+            .mobile-search { display: block; padding: 0 1.25rem 0.75rem; }
+            .sidebar nav li.nav-search, .sidebar nav li.nav-separator { display: none; }
         }
     </style>
 </head>
@@ -525,13 +533,22 @@
                     <span></span><span></span><span></span>
                 </button>
                 </div>
+                <div class="mobile-search">
+                            <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn-m" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                </div>
                 <div class="sidebar-collapsible">
                 <p class="tagline">Product Manager | AI Optimist</p>
                 <p class="social-links">Let's connect: <a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
 
                 <nav>
                     <ul>
-                        <li>
+                        <li class="nav-search">
                             <div class="search-row">
                                 <div class="search-input-wrap">
                                     <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
@@ -674,15 +691,21 @@
 
         // --- Sitewide search box: hand off to My Notes search ---
         (function () {
-            const input = document.getElementById('notes-search');
-            const clearBtn = document.getElementById('search-clear-btn');
-            input.addEventListener('input', function () { clearBtn.style.display = this.value.length ? 'inline' : 'none'; });
-            input.addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
+            const inputs = [document.getElementById('notes-search'), document.getElementById('notes-search-m')];
+            const clears = [document.getElementById('search-clear-btn'), document.getElementById('search-clear-btn-m')];
+            function sync(src) {
+                inputs.forEach(i => { i.value = src.value; });
+                clears.forEach(c => { c.style.display = src.value.length ? 'inline' : 'none'; });
+            }
+            inputs.forEach(i => {
+                i.addEventListener('input', function () { sync(this); });
+                i.addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
+            });
             window.runSearch = function () {
-                const q = input.value.trim();
+                const q = inputs[0].value.trim();
                 window.location.href = 'index.html' + (q ? '?q=' + encodeURIComponent(q) : '');
             };
-            window.clearSearch = function () { input.value = ''; clearBtn.style.display = 'none'; input.focus(); };
+            window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
         })();
     </script>
 </body>
