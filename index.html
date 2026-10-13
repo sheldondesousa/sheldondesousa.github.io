@@ -133,7 +133,6 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            margin-top: 0.6rem;
         }
 
         .search-input-wrap {
@@ -561,6 +560,13 @@
                 font-size: 20px;
             }
         }
+
+        /* Thick separator between search and menu items */
+        .sidebar nav li.nav-separator {
+            border-top: 3px solid #000;
+            margin: 0.9rem 0 0.9rem;
+            height: 0;
+        }
     </style>
 </head>
 <body>
@@ -583,7 +589,6 @@
 
                 <nav>
                     <ul>
-                        <li><a href="index.html" class="active">My Notes</a></li>
                         <li>
                             <div class="search-row">
                                 <div class="search-input-wrap">
@@ -593,6 +598,8 @@
                                 <button class="search-go" onclick="runSearch()">Go</button>
                             </div>
                         </li>
+                        <li class="nav-separator" role="separator"></li>
+                        <li><a href="index.html" class="active">My Notes</a></li>
                         <li><a href="about.html">About me</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
@@ -1384,6 +1391,13 @@
                     btn.innerHTML = 'Less <span class="chevron">&#9660;</span>';
                 }
             });
+        }
+
+        const initialQuery = new URLSearchParams(window.location.search).get('q');
+        if (initialQuery) {
+            searchInput.value = initialQuery;
+            clearBtn.style.display = 'inline';
+            runSearch();
         }
 
         function clearSearch() {
