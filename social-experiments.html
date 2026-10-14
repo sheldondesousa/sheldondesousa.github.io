@@ -501,6 +501,20 @@
         }
     
 
+        .note .status-tag {
+            display: inline-block;
+            margin: 0.25rem 0 0.5rem;
+            padding: 2px 10px;
+            border: 1px solid #747474;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #595959;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
         /* Body text: 16px desktop, 18px phone */
         @media (max-width: 768px) {
             .note p, .note li, .note ul li, .about-content p, .work-item p,
@@ -586,6 +600,15 @@
                     <a href="experiments/design-for-social-good.html" class="expand-toggle" onclick="gtag('event', 'view_experiment', { article_title: 'Design for Social Good : Female Literacy', page: 'Social Experiments' })">
                         More <span class="chevron">&#9660;</span>
                     </a>
+                </article>
+
+                <article class="note">
+                    <h3>Design for Social Good: Fair Water Use in Shared Buildings</h3>
+                    <span class="status-tag">In progress</span>
+                    <p class="meta">Designing a regulated water monitoring system for shared residential buildings</p>
+                    <div class="note-preview" style="max-height: none;">
+                        <p>During the 2026 water crisis in Pune (July to August), buildings were forced to conserve water, with tankers supplying it for only one to two hours a day. Apartments ranged from 2 to 4 BHK, yet every household drew from the same shared source. Without visibility into who uses how much, some households may take more than their share while others go without what they need. This experiment explores how a regulated water monitoring system could make consumption transparent, encourage fair use, and ensure every household gets what it needs when water is scarce.</p>
+                    </div>
                 </article>
             </section>
         </main>
