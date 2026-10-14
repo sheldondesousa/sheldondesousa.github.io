@@ -178,20 +178,13 @@
             font-size: 1.1rem;
         }
 
-        .article-content p.subhead strong {
-            margin-top: 1rem;
-            font-size: 1.025rem;
-        }
-
-        .article-content ul {
-            margin: 0 0 1.5rem 1.5rem;
-        }
-
-        .article-content li {
-            font-size: 1.025rem;
-            line-height: 1.8;
-            margin-bottom: 0.4rem;
-        }
+        .article-content .table-wrap { overflow-x: auto; margin: 1.5rem 0 2rem; }
+        .article-content table { border-collapse: collapse; width: 100%; font-size: .88rem; line-height: 1.45; }
+        .article-content th, .article-content td { padding: .55em .7em; text-align: left; vertical-align: top; border-bottom: 1px solid #E2E2E1; }
+        .article-content th { font-weight: 600; border-bottom: 1px solid #000; }
+        .article-content td ul { margin: 0 0 0 1.1rem; }
+        .article-content td li { margin-bottom: .35rem; }
+        .article-content td li:last-child { margin-bottom: 0; }
 
         .article-content img {
             cursor: pointer;
@@ -546,8 +539,7 @@
             .meta {
                 font-size: 14px;
             }
-            .article-content p,
-            .article-content li {
+            .article-content p {
                 font-size: 18px;
             }
         }
@@ -559,8 +551,7 @@
             .intro-header h2 {
                 font-size: 28px;
             }
-            .article-content p,
-            .article-content li {
+            .article-content p {
                 font-size: 18px;
             }
             .meta {
@@ -718,38 +709,7 @@
 
                 <p><strong>How AI Can Help</strong></p>
                 <p>Artificial intelligence can play a significant role in L.E.A.D across six areas.</p>
-                <p class="subhead"><strong>1. Personalised learning</strong></p>
-                <ul>
-                    <li>Adaptive learning that meets learners where they are in their journey</li>
-                    <li>Voice-enabled learning to address barriers in reading ability</li>
-                    <li>Multilingual, dialect-aware content that delivers lessons in the language and local dialect each learner speaks, personalising the experience at the village level</li>
-                    <li>Virtual AI tutors and chat assistants in local languages via WhatsApp-like services</li>
-                </ul>
-                <p class="subhead"><strong>2. Content, curriculum and outreach</strong></p>
-                <ul>
-                    <li>Educational and instructional material curated for context and target audience</li>
-                    <li>Contextually aligned curricula developed for local needs, particularly industries that offer employment opportunities</li>
-                    <li>Marketing material generated for awareness campaigns</li>
-                </ul>
-                <p class="subhead"><strong>3. Teaching support</strong></p>
-                <ul>
-                    <li>Teaching strategy suggestions based on performance data</li>
-                </ul>
-                <p class="subhead"><strong>4. Social learning</strong></p>
-                <ul>
-                    <li>Networks of lookalike learners, matched by language, location, learning level, life stage and circumstances, who give each other support, share experiences and progress, and learn from peers who have overcome similar barriers</li>
-                </ul>
-                <p class="subhead"><strong>5. Insights and prediction</strong></p>
-                <ul>
-                    <li>Cross-database analysis at a national and local level to find patterns and insights</li>
-                    <li>Predictive ML models for outcomes such as drop-outs</li>
-                    <li>Real-time monitoring at a granular level</li>
-                </ul>
-                <p class="subhead"><strong>6. Audits and resource optimisation</strong></p>
-                <ul>
-                    <li>AI-assisted auditing that continuously reviews funding flows, attendance and programme data across stakeholders, flagging discrepancies and raising early warnings before issues escalate</li>
-                    <li>Resource and budget allocation optimisation</li>
-                </ul>
+                <div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Area</th><th>How AI can help</th></tr></thead><tbody><tr><td>Personalised learning</td><td><ul><li>Adaptive learning that meets learners where they are in their journey</li><li>Voice-enabled learning to address barriers in reading ability</li><li>Multilingual, dialect-aware content that delivers lessons in the language and local dialect each learner speaks, personalising the experience at the village level</li><li>Virtual AI tutors and chat assistants in local languages via WhatsApp-like services</li></ul></td></tr><tr><td>Content, curriculum and outreach</td><td><ul><li>Educational and instructional material curated for context and target audience</li><li>Contextually aligned curricula developed for local needs, particularly industries that offer employment opportunities</li><li>Marketing material generated for awareness campaigns</li></ul></td></tr><tr><td>Teaching support</td><td><ul><li>Teaching strategy suggestions based on performance data</li></ul></td></tr><tr><td>Social learning</td><td><ul><li>Networks of lookalike learners, matched by language, location, learning level, life stage and circumstances, who give each other support, share experiences and progress, and learn from peers who have overcome similar barriers</li></ul></td></tr><tr><td>Insights and prediction</td><td><ul><li>Cross-database analysis at a national and local level to find patterns and insights</li><li>Predictive ML models for outcomes such as drop-outs</li><li>Real-time monitoring at a granular level</li></ul></td></tr><tr><td>Audits and resource optimisation</td><td><ul><li>AI-assisted auditing that continuously reviews funding flows, attendance and programme data across stakeholders, flagging discrepancies and raising early warnings before issues escalate</li><li>Resource and budget allocation optimisation</li></ul></td></tr></tbody></table></div>
                 <p>Human oversight, data privacy safeguards, consent-based and moderated peer networks, and community validation of AI-generated content would be essential.</p>
 
                 <p><strong>Conclusion</strong></p>
