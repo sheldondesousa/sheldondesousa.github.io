@@ -196,7 +196,7 @@
         }
 
         .note p {
-            font-size: 1.025rem; /* 16.4px */
+            font-size: 16px;
             line-height: 1.8;
             margin-bottom: 1rem;
         }
@@ -222,7 +222,7 @@
         }
 
         .note li {
-            font-size: 1.025rem;
+            font-size: 16px;
             line-height: 1.8;
             margin-bottom: 0.5rem;
         }
@@ -235,7 +235,7 @@
 
         .note details.stack-accordion + h4 { margin-top: 32px; }
         .note details.stack-accordion { display: none; margin: 32px 0; border-top: 1px solid #2B2320; }
-        .note details.stack-accordion summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: .7em 0; font-weight: 600; font-size: 1.025rem; }
+        .note details.stack-accordion summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: .7em 0; font-weight: 600; font-size: 16px; }
         .note details.stack-accordion summary::-webkit-details-marker { display: none; }
         .note details.stack-accordion summary::after { content: '+'; font-size: 1.25rem; line-height: 1; opacity: .6; }
         .note details.stack-accordion[open] summary::after { content: '\2212'; }
@@ -322,13 +322,13 @@
         }
 
         .work-item p {
-            font-size: 1.025rem; /* 16.4px */
+            font-size: 16px;
             line-height: 1.8;
         }
 
         /* About section */
         .about-content p {
-            font-size: 1.025rem; /* 16.4px */
+            font-size: 16px;
             line-height: 1.8;
             margin-bottom: 1.25rem;
         }
@@ -538,6 +538,15 @@
             body { padding-top: 116px; }
             .mobile-search { display: block; padding: 0 1.25rem 0.75rem; }
             .sidebar nav li.nav-search, .sidebar nav li.nav-separator { display: none; }
+        }
+    
+
+        /* Body text: 16px desktop, 18px phone */
+        @media (max-width: 768px) {
+            .note p, .note li, .note ul li, .about-content p, .work-item p,
+            .paper p, .paper li, .article-content p, .article-content > ul > li {
+                font-size: 18px;
+            }
         }
     </style>
 </head>
