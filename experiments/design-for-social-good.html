@@ -152,10 +152,10 @@
 
         .article-content p.table-lead { margin-bottom: 0; }
         .article-content p.table-lead + .table-wrap { margin-top: .75rem; }
-        .article-content p.table-note { font-size: 12px; line-height: 1.5; margin: 0 0 .35rem; }
+        .article-content p.table-note { font-size: 12px; font-weight: 600; line-height: 1.5; margin: 0 0 .35rem; }
 
         .article-content .table-wrap { overflow-x: auto; margin: 1.5rem 0 2rem; }
-        .article-content table { border-collapse: collapse; width: 100%; font-size: .88rem; line-height: 1.45; }
+        .article-content table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.45; }
         .article-content th, .article-content td { padding: .55em .7em; text-align: left; vertical-align: top; border-bottom: 1px solid #E2E2E1; }
         .article-content th { font-weight: 600; border-bottom: 1px solid #000; }
         .article-content td ul { margin: 0 0 0 1.1rem; }
@@ -257,8 +257,8 @@
         }
 
         .note .meta {
-            font-size: 0.85rem;
-            opacity: 0.5;
+            font-size: 14px;
+            color: #747474;
             margin-bottom: 1.25rem;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
@@ -565,6 +565,12 @@
             .note p, .note li, .note ul li, .about-content p, .work-item p,
             .paper p, .paper li, .article-content p, .article-content > ul > li {
                 font-size: 18px;
+            }
+            .article-content table {
+                font-size: 16px;
+            }
+            .article-content p.table-note {
+                font-size: 14px;
             }
         }
     </style>
