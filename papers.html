@@ -700,7 +700,7 @@
 <figure><img src="papers/uncork/images/card-generation-time.svg?v=5" alt="Chart: card generation time fell from 48.13 seconds to about 7 seconds"><figcaption>Card-generation Time Logs</figcaption></figure>
 <h3 id="ditching-gemma-generated-cards">Ditching Gemma Generated Cards</h3>
 <p>Card generation worked, but the reliability of the cards remained poor. The more pressure put on Gemma through prompt guardrails resulted in zero finds. After much persistence, I decided to let DB searches lead card generation without Gemma support.</p>
-<h3 id="44-uncork-prompt-evaluation">4.4 Uncork Prompt Evaluation</h3>
+<h3 id="44-uncork-prompt-evaluation">4.4 Preliminary Prompt Testing</h3>
 <h3 id="testing-the-open-conversation-prompts">Testing the Gemma-led Open Conversation</h3>
 <p>Using Claude, I tested Gemma against 50 sample conversations covering nine types of questions — wine facts, beginner questions, follow-ups, trick questions with made-up wines, food pairing, off-topic requests, health questions, abuse, and attempts to misuse the app. Each conversation was run three times per version to check consistency. Claude compared how the AI responded before and after three rounds of prompt changes. I ran manual testing alongside Claude to review and compare results.</p>
 <p><strong>v1 → v2:</strong> Iterated rules telling the AI to admit when it doesn&#39;t recognise a wine, winery, or grape, rather than guessing. Stricter rules to decline food pairing, health advice, and abuse. Tightened the reply length.</p>
@@ -710,6 +710,7 @@
 <p>Prompt changes can make Gemma behave better, but they cannot make it know more. Across three prompt versions, passes rose from 31 to 36 to 40 out of 50, driven by rules and short examples that taught it to decline, admit when it doesn&#39;t recognise a wine, and stay in scope.</p>
 <p>Wine-knowledge performance remained at 2 out of 8 in every version, because the model answers from its own memory and gets common facts wrong with full confidence, such as what “corked” means, how rosé is made and what temperature to serve white wine.</p>
 <p>In a wine app, a confident wrong answer does more harm than good, so factual accuracy is the main risk. Prompt gains were also shrinking by v3, so further tweaking is unlikely to help. The next gains are likely to come from supplying verified facts to the model through RAG.</p>
+<p class="callout">These were preliminary testing rounds to help dial the prompt in. The number of tests run for items other than wine knowledge would be scaled during evals.</p>
 <h3 id="45-extending-the-chain-web-search-and-a-growing-db-2">4.5 Extending the Chain: Web Search and a Growing DB-2</h3>
 <p>DB-2 and web search weren&#39;t part of the roadmap. I discovered their value through errors and gaps. Gemma and DB-1 together still had a ceiling: Gemma&#39;s own knowledge was frozen (January 2025) and lacked the nuance and breadth of larger models, and DB-1&#39;s 119,030 reviews were frozen in 2017. A wine missing from both simply had no conclusive recommendation.</p>
 <p><span>A live web search was added, the only online layer in the chain. I wanted to use Google&#39;s Custom Search API, but working through the decision ruled it out in favour of Brave, which had a free tier that comfortably covered my expected usage. </span></p>
