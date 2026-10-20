@@ -677,8 +677,9 @@
 <p><span>The two paths inside Chat are built to feel identical. The user experiences an AI sommelier that is listening, understanding, and responding intelligently to everything they say.</span></p>
 <p><span>Only the &quot;<em>curious</em>&quot; path is genuinely model-driven start to finish. The &quot;<em>guided</em>&quot; path is closer to Wizard of Oz: the code runs the actual logic, tracking which question is active, matching the answer, deciding what comes next, while Gemma supplies the natural language around it. </span></p>
 <h3 id="the-handover-and-handback">The Handover &amp; Handback</h3>
+<p>Irrespective of how the conversation originates - whether &#39;Find a wine&#39; or &#39;Curious about wine&#39;, the user is passed between code and Gemma as the interaction progresses.</p>
 <p>If a reply contains a question mark, or runs to four words or more (unrelated to the three questions), the code hands it to Gemma for a real response instead of matching it against the vocabulary list. Short, recognised answers like &quot;full-bodied&quot;, &quot;Spanish red&quot;, or &quot;smooth&quot; stay with the code. Anything longer or genuinely inquisitive is handed over to Gemma.</p>
-<p>If a user shows intent to pick a wine, Gemma acknowledges, informs the user it needs some decisive answers, and hands it back to code to funnel through the options. The code picks the guided flow back up at the question where it left off.</p>
+<p>If a user shows intent to pick a wine, Gemma acknowledges, informs the user it needs a few decisive answers, and hands it back to code to funnel through the questions.</p>
 <p>But there is a trade-off: an incidental word in a longer answer can occasionally resolve a question the user never actually meant to answer &#8212; &quot;I&#39;m looking for something similar to a French Red&quot; resolves Country and Type.</p>
 <h3 id="43-measuring-and-fixing-latency">4.3 Measuring and Fixing Latency</h3>
 <p><span>Gemma takes roughly 3 s (mode) to initialise on GPU (with CPU fallback). A splash screen with a progress bar and annotations runs for 3.5 s to cover the loading time.</span></p>
