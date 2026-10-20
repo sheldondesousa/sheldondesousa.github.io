@@ -778,7 +778,7 @@
 <p>An LLM judge (Claude and ChatGPT) graded every answer against the facts Kotlin supplied, using the 2/1/0 marker, and the same rules were applied across all stages. A human review checked the judge in two ways.</p>
 <p>In the 100-question rounds, I blind-reviewed 30 random answers without seeing the judge&#8217;s grades, and we agreed on 30 of 30 for correct versus not fully correct.</p>
 <p>For Run 2, the agreement was around 97%. The disagreements were all borderline: extra phrasing that the judge counted as unsupported and I accepted. They never involved a wrong fact. The judge therefore leans strict on wording, and the review corrected that.</p>
-<h4 id="eval-results">Eval Results</h4>
+<h3 id="eval-results">Eval Results</h3>
 <p>Uncork draws on several databases. I will evaluate all of them, with multi-turn conversations and complex questions. This section covers one as a sample, grape profiles. A consolidated eval across all the databases will be surfaced shortly to close the evals section.</p>
 <p>Grape profiles hold the description and characteristics of each grape, including body, acidity, tannin, aromas, ageing and origin. When a user asks about a grape variety, the app (Kotlin code) surfaces wine facts, which Gemma then uses to construct an answer.</p>
 <h4 id="the-test">The test</h4>
