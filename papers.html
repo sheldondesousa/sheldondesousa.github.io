@@ -751,6 +751,17 @@
 <p>If a bottle has one review, the app shows it as written. If it has two to six, Gemma summarizes them into one impartial summary. If it has more than six, the app splits them into thirds and picks two at random from each. If no reviews are present, the app says so.</p>
 <h4 id="what-gemma-reads-on-the-ask-screen">What Gemma reads on the Ask screen</h4>
 <p>When someone asks Gemma what people say about a grape or variety in a country, the app looks across all the reviews of that grape from that country. It splits them into highest-scored, middle, and lowest-scored thirds and picks one review at random from each, so Gemma gets three reviews. The picks are random. Each review is cut to about 200 characters and tagged with its province. Gemma combines the three into an impartial overview.</p>
+<h3 id="critical-risk-identification">Critical risk identification</h3>
+<h4 id="the-product-risk-algorithmic-feedback-loops-and-data-decay">The Product Risk: Algorithmic Feedback Loops and Data Decay</h4>
+<p>Relying on an unsupervised on-device model to synthesise real-time web search results and write them directly into the offline database (DB-2) threatens data integrity.</p>
+<p>Because the model has an inherent 5.9% False Positive (hallucination) rate, it will occasionally generate unsupported claims or incorrect wine profiles from web snippets. By automatically writing these errors into the database, an AI mistake becomes a permanent application &quot;fact.&quot;</p>
+<p>Over time, the app&#39;s knowledge base decays. In future, the RAG system will pull these fabrications as &quot;ground truth,&quot; causing the AI to confidently repeat its own hallucinations and erode user trust.</p>
+<p>At this time, I am evaluating a couple of options:</p>
+<ul>
+<li>Human-in-the-loop: Tag all DB-2 additions with Verified or Pending Verification. I would have to then go through the database and manually validate each entry tagged &#39;pending&#39; and/or use an LLM to verify the details as a second pair of eyes.</li>
+<li>Update UI so that the user is aware of the current state of the produced result that comes from DB-2</li>
+<li>Strict entity extraction during synthesis with tight creative affordance to the model.</li>
+</ul>
 <h2 id="6-ask-talking-to-gemma-after-a-wine-is-picked">6. Ask: Talking to Gemma After a Wine Result is Picked</h2>
 <p>Once a wine is chosen through the result page, tapping Ask opens a focused conversation with Gemma about that specific bottle with RAG in place. RAG has been deliberately excluded from open-chat until pending bugs are addressed.</p>
 <h3 id="the-prompt">The prompt</h3>
