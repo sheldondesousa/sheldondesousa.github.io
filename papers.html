@@ -482,6 +482,7 @@
         .paper h4 { font-size: 1rem; font-weight: 600; margin: 2.5rem 0 .5rem; color: #000; font-family: 'Playfair Display', serif; }
         .paper p, .paper li { font-size: 16px; line-height: 1.8; margin: 0 0 1.2rem; }
         .paper ul, .paper ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
+        .paper ul.tight-list li { margin-bottom: 0; }
         .paper a { color: #7A2331; }
         .paper figure { margin: 2rem 0; }
         .paper figure img { display: block; width: 100%; height: auto; margin: 0 0 12px; border: 1px solid #2B2320; border-radius: 6px; }
@@ -785,10 +786,10 @@
 <h2 id="7-grounding-gemmas-answers-retrieval-evals">7. Grounding Gemma&#39;s Answers: Retrieval Evals</h2>
 <p>I ran a longer series of evals, 20 questions, then 100, then 300, on the retrieval-augmented answers in Ask, the RAG layer that feeds Gemma grounded facts before it replies. Given the fact that Gemma was inventing wine names and was easily coerced into discussing fictional ones, it was imperative that Gemma be grounded in trusted data.</p>
 <p>Three things were expected:</p>
-<ul>
-<li>The query returned data from the DB and Gemma used the information to construct an answer.</li>
-<li>The query turned up nothing, so Kotlin returned a pre-determined decline.</li>
-<li>The data existed, but countered the user&#39;s claim, and Gemma disagreed politely while surfacing the database facts Kotlin supplied.</li>
+<ul class="tight-list">
+<li>The query returned data from the DB - Gemma used the information to construct an answer.</li>
+<li>The query turned up nothing - the app returned a pre-determined decline.</li>
+<li>The data existed, but countered a user&#39;s claim - Gemma disagreed politely while surfacing the database facts the app supplied.</li>
 </ul>
 <h3 id="the-approach">The Approach</h3>
 <p>The approach was to test each DB on its own, then test whole conversations.</p>
