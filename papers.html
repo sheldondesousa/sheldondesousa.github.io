@@ -496,7 +496,7 @@
         .paper details.tldr summary::-webkit-details-marker { display: none; }
         .paper details.tldr summary::after { content: ""; width: .55em; height: .55em; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -.2em .3em 0 1em; transition: transform .2s; }
         .paper details.tldr[open] summary::after { transform: rotate(-135deg); margin-top: .2em; }
-        .paper details.tldr .table-wrap { margin: 0 0 .75rem; overflow-x: visible; }
+        .paper details.tldr .table-wrap { margin: 0 0 .75rem; overflow: hidden; background: rgba(154,143,130,.16); border-radius: 10px; }
         .paper table.tldr-table { table-layout: fixed; }
         .paper table.tldr-table tbody tr:last-child td { border-bottom: 0; }
         .paper table.tldr-table td, .paper table.tldr-table th { white-space: normal; overflow-wrap: anywhere; }
