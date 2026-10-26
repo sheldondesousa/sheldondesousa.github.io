@@ -491,13 +491,14 @@
         .paper figcaption { color: #9A8F82; font-size: .85rem; text-align: center; }
         .paper p.callout, .paper div.callout { background: rgba(154,143,130,.16); border-left: 4px solid #74716C; border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 15px; line-height: 1.7; }
         .paper div.callout { margin: 0 0 1.2rem; }
-        .paper details.tldr { margin: 0 0 1.5rem; border-top: 2px solid #2B2320; border-bottom: 1px solid rgba(43,35,32,.15); }
+        .paper details.tldr { margin: 0 0 1.5rem; border-top: 2px solid #2B2320; }
         .paper details.tldr summary { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; font-weight: 700; cursor: pointer; list-style: none; }
         .paper details.tldr summary::-webkit-details-marker { display: none; }
         .paper details.tldr summary::after { content: ""; width: .55em; height: .55em; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -.2em .3em 0 1em; transition: transform .2s; }
         .paper details.tldr[open] summary::after { transform: rotate(-135deg); margin-top: .2em; }
         .paper details.tldr .table-wrap { margin: 0 0 .75rem; overflow-x: visible; }
         .paper table.tldr-table { table-layout: fixed; }
+        .paper table.tldr-table tbody tr:last-child td { border-bottom: 0; }
         .paper table.tldr-table td, .paper table.tldr-table th { white-space: normal; overflow-wrap: anywhere; }
         @media (max-width: 768px) { .paper table.tldr-table col:first-child { width: 34% !important; } .paper table.tldr-table col:last-child { width: 66% !important; } }
         .paper div.callout ul { margin: 0; padding-left: 1.2rem; }
