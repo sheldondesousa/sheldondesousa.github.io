@@ -494,6 +494,7 @@
         .paper p.tldr-title { margin: 0 0 .5rem; font-weight: 700; }
         .paper .table-wrap.tldr-wrap { margin: 0 0 1.5rem; overflow: hidden; background: rgba(154,143,130,.16); border-radius: 10px; }
         .paper table.tldr-table { table-layout: fixed; }
+        .paper table.spec-table td:first-child { color: #6E645A; font-weight: 600; }
         .paper table.tldr-table .tldr-note { display: block; margin-top: .75em; font-size: calc(1em - 2px); font-style: normal; font-weight: 700; }
         .paper table.tldr-table .tldr-note::before { content: "\2022"; font-size: .75em; margin-right: .5em; vertical-align: .1em; }
         .paper table.tldr-table th { color: #7A2331; }
@@ -633,6 +634,7 @@
 <p>A few days ago, I found myself in a familiar predicament: I was standing in the basement of my local wine shop trying to choose a bottle of wine. There was no reception, no knowledgeable staff nearby, and I lacked deep domain expertise to confidently distinguish one option from another. &quot;Bring something that&#39;s red, feels rich, smooth, dry, but not too dry&quot;, I was told. Now, I appreciate a fine wine, but I&#39;m not a sommelier by any stretch of the imagination.</p>
 <p>Technically, it was a trivial problem. I could have consulted an existing wine app or a web search by stepping outside briefly. But in that moment of apparent disconnection, a more compelling question emerged: could I build a tool that provided qualified guidance, leveraging intelligence running on my mobile phone?</p>
 <p>What really drew me in, though, was the opportunity to find out what on-device language models were capable of in a real-world, offline environment, and to build that solution myself.</p>
+<div class="table-wrap"><table class="spec-table"><colgroup><col style="width:26%"><col style="width:74%"></colgroup><tbody><tr><td style="text-align:left">Device</td><td style="text-align:left">Google Pixel 10 Pro Fold, 16GB RAM</td></tr><tr><td style="text-align:left">Model</td><td style="text-align:left">Gemma 4 E2B</td></tr><tr><td style="text-align:left">Import via</td><td style="text-align:left">Hugging Face</td></tr><tr><td style="text-align:left">Dataset</td><td style="text-align:left">Kaggle</td></tr></tbody></table></div>
 <h3 id="executive-summary">Executive Summary</h3>
 <p>Uncork is a pocket wine advisor powered by a small on-device language model with RAG support.</p>
 <p>It isn&#39;t a single-tap install. On first launch, the user downloads a model with a personal access token to authorise it. Gemma 4 E2B was used in this instance. The app also ships with a bundled wine and grape-review database, a wine production repository, a winery directory, and a web search via API at the user&#39;s request. The app also has a database that is updated when a web search finds recommendations not present in other databases. This helps the on-board knowledge bank grow, in turn reducing dependency on the web.</p>
