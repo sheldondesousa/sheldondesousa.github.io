@@ -479,10 +479,10 @@
         .paper h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 1rem; padding-top: 48px; border-top: 1px solid rgba(43,35,32,.1); font-family: 'Playfair Display', serif; }
         .paper h2:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
         .paper h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 .5rem; color: #7A2331; font-family: 'Playfair Display', serif; }
-        .exposure-grid { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; padding: 0; margin: 1rem 0 1.5rem; }
-        .paper .exposure-grid li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .6rem; font-size: 15px; line-height: 1.35; margin: 0; }
-        .exposure-grid svg { width: 56px; height: 56px; fill: none; stroke: #7A2331; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-        @media (max-width: 768px) { .exposure-grid { grid-template-columns: repeat(2, 1fr); } .paper .exposure-grid li { font-size: 16px; } }
+        .paper .exposure-grid { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; padding: 0; margin: 1rem 0 1.5rem; }
+        .paper .exposure-grid li { display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: .6rem; font-size: 15px; line-height: 1.35; margin: 0; }
+        .exposure-grid svg { width: 56px; height: 56px; margin-left: -4px; fill: none; stroke: #7A2331; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        @media (max-width: 768px) { .paper .exposure-grid { grid-template-columns: repeat(2, 1fr); } .paper .exposure-grid li { font-size: 16px; } }
         .paper p, .paper li { font-size: 16px; line-height: 1.8; margin: 0 0 1.2rem; }
         .paper ul, .paper ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
         .paper a { color: #7A2331; }
