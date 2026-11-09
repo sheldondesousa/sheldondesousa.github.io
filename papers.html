@@ -628,7 +628,7 @@
                             <a href="papers.html" class="active">Papers</a>
                             <ul class="tree">
                                 <li><a href="#uncork" class="tree-link current" data-view="uncork">Uncork</a></li>
-                                <li><a href="#mcp-tooling" class="tree-link" data-view="mcp-tooling">AI-Coding, LLMs &amp; MCP <span class="wip-tag">(in progress)</span></a></li>
+                                <li><a href="#ai-coding-llms-mcp" class="tree-link" data-view="ai-coding-llms-mcp">AI-Coding, LLMs &amp; MCP <span class="wip-tag">(in progress)</span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -902,7 +902,7 @@
             </article>
           </section>
 
-          <section class="paper-view" id="view-mcp-tooling" data-title="AI-Assisted Delivery, Connected Through MCP" hidden>
+          <section class="paper-view" id="view-ai-coding-llms-mcp" data-title="AI-Assisted Delivery, Connected Through MCP" hidden>
             <div class="intro-header">
                 <h2>AI-Assisted Delivery, Connected Through MCP <span class="wip-tag wip-title">(in progress)</span></h2>
             </div>
@@ -1058,7 +1058,9 @@
             const links = Array.prototype.slice.call(document.querySelectorAll('.tree-link'));
             const views = {};
             document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
+            var aliases = { 'mcp-tooling': 'ai-coding-llms-mcp' };
             function show(name, push) {
+                if (aliases[name]) { name = aliases[name]; history.replaceState(null, '', '#' + name); }
                 if (!views[name]) name = 'uncork';
                 Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
                 links.forEach(function (l) { l.classList.toggle('current', l.dataset.view === name); });
