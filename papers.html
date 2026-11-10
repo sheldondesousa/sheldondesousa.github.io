@@ -1336,8 +1336,7 @@
     setHTML('c5-note', 'With fixed time included, each feature uses about ' + rnd(sum(days, x => x) / days.length, 0) + ' working days (' + rnd(Math.min.apply(null, days), 1) + '–' + rnd(Math.max.apply(null, days), 1) +
       '). The ' + rnd(D.targetDays, 0) + '-day (' + H(D.target) + '-hour) target is reached only for development-only time; the whole sprint shrinks by ' + rnd(Math.min.apply(null, pcts), 0) + '–' + rnd(Math.max.apply(null, pcts), 0) + '%.');
     setHTML('c5-rows', D.feats.map(f => '<tr><td>' + f.name + '</td><td' + (f.over ? ' class="sc-warn"' : '') + '>' + hrs(f.wholeForecast) + '</td><td>' + hrs(f.wholeAi) + '</td><td class="sc-pos">' + H(f.wholeSaved) +
-      '</td><td class="sc-pos">' + pct1(f.wholePct) + '</td><td>' + rnd(f.days, 1).toFixed(1) + '</td></tr>').join('') +
-      '<tr><td>Target</td><td>–</td><td>' + hrs(D.target) + '</td><td>–</td><td>–</td><td>' + rnd(D.targetDays, 1).toFixed(1) + '</td></tr>');
+      '</td><td class="sc-pos">' + pct1(f.wholePct) + '</td><td>' + rnd(f.days, 1).toFixed(1) + '</td></tr>').join(''));
     setHTML('c6-title', 'Where the lifecycle hours went');
     setHTML('c6-cap', 'Per-feature lifecycle hours, baseline vs AI-integrated · team estimates');
     setHTML('c6-legend', sw('sc-f-maroon', 'Conventional total') + sw('sc-f-tealtint', 'Hours saved') + sw('sc-f-teal', 'AI-integrated total'));
