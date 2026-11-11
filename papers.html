@@ -1280,15 +1280,15 @@
   /* 5. Whole-sprint load against the target */
   function c5(W) {
     const maxWhole = Math.max.apply(null, D.feats.map(f => f.wholeForecast)), max = Math.ceil((maxWhole + 10) / 10) * 10;
-    const pl = 58, pr = 8, pt = 52, pw = W - pl - pr, sx = v => pl + v / max * pw, gh = 96, hh = pt + D.feats.length * gh + 28, FT = D.fixedTotal; let s = '';
+    const pl = 80, pr = 8, pt = 52, pw = W - pl - pr, sx = v => pl + v / max * pw, gh = 96, hh = pt + D.feats.length * gh + 28, FT = D.fixedTotal; let s = '';
     ticks(100, 20).forEach(t => { s += L(sx(t), pt - 14, sx(t), pt + D.feats.length * gh) + T(sx(t), pt + D.feats.length * gh + 17, t === 100 ? '100 hrs' : t, 'sc-tx', t === 0 ? 'start' : 'middle'); });
     s += L(sx(D.sprint), pt - 14, sx(D.sprint), pt + D.feats.length * gh, 'sc-capl') + T(sx(D.sprint), pt - 22, 'Sprint ' + D.sprint, 'sc-tx sc-tb', 'middle');
     s += L(sx(D.target), pt - 14, sx(D.target), pt + D.feats.length * gh, 'sc-tgt') + T(sx(D.target), pt - 22, 'Target ' + H(D.target) + ' (' + rnd(SPRINT.targetShare * 100, 0) + '%)', 'sc-tx sc-tt', 'middle');
     D.feats.forEach((f, i) => {
-      const gy = pt + i * gh; s += T(6, gy + 13, f.name, 'sc-tx sc-tb');
+      const gy = pt + i * gh; s += T(4, gy + 13, f.name, 'sc-tx sc-tb');
       [[gy + 26, 'Forecast', f.forecast, true], [gy + 56, 'With AI', f.ai, false]].forEach(r => {
         const y = r[0], dev = r[2], total = FT + dev;
-        s += T(pl - 6, y + 15, r[1], 'sc-tx', 'end') + R(sx(0), y, sx(FT) - sx(0), 22, 'sc-f-grey sc-seg');
+        s += T(pl - 14, y + 15, r[1], 'sc-tx', 'end') + R(sx(0), y, sx(FT) - sx(0), 22, 'sc-f-grey sc-seg');
         if (r[3]) { const mid = Math.min(total, D.sprint); s += R(sx(FT), y, sx(mid) - sx(FT), 22, 'sc-f-maroon sc-seg'); if (total > D.sprint) s += R(sx(D.sprint), y, sx(total) - sx(D.sprint), 22, 'sc-f-amber sc-seg'); }
         else s += R(sx(FT), y, sx(total) - sx(FT), 22, 'sc-f-teal sc-seg');
         if (r[3] && total <= D.sprint) s += T(sx(total) - 6, y + 15, H(total), 'sc-tx sc-tb sc-on-d', 'end');
