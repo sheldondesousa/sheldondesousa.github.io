@@ -484,6 +484,14 @@
         .sidebar nav ul.tree li::before { content: ""; position: absolute; left: -1.1rem; top: 0.72em; width: 0.8rem; border-top: 1px solid #000; }
         .sidebar nav ul.tree a { font-size: 0.78rem; letter-spacing: 1.2px; }
         .sidebar nav ul.tree a.current { font-weight: 700; border-bottom-color: #000; }
+        /* Papers overview cards */
+        .paper-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .paper-card { border: 1px solid #2B2320; border-radius: 10px; padding: 1.5rem; background: #FAFAF8; display: flex; flex-direction: column; }
+        .paper-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; line-height: 1.3; margin-bottom: 0.6rem; }
+        .paper-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem; }
+        .paper-card .paper-date { font-size: 14px; color: #747474; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin-top: auto; }
+        .paper-card .read-more { margin-top: 0.75rem; color: #000; font-weight: 700; text-decoration: none; border-bottom: 1px solid #000; align-self: flex-start; }
+        .paper-card .read-more:hover { opacity: 0.65; }
         .paper-view[hidden] { display: none; }
         .wip-tag { text-transform: none; letter-spacing: 0; font-weight: 400; font-style: italic; opacity: 0.7; white-space: nowrap; }
         .sidebar nav ul.tree .wip-tag { font-size: 0.72rem; }
@@ -659,7 +667,7 @@
 
                 <nav>
                     <ul>
-                        <li><a href="index.html">My Notes</a></li>
+                        <li><a href="index.html">About me</a></li>
                         <li class="nav-search">
                             <div class="search-row">
                                 <div class="search-input-wrap">
@@ -670,14 +678,14 @@
                             </div>
                         </li>
                         <li class="nav-separator" role="separator"></li>
-                        <li><a href="about.html">About me</a></li>
+                        <li><a href="notes.html">My Notes</a></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
                         <li><a href="personal-projects.html">Vibe-Coding</a></li>
                         <li class="nav-tree">
-                            <a href="papers.html" class="active">Papers</a>
+                            <a href="#overview" class="tree-link tree-root active" data-view="overview">Papers</a>
                             <ul class="tree">
-                                <li><a href="#uncork" class="tree-link current" data-view="uncork">Uncork</a></li>
+                                <li><a href="#uncork" class="tree-link" data-view="uncork">Uncork</a></li>
                                 <li><a href="#ai-coding-llms-mcp" class="tree-link" data-view="ai-coding-llms-mcp">AI-Coding, LLMs &amp; MCP</a></li>
                             </ul>
                         </li>
@@ -695,6 +703,26 @@
         <!-- Main Content -->
         <!-- Main Content -->
         <main class="main-content">
+          <section class="paper-view" id="view-overview" data-title="Papers">
+            <div class="intro-header">
+                <h2>Papers</h2>
+                <p>Long-form case studies on building with AI.</p>
+            </div>
+            <div class="paper-cards">
+                <div class="paper-card">
+                    <h3>Building a Grounded, AI Sommelier with an On-Device Model</h3>
+                    <p>A Case Study on Uncork: A Self-Taught Journey from Consumer Friction to Functional RAG-supported Edge AI</p>
+                    <p class="paper-date">November 1, 2026</p>
+                    <a class="read-more" href="#uncork" data-view="uncork">Read more &rarr;</a>
+                </div>
+                <div class="paper-card">
+                    <h3>AI-Assisted Delivery, Connected Through MCP</h3>
+                    <p>A Case Study on AI in Product Development Flows: Testing Andrew Ng's theory of bottlenecks once engineering is expedited.</p>
+                    <p class="paper-date">December 16, 2025</p>
+                    <a class="read-more" href="#ai-coding-llms-mcp" data-view="ai-coding-llms-mcp">Read more &rarr;</a>
+                </div>
+            </div>
+          </section>
           <section class="paper-view" id="view-uncork" data-title="Building a Grounded, AI Sommelier with an On-Device Model">
 
             <div class="intro-header">
@@ -1105,22 +1133,22 @@
             });
             window.runSearch = function () {
                 const q = inputs[0].value.trim();
-                window.location.href = 'index.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+                window.location.href = 'notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
             };
             window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
         })();
 
         // --- Papers tree: switch between papers without a page load ---
         (function () {
-            const links = Array.prototype.slice.call(document.querySelectorAll('.tree-link'));
+            const links = Array.prototype.slice.call(document.querySelectorAll('.tree-link, .read-more'));
             const views = {};
             document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
             var aliases = { 'mcp-tooling': 'ai-coding-llms-mcp' };
             function show(name, push) {
                 if (aliases[name]) { name = aliases[name]; history.replaceState(null, '', '#' + name); }
-                if (!views[name]) name = 'uncork';
+                if (!views[name]) name = 'overview';
                 Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
-                links.forEach(function (l) { l.classList.toggle('current', l.dataset.view === name); });
+                links.forEach(function (l) { l.classList.toggle('current', l.dataset.view === name && !l.classList.contains('tree-root')); });
                 document.title = views[name].dataset.title + ' - Sheldon De Sousa';
                 window.dispatchEvent(new CustomEvent('papers:viewchange'));
                 if (push) { window.scrollTo(0, 0); }
