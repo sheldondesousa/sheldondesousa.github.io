@@ -479,9 +479,10 @@
         }
         /* Papers tree menu */
         .sidebar nav li.nav-tree > a { display: inline-block; }
-        .sidebar nav ul.tree { margin: 0.55rem 0 0.2rem 0.4rem; padding-left: 1.1rem; border-left: 1px solid #000; }
+        .sidebar nav ul.tree { margin: 0.55rem 0 0.2rem 0.4rem; padding-left: 1.1rem; }
         .sidebar nav ul.tree li { position: relative; margin: 0.45rem 0; }
         .sidebar nav ul.tree li::before { content: ""; position: absolute; left: -1.1rem; top: 0.72em; width: 0.8rem; border-top: 1px solid #000; }
+        .sidebar nav ul.tree li::after { content: ""; position: absolute; left: -1.1rem; top: -0.45rem; height: calc(0.45rem + 0.72em); border-left: 1px solid #000; }
         .sidebar nav ul.tree a { font-size: 0.78rem; letter-spacing: 1.2px; }
         .sidebar nav ul.tree a.current { font-weight: 700; border-bottom-color: #000; }
         /* Papers overview cards */
