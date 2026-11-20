@@ -198,7 +198,7 @@ body { padding-top: 0; }
 }
 
 /* ---------- Small screens: photo + name, menu in a drawer ---------- */
-@media (max-width: 900px) {
+@media (max-width: 1360px) {
     .header-top { padding: 0.75rem var(--gutter); }
     .brand .profile-image { width: 40px; height: 40px; }
     .brand h1 { font-size: 1.5rem; }
@@ -258,3 +258,22 @@ body { padding-top: 0; }
 
 /* Keep the legacy small-screen body padding from the inline styles out of the way */
 @media (max-width: 768px) { body { padding-top: 0; } }
+
+/* Desktop: brand, nav and search share one banner row */
+@media (min-width: 1361px) {
+    .site-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 0.9rem var(--gutter);
+    }
+    .header-top { display: contents; }
+    .brand { order: 0; }
+    .menu { order: 1; flex: 1; border-top: 0; padding: 0; }
+    .header-search { order: 2; width: 150px; flex-shrink: 0; }
+    .menu nav ul { gap: 0 1.25rem; }
+    .menu nav a { padding: 0.5rem 0; font-size: 0.78rem; letter-spacing: 1px; }
+    .menu nav ul.tree { top: calc(100% + 0.4rem); }
+    .menu nav li.nav-tree::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 0.6rem; }
+    .social-links .connect-label { display: none; }
+}
