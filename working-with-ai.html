@@ -525,22 +525,34 @@
         .zoom-frame.zoomed { cursor: zoom-out; }
         .zoom-frame.zoomed img { transform: scale(1.3); }
     </style>
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div>
-                <div class="sidebar-header">
-                <div class="profile-section">
+        <header class="site-header">
+            <div class="header-top">
+                <div class="brand">
                     <img src="Images/profile.webp?v=6" alt="Sheldon De Sousa" class="profile-image">
-                    <h1>Sheldon <br>De Sousa</h1>
+                    <div class="brand-text">
+                        <h1>Sheldon De Sousa</h1>
+                        <p class="tagline tagline-desktop">Product Manager | AI Optimist</p>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
                 </div>
                 <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav(this)">
                     <span></span><span></span><span></span>
                 </button>
-                </div>
-                <div class="mobile-search">
+            </div>
+            <div class="mobile-search">
                             <div class="search-row">
                                 <div class="search-input-wrap">
                                     <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
@@ -549,54 +561,43 @@
                                 <button class="search-go" onclick="runSearch()">Go</button>
                             </div>
                 </div>
-                <div class="sidebar-collapsible">
-                <p class="tagline">Product Manager | AI Optimist</p>
-                <p class="social-links">Let's connect: <a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
-
+            <div class="menu">
+                <p class="tagline tagline-menu">Product Manager | AI Optimist</p>
                 <nav>
                     <ul>
                         <li><a href="index.html">About me</a></li>
                         <li><a href="notes.html">My Notes</a></li>
-                        <li class="nav-search">
-                            <div class="search-row">
-                                <div class="search-input-wrap">
-                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
-                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
-                                </div>
-                                <button class="search-go" onclick="runSearch()">Go</button>
-                            </div>
-                        </li>
-                        <li class="nav-separator" role="separator"></li>
                         <li><a href="working-with-ai.html" class="active">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
                         <li><a href="personal-projects.html">Vibe-Coding</a></li>
                         <li><a href="papers.html">Papers</a></li>
                     </ul>
                 </nav>
-                </div>
+                <p class="social-links"><span class="connect-label">Let's connect: </span><a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
             </div>
-
-            <footer>
-                <p>© 2026 Sheldon De Sousa</p>
-                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
-            </footer>
-        </aside>
+        </header>
 
         <!-- Main Content -->
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Intro -->
-            <div class="intro-header">
+            <section class="paper-view" id="view-overview" data-title="Working with AI">
+                <div class="intro-header">
                 <h2>Working with AI</h2>
                 <p>I'm curious about what AI can do. So I apply it whenever I see an opportunity. This is where I document what I'm learning, one experiment at a time.</p>
             </div>
-
-            <!-- Articles Section -->
-            <section id="notes">
-                <article class="note">
-                    <h3>"Death by Grooming" - A Quarterly Ritual</h3>
-                    <p class="meta">March 5, 2026 — How a 3-hour Teams call replaced 3 days of release planning</p>
-                    <div class="note-preview" id="note3">
+                <div class="paper-cards" id="notes">
+                    <div class="paper-card"><h3>"Death by Grooming" - A Quarterly Ritual</h3><p class="card-desc">How a 3-hour Teams call replaced 3 days of release planning</p><p class="paper-date">March 5, 2026</p><a class="read-more" href="#death-by-grooming-a-quarterly-ritual" data-view="death-by-grooming-a-quarterly-ritual">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>A Bootstrapped PM Dashboard</h3><p class="card-desc">Limited context switching with a single source of truth</p><p class="paper-date">February 3, 2026</p><a class="read-more" href="#a-bootstrapped-pm-dashboard" data-view="a-bootstrapped-pm-dashboard">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>AI-Assisted Feature Development</h3><p class="card-desc">Reimagining cross-functional collaboration through intelligent workflow integration</p><p class="paper-date">December 18, 2025</p><a class="read-more" href="#ai-assisted-feature-development" data-view="ai-assisted-feature-development">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Expedited Product Management Documentation</h3><p class="card-desc">Addressing Andrew Ng's view on product bottlenecks</p><p class="paper-date">November 19, 2025</p><a class="read-more" href="#expedited-product-management-documentation" data-view="expedited-product-management-documentation">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Predicting the Next 'Act' with AI</h3><p class="card-desc">Accelerating clinical workflows through intelligent action recommendations</p><p class="paper-date">August 9, 2025</p><a class="read-more" href="#predicting-the-next-act-with-ai" data-view="predicting-the-next-act-with-ai">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>AI-Assisted 'No Show' Prediction</h3><p class="card-desc">Enhancing healthcare scheduling with intelligent assistance and predictive analytics</p><p class="paper-date">July 23, 2025</p><a class="read-more" href="#ai-assisted-no-show-prediction" data-view="ai-assisted-no-show-prediction">Read more &rarr;</a></div>
+                </div>
+            </section>
+            <section class="paper-view" id="view-death-by-grooming-a-quarterly-ritual" data-title=""Death by Grooming" - A Quarterly Ritual" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>"Death by Grooming" - A Quarterly Ritual</h2><p>March 5, 2026 — How a 3-hour Teams call replaced 3 days of release planning</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>Every quarter at athena, over 200 teams across the organisation gather for what's internally known as the BURP — Bottom Up Release Plan. For three days, scrum teams sit in closed rooms anchoring on OKRs, writing EPICs, user stories, and acceptance criteria, then slotting them into 7-8 defined sprints for the upcoming release.</p>
                         <p>The complexity compounds quickly. Long-term roadmap alignment is imperative. Cross-team dependencies demand closer inspection of timelines and readiness. Story points need to align with developer bandwidth. Functional-to-technical work ratios must be factored in. With all of this happening in real-time across a room full of engineers, product managers, and other stakeholders, it's no surprise that teams fondly refer to it as Death by Grooming.</p>
@@ -613,15 +614,12 @@
                         <p>The real change was less visible. The team wasn't exhausted. They were informed and more confident. The AI layer together with the MCP layer transformed the transcript into structure and eliminated most of the documentation-intensive work, leaving more time for deliberation and constructive planning.</p>
                         <p>What had been a gruelling, multi-day commitment became a focused, single-session workflow.</p>
                         <p>Death by Grooming doesn't have to be the cost of staying organised. The expressway exists — you just have to be willing to take it.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note3', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-                <article class="note">
-                    <h3>A Bootstrapped PM Dashboard</h3>
-                    <p class="meta">February 3, 2026 — Limited context switching with a single source of truth</p>
-                    <div class="note-preview" id="note4">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-a-bootstrapped-pm-dashboard" data-title="A Bootstrapped PM Dashboard" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>A Bootstrapped PM Dashboard</h2><p>February 3, 2026 — Limited context switching with a single source of truth</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>I've always found it fascinating that when someone shares their screen, the first few things you notice are their cluttered desktop and their unread email counts. It's either a sneak peek into their mind, their workday, or both.</p>
                         <p>For me, the next illuminating thing to watch for are their browser tabs. And PMs tend to have many of them open. 15 Jira tickets. 6 Confluence pages, 5 Amplitude dashboards, 4 Excel sheets, 3 PowerPoint decks, a year-old research paper, and a Fond points programme to grease someone's palms. I've seen worse.</p>
@@ -647,15 +645,12 @@
                         <p>I remember a time, earlier in my career, when I handed over specs for an inventory planning dashboard. It was an idea a couple of PMs wanted to pursue over countless papers, calculators, and Excel sheets. It felt helpless and hopeful at the same time. IT ensured everything was explained with the technical depth of a rocket scientist. Every iteration took days, sometimes weeks to see an outcome.</p>
                         <p>Instead, today, I described a problem. Worked with Codex using natural language. Iterated. A few hours later, I had something running.</p>
                         <p>I don't claim that everyone and their third cousin can build anything they want. That's not the point. There is no trade-off for technical competence. What I do think is that the barrier to spinning up something quick, isn't as high as it used to be.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note4', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-                <article class="note">
-                    <h3>AI-Assisted Feature Development</h3>
-                    <p class="meta">December 18, 2025 — Reimagining cross-functional collaboration through intelligent workflow integration</p>
-                    <div class="note-preview" id="note0">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-ai-assisted-feature-development" data-title="AI-Assisted Feature Development" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>AI-Assisted Feature Development</h2><p>December 18, 2025 — Reimagining cross-functional collaboration through intelligent workflow integration</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>Traditional feature development followed a somewhat disconnected, sequential pattern where Product, Engineering, and Design operated on separate swimlanes toward the same endpoint. Product managers spent hours crafting PRDs and user stories. Design handed off specifications after requirements were finalized. Engineering translated these artifacts into code, often discovering gaps mid-development that triggered additional coordination cycles. Documentation happened at the end for all parties, including downstream functions.</p>
                         <p>A feature estimated at 7 story points typically consumed 56 hours of development time. Any break in the chain created friction requiring additional interactions to resolve missing links. After development and unit testing, the branch was merged and passed on to QA for further testing and regression. On successful completion, product members would schedule downstream activities with cross-functional teams to bring the product to market, a timeline that could span roughly 4 sprints (about 320 hours of elapsed sprint capacity). But in the world of AI, do these timelines make sense?</p>
@@ -670,15 +665,12 @@
                         <p>Beyond metrics, the work fundamentally changed what's possible with existing teams. Product managers elevated from documenters to orchestrators, focusing on strategic thinking around user problems and clinical workflows. Engineers shifted from writing boilerplate to architecting systems, concentrating on performance optimisation and integration challenges. Design moved from middle-step handoffs to embedded collaboration, with specifications becoming living context.</p>
                         <p>Most significantly, this enables small teams to achieve what previously required larger headcount, speeds up innovation time for novel problems and creative solutions, and accelerates healthcare software development where speed directly translates to patient care impact.</p>
                         <p>AI-assisted development reimagines how Product, Engineering, and Design collaborate by transforming sequential handoffs into parallel workflows. Once you know the expressway exists, there's no going back.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note0', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-                <article class="note">
-                    <h3>Expedited Product Management Documentation</h3>
-                    <p class="meta">November 19, 2025 — Addressing Andrew Ng's view on product bottlenecks</p>
-                    <div class="note-preview" id="note00">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-expedited-product-management-documentation" data-title="Expedited Product Management Documentation" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>Expedited Product Management Documentation</h2><p>November 19, 2025 — Addressing Andrew Ng's view on product bottlenecks</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>Andrew Ng observed that AI makes development faster, but shifts the bottleneck to product management. When engineering can compress sprint-level work into hours and deliver features in days instead of weeks, the question shifts from "how fast can we build?" to "what should we build next?"</p>
                         <p>Traditional product workflows, like processing research data, crafting PRDs, generating user stories, creating go-to-market materials, drafting release communications, etc. operate at human-like speed while development moves much faster.</p>
@@ -693,15 +685,12 @@
                         <p><strong>Impact</strong></p>
                         <p>Taken with a pinch of salt, the results are promising, and demonstrate that product velocity could match AI-accelerated engineering cycles. Product managers reclaim time previously spent on manual documentation work, reallocating focus toward strategic thinking, stakeholder alignment, user research, and complex prioritisation decisions that AI cannot handle independently. However, the stress of sustaining a consistent pace over extended durations makes this highly unreliable.</p>
                         <p>The broader implication validates Ng's observation while providing a path forward: when AI accelerates any part of the product development lifecycle, every adjacent function must compress proportionally or become the new constraint.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note00', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-                <article class="note">
-                    <h3>Predicting the Next 'Act' with AI</h3>
-                    <p class="meta">August 9, 2025 — Accelerating clinical workflows through intelligent action recommendations</p>
-                    <div class="note-preview" id="note2">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-predicting-the-next-act-with-ai" data-title="Predicting the Next 'Act' with AI" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>Predicting the Next 'Act' with AI</h2><p>August 9, 2025 — Accelerating clinical workflows through intelligent action recommendations</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>Clinical inbox workflows are highly repetitive yet context-dependent. Physicians, nurses, and medical assistants process hundreds of inbox items daily—lab results, patient cases, imaging reports, referrals. Currently, users manually navigate and select appropriate actions for every Inbox item, creating unnecessary interaction friction. On mobile devices especially, these extra taps compound inefficiencies, slowing task completion and reducing overall throughput. While not a blocker, this represents a significant opportunity: even saving one click per action, multiplied across thousands of daily interactions, could meaningfully improve productivity.</p>
                         <p><strong>Solution</strong></p>
@@ -716,15 +705,12 @@
                         <p>Success metrics target measurable workflow improvements on mobile: Like a 20% reduction in task completion times and 15% increase in inbox action volume etc.</p>
                         <p>The broader strategic value lies in establishing a foundation for intelligent workflow assistance across the platform. By demonstrating that ARM can meaningfully reduce decision fatigue while respecting clinical judgement, this feature opens pathways for expanded AI integration throughout the athenahealth ecosystem, ultimately enabling clinicians to divert more energy to patient care rather than administrative navigation.</p>
                         <p>Unfortunately, the feature was shelved due to resource bandwidth.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note2', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-                <article class="note">
-                    <h3>AI-Assisted 'No Show' Prediction</h3>
-                    <p class="meta">July 23, 2025 — Enhancing healthcare scheduling with intelligent assistance and predictive analytics</p>
-                    <div class="note-preview" id="note1">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-ai-assisted-no-show-prediction" data-title="AI-Assisted 'No Show' Prediction" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Working with AI</a></p>
+                <div class="intro-header"><h2>AI-Assisted 'No Show' Prediction</h2><p>July 23, 2025 — Enhancing healthcare scheduling with intelligent assistance and predictive analytics</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p><strong>Problem</strong></p>
                         <p>The healthcare industry loses over $150 billion annually to appointment no-shows. Protecting even 1% of these lost appointments translates to $1.5 billion in recovered revenue. Most scheduling systems lack the sophistication of predictive intelligence to identify high-risk appointments or surface contextual patient information that could inform better booking decisions, double-booking strategies, or proactive outreach.</p>
                         <p><strong>Solution</strong></p>
@@ -735,19 +721,19 @@
                         <p>This project would need significant work with data science as it scales. The initial phase would be a simpler mathematical calculation. I used Balsamiq and Lovable to build a few quick prototypes to show stakeholders how this would work out on mobile.</p>
                         <p><strong>Impact</strong></p>
                         <p>Significantly, the predictive analytics component directly impacts revenue models. For athena, that's a percentage of payments recovered. By identifying high-risk appointments and surfacing actionable patient insights, practices can implement strategic interventions to reduce no-shows, protecting slot utilisation, and maximising revenue potential for stakeholders.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('note1', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
+                    </div></article>
             </section>
+            
         </main>
+        <footer class="site-footer">
+                <p>© 2026 Sheldon De Sousa</p>
+                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
+            </footer>
     </div>
 
     <script>
         function toggleNav(btn) {
-            const sidebar = btn.closest('.sidebar');
+            const sidebar = btn.closest('.site-header');
             sidebar.classList.toggle('nav-open');
             let backdrop = document.querySelector('.sidebar-backdrop');
             if (sidebar.classList.contains('nav-open')) {
@@ -766,9 +752,9 @@
             }
         }
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.sidebar nav a').forEach(function(link) {
+            document.querySelectorAll('.site-header nav a').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    var s = link.closest('.sidebar');
+                    var s = link.closest('.site-header');
                     if (s) s.classList.remove('nav-open');
                     var backdrop = document.querySelector('.sidebar-backdrop');
                     if (backdrop) backdrop.style.display = 'none';
@@ -826,6 +812,30 @@
                 if (frame.classList.contains('zoomed')) setOrigin(e);
             });
         });
+    </script>
+
+    <script>
+        // Card overview <-> article views (same pattern as Papers)
+        (function () {
+            const links = Array.prototype.slice.call(document.querySelectorAll('.paper-card .read-more[data-view], .back-link a'));
+            const views = {};
+            document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
+            function show(name, push) {
+                if (!views[name]) name = 'overview';
+                Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
+                document.title = views[name].dataset.title + ' - Sheldon De Sousa';
+                if (push) window.scrollTo(0, 0);
+            }
+            links.forEach(function (l) {
+                l.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    history.pushState(null, '', '#' + l.dataset.view);
+                    show(l.dataset.view, true);
+                });
+            });
+            window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
+            show(location.hash.slice(1), false);
+        })();
     </script>
 </body>
 </html>

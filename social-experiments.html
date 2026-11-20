@@ -523,22 +523,34 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div>
-                <div class="sidebar-header">
-                <div class="profile-section">
+        <header class="site-header">
+            <div class="header-top">
+                <div class="brand">
                     <img src="Images/profile.webp?v=6" alt="Sheldon De Sousa" class="profile-image">
-                    <h1>Sheldon <br>De Sousa</h1>
+                    <div class="brand-text">
+                        <h1>Sheldon De Sousa</h1>
+                        <p class="tagline tagline-desktop">Product Manager | AI Optimist</p>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
                 </div>
                 <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav(this)">
                     <span></span><span></span><span></span>
                 </button>
-                </div>
-                <div class="mobile-search">
+            </div>
+            <div class="mobile-search">
                             <div class="search-row">
                                 <div class="search-input-wrap">
                                     <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
@@ -547,76 +559,52 @@
                                 <button class="search-go" onclick="runSearch()">Go</button>
                             </div>
                 </div>
-                <div class="sidebar-collapsible">
-                <p class="tagline">Product Manager | AI Optimist</p>
-                <p class="social-links">Let's connect: <a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
-
+            <div class="menu">
+                <p class="tagline tagline-menu">Product Manager | AI Optimist</p>
                 <nav>
                     <ul>
                         <li><a href="index.html">About me</a></li>
                         <li><a href="notes.html">My Notes</a></li>
-                        <li class="nav-search">
-                            <div class="search-row">
-                                <div class="search-input-wrap">
-                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
-                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
-                                </div>
-                                <button class="search-go" onclick="runSearch()">Go</button>
-                            </div>
-                        </li>
-                        <li class="nav-separator" role="separator"></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html" class="active">Social Experiments</a></li>
                         <li><a href="personal-projects.html">Vibe-Coding</a></li>
                         <li><a href="papers.html">Papers</a></li>
                     </ul>
                 </nav>
-                </div>
+                <p class="social-links"><span class="connect-label">Let's connect: </span><a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
             </div>
-
-            <footer>
-                <p>© 2026 Sheldon De Sousa</p>
-                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
-            </footer>
-        </aside>
+        </header>
 
         <!-- Main Content -->
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Intro -->
-            <div class="intro-header">
+            <section class="paper-view" id="view-overview" data-title="Social experiments">
+                <div class="intro-header">
                 <h2>Social experiments</h2>
                 <p>The most interesting design challenges aren't products. They're people. This is where I explore design thinking as a tool for social change.</p>
             </div>
-
-            <!-- Experiments Section -->
-            <section id="experiments">
-                <article class="note">
-                    <h3>Design for Social Good : Female Literacy &amp; Employment (India)</h3>
-                    <p class="meta">Tackling female literacy in India through the L.E.A.D programme</p>
-                    <div class="note-preview" style="max-height: none;">
-                        <p>A curious dive into designing for social good in an attempt to solve one of India's wicked problems — female literacy, both children and adults. This was an optional coursework assignment that I worked on and felt strongly about. I thought it would be a good opportunity to apply a design thinking approach to solving something as critical and complex as literacy in a developing country.</p>
-                    </div>
-                    <a href="experiments/design-for-social-good.html" class="expand-toggle" onclick="gtag('event', 'view_experiment', { article_title: 'Design for Social Good : Female Literacy', page: 'Social Experiments' })">
-                        More <span class="chevron">&#9660;</span>
-                    </a>
-                </article>
-
-                <article class="note">
-                    <h3>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h3>
-                    <span class="status-tag">In progress</span>
-                    <p class="meta">Designing a regulated water monitoring system for shared residential buildings</p>
-                    <div class="note-preview" style="max-height: none;">
+                <div class="paper-cards no-dates">
+                    <div class="paper-card"><h3>Design for Social Good : Female Literacy &amp; Employment (India)</h3><p>Tackling female literacy in India through the L.E.A.D programme</p><a class="read-more" href="experiments/design-for-social-good.html">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h3><span class="status-tag">In progress</span><p>Designing a regulated water monitoring system for shared residential buildings</p><a class="read-more" href="#water-use" data-view="water-use">Read more &rarr;</a></div>
+                </div>
+            </section>
+            <section class="paper-view" id="view-water-use" data-title="Design for Social Good: Fair Water Use in Shared Living Spaces (India)" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Social Experiments</a></p>
+                <div class="intro-header"><h2>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h2><span class="status-tag">In progress</span><p>Designing a regulated water monitoring system for shared residential buildings</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p>During the 2026 water crisis in Pune (July to August), buildings were forced to conserve water, with tankers supplying it for only one to two hours a day. Apartments ranged from 2 to 4 BHK, yet every household drew from the same shared source. Without visibility into who uses how much, some households may take more than their share while others go without what they need. This experiment explores how a regulated water monitoring system could make consumption transparent, encourage fair use, and ensure every household gets what it needs when water is scarce.</p>
-                    </div>
-                </article>
+                    </div></article>
             </section>
         </main>
+        <footer class="site-footer">
+                <p>© 2026 Sheldon De Sousa</p>
+                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
+            </footer>
     </div>
 
     <script>
         function toggleNav(btn) {
-            const sidebar = btn.closest('.sidebar');
+            const sidebar = btn.closest('.site-header');
             sidebar.classList.toggle('nav-open');
             let backdrop = document.querySelector('.sidebar-backdrop');
             if (sidebar.classList.contains('nav-open')) {
@@ -635,9 +623,9 @@
             }
         }
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.sidebar nav a').forEach(function(link) {
+            document.querySelectorAll('.site-header nav a').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    var s = link.closest('.sidebar');
+                    var s = link.closest('.site-header');
                     if (s) s.classList.remove('nav-open');
                     var backdrop = document.querySelector('.sidebar-backdrop');
                     if (backdrop) backdrop.style.display = 'none';
@@ -662,6 +650,30 @@
                 window.location.href = 'notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
             };
             window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
+        })();
+    </script>
+
+    <script>
+        // Card overview <-> article views (same pattern as Papers)
+        (function () {
+            const links = Array.prototype.slice.call(document.querySelectorAll('.paper-card .read-more[data-view], .back-link a'));
+            const views = {};
+            document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
+            function show(name, push) {
+                if (!views[name]) name = 'overview';
+                Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
+                document.title = views[name].dataset.title + ' - Sheldon De Sousa';
+                if (push) window.scrollTo(0, 0);
+            }
+            links.forEach(function (l) {
+                l.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    history.pushState(null, '', '#' + l.dataset.view);
+                    show(l.dataset.view, true);
+                });
+            });
+            window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
+            show(location.hash.slice(1), false);
         })();
     </script>
 </body>

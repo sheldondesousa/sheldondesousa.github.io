@@ -638,22 +638,34 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="layout.css">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <div>
-                <div class="sidebar-header">
-                <div class="profile-section">
+        <header class="site-header">
+            <div class="header-top">
+                <div class="brand">
                     <img src="Images/profile.webp?v=6" alt="Sheldon De Sousa" class="profile-image">
-                    <h1>Sheldon <br>De Sousa</h1>
+                    <div class="brand-text">
+                        <h1>Sheldon De Sousa</h1>
+                        <p class="tagline tagline-desktop">Product Manager | AI Optimist</p>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
                 </div>
                 <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav(this)">
                     <span></span><span></span><span></span>
                 </button>
-                </div>
-                <div class="mobile-search">
+            </div>
+            <div class="mobile-search">
                             <div class="search-row">
                                 <div class="search-input-wrap">
                                     <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
@@ -662,24 +674,12 @@
                                 <button class="search-go" onclick="runSearch()">Go</button>
                             </div>
                 </div>
-                <div class="sidebar-collapsible">
-                <p class="tagline">Product Manager | AI Optimist</p>
-                <p class="social-links">Let's connect: <a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
-
+            <div class="menu">
+                <p class="tagline tagline-menu">Product Manager | AI Optimist</p>
                 <nav>
                     <ul>
                         <li><a href="index.html">About me</a></li>
                         <li><a href="notes.html">My Notes</a></li>
-                        <li class="nav-search">
-                            <div class="search-row">
-                                <div class="search-input-wrap">
-                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
-                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
-                                </div>
-                                <button class="search-go" onclick="runSearch()">Go</button>
-                            </div>
-                        </li>
-                        <li class="nav-separator" role="separator"></li>
                         <li><a href="working-with-ai.html">Working with AI</a></li>
                         <li><a href="social-experiments.html">Social Experiments</a></li>
                         <li><a href="personal-projects.html">Vibe-Coding</a></li>
@@ -692,14 +692,9 @@
                         </li>
                     </ul>
                 </nav>
-                </div>
+                <p class="social-links"><span class="connect-label">Let's connect: </span><a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
             </div>
-
-            <footer>
-                <p>© 2026 Sheldon De Sousa</p>
-                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
-            </footer>
-        </aside>
+        </header>
 
         <!-- Main Content -->
         <!-- Main Content -->
@@ -1094,11 +1089,15 @@
             </article>
           </section>
         </main>
+        <footer class="site-footer">
+                <p>© 2026 Sheldon De Sousa</p>
+                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
+            </footer>
     </div>
 
     <script>
         function toggleNav(btn) {
-            const sidebar = btn.closest('.sidebar');
+            const sidebar = btn.closest('.site-header');
             sidebar.classList.toggle('nav-open');
             let backdrop = document.querySelector('.sidebar-backdrop');
             if (sidebar.classList.contains('nav-open')) {
@@ -1117,9 +1116,9 @@
             }
         }
         document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.sidebar nav a').forEach(function(link) {
+            document.querySelectorAll('.site-header nav a').forEach(function(link) {
                 link.addEventListener('click', function() {
-                    var s = link.closest('.sidebar');
+                    var s = link.closest('.site-header');
                     if (s) s.classList.remove('nav-open');
                     var backdrop = document.querySelector('.sidebar-backdrop');
                     if (backdrop) backdrop.style.display = 'none';
