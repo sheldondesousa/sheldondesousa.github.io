@@ -270,7 +270,8 @@ body { padding-top: 0; }
     }
     .header-top { display: contents; }
     .brand { grid-row: 1; grid-column: 1; justify-self: start; }
-    .menu { grid-row: 1; grid-column: 2; border-top: 0; padding: 0; }
+    .menu { grid-row: 1; grid-column: 2; display: block; position: relative; border-top: 0; padding: 0; }
+    .menu .social-links { position: absolute; left: calc(100% + 1rem); top: 50%; transform: translateY(-50%); }
     .header-search { grid-row: 1; grid-column: 3; justify-self: end; width: 150px; }
     .menu nav ul { gap: 0 1.25rem; }
     .menu nav a { padding: 0.5rem 0; font-size: 0.78rem; letter-spacing: 1px; }
