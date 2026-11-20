@@ -299,3 +299,7 @@ body { padding-top: 0; }
 .back-link a:hover { opacity: 0.65; }
 .note-preview.expanded::after { display: none; }
 @media (max-width: 768px) { .paper-card p { font-size: 1rem; } }
+
+/* Equal-size cards (same footprint as the Papers cards) */
+.paper-cards { grid-auto-rows: 1fr; }
+@media (min-width: 769px) { .paper-cards.no-dates .paper-card { min-height: 19rem; } }
