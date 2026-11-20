@@ -303,3 +303,9 @@ body { padding-top: 0; }
 /* Equal-size cards (same footprint as the Papers cards) */
 .paper-cards { grid-auto-rows: 1fr; }
 @media (min-width: 769px) { .paper-cards.no-dates .paper-card { min-height: 19rem; } }
+
+/* Dated cards */
+.paper-card .paper-date { font-size: 14px; color: #747474; font-family: var(--sans); margin-top: auto; margin-bottom: 0; }
+.paper-card .card-desc { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+@media (min-width: 769px) { .paper-card { min-height: 19rem; } }
+div.paper-cards#notes { display: grid; flex-direction: initial; }
