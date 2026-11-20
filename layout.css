@@ -94,6 +94,9 @@ body { padding-top: 0; }
 }
 .tagline-menu { display: none; }
 
+/* Search is hidden from the banner for now (markup kept; remove these rules to restore) */
+.header-search, .mobile-search { display: none !important; }
+
 .header-search { width: 240px; max-width: 100%; }
 .mobile-search { display: none; }
 
@@ -270,12 +273,11 @@ body { padding-top: 0; }
     }
     .header-top { display: contents; }
     .brand { grid-row: 1; grid-column: 1; justify-self: start; }
-    .menu { grid-row: 1; grid-column: 2; display: block; position: relative; border-top: 0; padding: 0; }
-    .menu .social-links { position: absolute; left: calc(100% + 1rem); top: 50%; transform: translateY(-50%); }
-    .header-search { grid-row: 1; grid-column: 3; justify-self: end; width: 150px; }
+    .menu { display: contents; }
+    .menu nav { grid-row: 1; grid-column: 2; }
+    .menu .social-links { grid-row: 1; grid-column: 3; justify-self: end; font-size: 0.85rem; }
     .menu nav ul { gap: 0 1.25rem; }
     .menu nav a { padding: 0.5rem 0; font-size: 0.78rem; letter-spacing: 1px; }
     .menu nav ul.tree { top: calc(100% + 0.4rem); }
     .menu nav li.nav-tree::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 0.6rem; }
-    .social-links .connect-label { display: none; }
 }
