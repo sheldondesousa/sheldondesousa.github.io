@@ -578,33 +578,22 @@
         <!-- Main Content -->
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Intro -->
-            <div class="intro-header">
+            <section class="paper-view" id="view-overview" data-title="Social experiments">
+                <div class="intro-header">
                 <h2>Social experiments</h2>
                 <p>The most interesting design challenges aren't products. They're people. This is where I explore design thinking as a tool for social change.</p>
             </div>
-
-            <!-- Experiments Section -->
-            <section id="experiments">
-                <article class="note">
-                    <h3>Design for Social Good : Female Literacy &amp; Employment (India)</h3>
-                    <p class="meta">Tackling female literacy in India through the L.E.A.D programme</p>
-                    <div class="note-preview" style="max-height: none;">
-                        <p>A curious dive into designing for social good in an attempt to solve one of India's wicked problems — female literacy, both children and adults. This was an optional coursework assignment that I worked on and felt strongly about. I thought it would be a good opportunity to apply a design thinking approach to solving something as critical and complex as literacy in a developing country.</p>
-                    </div>
-                    <a href="experiments/design-for-social-good.html" class="expand-toggle" onclick="gtag('event', 'view_experiment', { article_title: 'Design for Social Good : Female Literacy', page: 'Social Experiments' })">
-                        More <span class="chevron">&#9660;</span>
-                    </a>
-                </article>
-
-                <article class="note">
-                    <h3>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h3>
-                    <span class="status-tag">In progress</span>
-                    <p class="meta">Designing a regulated water monitoring system for shared residential buildings</p>
-                    <div class="note-preview" style="max-height: none;">
+                <div class="paper-cards no-dates">
+                    <div class="paper-card"><h3>Design for Social Good : Female Literacy &amp; Employment (India)</h3><p>Tackling female literacy in India through the L.E.A.D programme</p><a class="read-more" href="experiments/design-for-social-good.html">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h3><span class="status-tag">In progress</span><p>Designing a regulated water monitoring system for shared residential buildings</p><a class="read-more" href="#water-use" data-view="water-use">Read more &rarr;</a></div>
+                </div>
+            </section>
+            <section class="paper-view" id="view-water-use" data-title="Design for Social Good: Fair Water Use in Shared Living Spaces (India)" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Social Experiments</a></p>
+                <div class="intro-header"><h2>Design for Social Good: Fair Water Use in Shared Living Spaces (India)</h2><span class="status-tag">In progress</span><p>Designing a regulated water monitoring system for shared residential buildings</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p>During the 2026 water crisis in Pune (July to August), buildings were forced to conserve water, with tankers supplying it for only one to two hours a day. Apartments ranged from 2 to 4 BHK, yet every household drew from the same shared source. Without visibility into who uses how much, some households may take more than their share while others go without what they need. This experiment explores how a regulated water monitoring system could make consumption transparent, encourage fair use, and ensure every household gets what it needs when water is scarce.</p>
-                    </div>
-                </article>
+                    </div></article>
             </section>
         </main>
         <footer class="site-footer">
@@ -661,6 +650,30 @@
                 window.location.href = 'notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
             };
             window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
+        })();
+    </script>
+
+    <script>
+        // Card overview <-> article views (same pattern as Papers)
+        (function () {
+            const links = Array.prototype.slice.call(document.querySelectorAll('.paper-card .read-more[data-view], .back-link a'));
+            const views = {};
+            document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
+            function show(name, push) {
+                if (!views[name]) name = 'overview';
+                Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
+                document.title = views[name].dataset.title + ' - Sheldon De Sousa';
+                if (push) window.scrollTo(0, 0);
+            }
+            links.forEach(function (l) {
+                l.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    history.pushState(null, '', '#' + l.dataset.view);
+                    show(l.dataset.view, true);
+                });
+            });
+            window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
+            show(location.hash.slice(1), false);
         })();
     </script>
 </body>

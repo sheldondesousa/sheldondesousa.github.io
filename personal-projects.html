@@ -607,18 +607,21 @@
         <!-- Main Content -->
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Intro -->
-            <div class="intro-header">
+            <section class="paper-view" id="view-overview" data-title="Vibe-Coding">
+                <div class="intro-header">
                 <h2>Vibe-Coding</h2>
                 <p>A running log of experiments, ideas, and apps built with AI-assisted coding to test the boundaries of what's possible.</p>
             </div>
-
-            <!-- Projects Section -->
-            <section id="projects">
-                <article class="note">
-                    <h3>Developing a Mobile Hydration Tracker</h3>
-                    <p class="meta">Exploring multi-input intake recordings and generative AI summaries</p>
-                    <div class="note-preview" id="proj3">
+                <div class="paper-cards no-dates">
+                    <div class="paper-card"><h3>Developing a Mobile Hydration Tracker</h3><p>Exploring multi-input intake recordings and generative AI summaries</p><a class="read-more" href="#hydration-tracker" data-view="hydration-tracker">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Building Hush: A Break From the Noise</h3><p>A minimalist breathing and meditation app with AI-generated voice-assistance.</p><a class="read-more" href="#hush" data-view="hush">Read more &rarr;</a></div>
+                    <div class="paper-card"><h3>Building a World Cup Predictor</h3><p>A weekend experiment in Elo ratings and Poisson distributions</p><a class="read-more" href="#world-cup-predictor" data-view="world-cup-predictor">Read more &rarr;</a></div>
+                </div>
+            </section>
+            <section class="paper-view" id="view-hydration-tracker" data-title="Developing a Mobile Hydration Tracker" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
+                <div class="intro-header"><h2>Developing a Mobile Hydration Tracker</h2><p>Exploring multi-input intake recordings and generative AI summaries</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p>I'd noticed people consistently complain about not consuming enough drinking water during the day. The topic was a frequent favourite at work, particularly because we bounced from meeting to meeting with few breaks in between. Coffee and tea were excessive replacements.</p>
                         <p>Folks would bring in their personal bottles, a few with volume markers. They had every good intention of hitting their target. But even the best laid plans tanked. The trouble with those bottles was that most people spent most of their time away from their desk.</p>
                         <p>None of this had much to do with why I built a hydration tracker. I simply wanted a weekend project and an opportunity to prove that the PRD still mattered - a subject of much debate and anxiety on LinkedIn.</p>
@@ -640,16 +643,12 @@
                         <p>The most important thing to come out of this project was confirming that a well-prepared PRD with articulated stories and acceptance criteria drove down development time significantly over my previous "decide while doing" projects.</p>
                         <p>The PRD is an absolute necessity even if it's just a prototype or proof of concept you're going after. You need some sort of a compass. Skipping it, particularly in complex builds, opens the doors to misalignment and rework.</p>
                         <p>So, I'll stay clear from the predictions of gurus and pundits claiming the PRD is optional. Or that a prototype is the new PRD. I guess, if you don't know where you are going, any road will take you there. And while I do appreciate an adventure, time is important to me.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('proj3', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Building Hush: A Break From the Noise</h3>
-                    <p class="meta">A minimalist breathing and meditation app with AI-generated voice-assistance.</p>
-                    <div class="note-preview" id="proj1">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-hush" data-title="Building Hush: A Break From the Noise" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
+                <div class="intro-header"><h2>Building Hush: A Break From the Noise</h2><p>A minimalist breathing and meditation app with AI-generated voice-assistance.</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p>My commute to the office was short, but never calm. Every morning, the roads offered the same experience. Horns without reason. Vehicles threading gaps that didn't exist. An ambient aggression that nobody seems to notice anymore, because it's just how things work now.</p>
                         <p>It struck me at some point that nobody stops. Not physically, not mentally. There's a pressure baked into ordinary life that most people have simply accepted as normal.</p>
                         <p>I didn't want to accept it.</p>
@@ -665,16 +664,12 @@
                         <p>The visual language followed the same logic: minimal and spacious. If the interface is doing its job, you stop noticing it. Designed with light and muted shades, chosen from colour psychology, it's focused on an assuring calm without the distraction.</p>
                         <p>While the MVP provides the elementary layers, the project is being extended to voice-enabled features, to remove dependency on visual cues. Haptics were already introduced as state change evidence but it relies on human awareness of exercise stage.</p>
                         <p>I don't think one app changes a culture. But I think individuals can choose, moment by moment, to slow down. Hush is my attempt to make that choice a little easier. To offer a pause in a world that's forgotten how to take one.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('proj1', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
-
-                <article class="note">
-                    <h3>Building a World Cup Predictor</h3>
-                    <p class="meta">A weekend experiment in Elo ratings and Poisson distributions</p>
-                    <div class="note-preview" id="proj2">
+                    </div></article>
+            </section>
+<section class="paper-view" id="view-world-cup-predictor" data-title="Building a World Cup Predictor" hidden>
+                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
+                <div class="intro-header"><h2>Building a World Cup Predictor</h2><p>A weekend experiment in Elo ratings and Poisson distributions</p></div>
+                <article class="note"><div class="note-preview expanded">
                         <p>Last week I sat in on a conversation between friends, all neck-deep in predictions, numerical tables, and gut feelings about the FIFA 2026 World Cup. I wasn't really following the match talk as much as I was thinking prediction modelling in general.</p>
                         <p>At the time I was exploring conditional probabilities like Markov's chain and logistic regression at work. So the football conversation seemed like a worthy enough excuse to try something.</p>
                         <p>I want to be clear about the intent here. This wasn't an attempt to compete with the serious forecasters, or with Paul the octopus, for that matter. Real prediction models are a different order of complexity entirely — big data, machine learning, supercomputers, statistical modelling weighing thousands of variables: injuries, form, tactics, fatigue accumulated over a tournament. That's a different ball game.</p>
@@ -692,11 +687,7 @@
                         <p>AI didn't close that gap for me. If anything, it made the gap easier to see. Every decision in the build still needed a level of judgement the tool couldn't supply.</p>
                         <p>I think this is exactly where product management is heading. AI will amplify PMs, but only as far as the product sense they've developed already extends. It won't hand anyone the judgement or expertise they don't already have. That will become obvious as roles start to blur.</p>
                         <p>Quality "AI-powered" work is really just a reflection of how much sense the person behind it brings to the table — and I suspect, at least in the near term, we're quietly building an age of pseudo-competence, where we assume the tool covers for whatever we're missing.</p>
-                    </div>
-                    <button class="expand-toggle" onclick="toggleNote('proj2', this)">
-                        More <span class="chevron">&#9660;</span>
-                    </button>
-                </article>
+                    </div></article>
             </section>
         </main>
         <footer class="site-footer">
@@ -767,6 +758,30 @@
                 window.location.href = 'notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
             };
             window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
+        })();
+    </script>
+
+    <script>
+        // Card overview <-> article views (same pattern as Papers)
+        (function () {
+            const links = Array.prototype.slice.call(document.querySelectorAll('.paper-card .read-more[data-view], .back-link a'));
+            const views = {};
+            document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
+            function show(name, push) {
+                if (!views[name]) name = 'overview';
+                Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
+                document.title = views[name].dataset.title + ' - Sheldon De Sousa';
+                if (push) window.scrollTo(0, 0);
+            }
+            links.forEach(function (l) {
+                l.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    history.pushState(null, '', '#' + l.dataset.view);
+                    show(l.dataset.view, true);
+                });
+            });
+            window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
+            show(location.hash.slice(1), false);
         })();
     </script>
 </body>
