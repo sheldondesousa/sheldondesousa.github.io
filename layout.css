@@ -198,7 +198,7 @@ body { padding-top: 0; }
 }
 
 /* ---------- Small screens: photo + name, menu in a drawer ---------- */
-@media (max-width: 1360px) {
+@media (max-width: 1440px) {
     .header-top { padding: 0.75rem var(--gutter); }
     .brand .profile-image { width: 40px; height: 40px; }
     .brand h1 { font-size: 1.5rem; }
@@ -260,17 +260,18 @@ body { padding-top: 0; }
 @media (max-width: 768px) { body { padding-top: 0; } }
 
 /* Desktop: brand, nav and search share one banner row */
-@media (min-width: 1361px) {
+@media (min-width: 1441px) {
     .site-header {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
         gap: 1.5rem;
         padding: 0.9rem var(--gutter);
     }
     .header-top { display: contents; }
-    .brand { order: 0; }
-    .menu { order: 1; flex: 1; border-top: 0; padding: 0; }
-    .header-search { order: 2; width: 150px; flex-shrink: 0; }
+    .brand { grid-row: 1; grid-column: 1; justify-self: start; }
+    .menu { grid-row: 1; grid-column: 2; border-top: 0; padding: 0; }
+    .header-search { grid-row: 1; grid-column: 3; justify-self: end; width: 150px; }
     .menu nav ul { gap: 0 1.25rem; }
     .menu nav a { padding: 0.5rem 0; font-size: 0.78rem; letter-spacing: 1px; }
     .menu nav ul.tree { top: calc(100% + 0.4rem); }
