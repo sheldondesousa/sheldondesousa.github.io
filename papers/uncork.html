@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCEERXTRF4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCEERXTRF4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Grounded, AI Sommelier with an On-Device Model - Sheldon De Sousa</title>
+    <meta name="description" content="A Case Study on Uncork: A Self-Taught Journey from Consumer Friction to Functional RAG-supported Edge AI">
+    <link rel="canonical" href="https://sheldondesousa.com/papers/uncork.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Sheldon De Sousa">
+    <meta property="og:title" content="Building a Grounded, AI Sommelier with an On-Device Model">
+    <meta property="og:description" content="A Case Study on Uncork: A Self-Taught Journey from Consumer Friction to Functional RAG-supported Edge AI">
+    <meta property="og:url" content="https://sheldondesousa.com/papers/uncork.html">
+    <meta name="twitter:card" content="summary">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Caslon Text', 'Georgia', serif;
+            line-height: 1.8;
+            color: #000;
+            background: #FCFCFB;
+        }
+
+        /* Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background: #FAFAF8;
+            color: #000;
+            padding: 3rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid #E2E2E1;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 30%;
+            border: 1px solid #000;
+            flex-shrink: 0;
+        }
+
+        .sidebar .tagline {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 0.25rem;
+            font-family: 'Libre Caslon Text', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .sidebar .social-links {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: opacity 0.3s;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .sidebar nav a:hover {
+            border-bottom-color: #000;
+        }
+
+        .sidebar nav a.active {
+            font-weight: 700;
+        }
+
+        .sidebar footer {
+            font-size: 0.75rem;
+            color: rgba(0,0,0,0.5);
+            margin-top: auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem;
+            max-width: 700px;
+            overflow-y: auto;
+        }
+
+        /* Header intro */
+        .intro-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .intro-header h2 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .intro-header p {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .intro-header p.paper-date { font-size: 14px; color: #747474; opacity: 1; margin: 0.75rem 0 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+        /* Section headers */
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+            opacity: 0.5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Writing - Newsletter style */
+        .note {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .note:last-child {
+            border: none;
+        }
+
+        .note h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .note .meta {
+            font-size: 14px;
+            color: #747474;
+            margin-bottom: 1.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .note p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .note-preview {
+            max-height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .note-preview.expanded {
+            max-height: none;
+        }
+
+        .note-preview:not(.expanded)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #FCFCFB);
+        }
+
+        .expand-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: none;
+            padding: 0.5rem 0;
+            margin-top: 1rem;
+            transition: opacity 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            cursor: pointer;
+            background: #FCFCFB;
+        }
+
+        .expand-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .chevron {
+            transition: transform 0.3s;
+            font-size: 0.75rem;
+        }
+
+        .expand-toggle.expanded .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Work section - more compact */
+        .work-list {
+            margin-bottom: 4rem;
+        }
+
+        .work-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .work-item:last-child {
+            border: none;
+        }
+
+        .work-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .work-item p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* About section */
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            flex-direction: column;
+            gap: 5px;
+            flex-shrink: 0;
+            margin-left: auto;
+            align-self: center;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #000;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .sidebar.nav-open .hamburger span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .sidebar.nav-open .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+        .sidebar.nav-open .hamburger span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 0;
+                height: auto;
+                border-right: none;
+                border-bottom: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                z-index: 100;
+                background: #FAFAF8;
+            }
+            .sidebar-header {
+                padding: 0.85rem 1.25rem;
+            }
+            .sidebar-header .profile-section {
+                margin-bottom: 0;
+                flex: 1;
+            }
+            .sidebar-header .profile-image {
+                width: 36px;
+                height: 36px;
+            }
+            .sidebar-header h1 {
+                font-size: 28px;
+            }
+            .sidebar-header h1 br {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .sidebar-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.25);
+                z-index: 99;
+            }
+            .sidebar-collapsible {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #FAFAF8;
+                border-left: 1px solid #000;
+                padding: 2rem 1.5rem 5rem;
+                transform: translateX(110%);
+                transition: transform 0.35s ease;
+                z-index: 100;
+                overflow-y: auto;
+                display: block;
+            }
+            .sidebar.nav-open .sidebar-collapsible {
+                transform: translateX(0);
+            }
+            .sidebar footer {
+                display: none;
+            }
+            .sidebar.nav-open footer {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #FAFAF8;
+                padding: 1rem 1.5rem;
+                border-top: 1px solid #eee;
+                border-left: 1px solid #000;
+                z-index: 100;
+                margin-top: 0;
+                font-size: 14px;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .intro-header h2 {
+                font-size: 32px;
+            }
+            .sidebar .tagline {
+                font-size: 20px;
+            }
+            .sidebar .social-links {
+                font-size: 18px;
+            }
+            .sidebar nav a {
+                font-size: 20px;
+            }
+            .intro-header p {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 14px;
+            }
+            .meta {
+                font-size: 14px;
+            }
+            .note p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 1.25rem;
+            }
+            .intro-header h2 {
+                font-size: 28px;
+            }
+            .note h3 {
+                font-size: 24px;
+            }
+            .note p {
+                font-size: 18px;
+            }
+            .meta {
+                font-size: 14px;
+            }
+            .sidebar .tagline {
+                font-size: 20px;
+            }
+        }
+        /* Papers tree menu */
+        .sidebar nav li.nav-tree > a { display: inline-block; }
+        .sidebar nav ul.tree { margin: 0.55rem 0 0.2rem 0.4rem; padding-left: 1.1rem; }
+        .sidebar nav ul.tree li { position: relative; margin: 0.45rem 0; }
+        .sidebar nav ul.tree li::before { content: ""; position: absolute; left: -1.1rem; top: 0.72em; width: 0.8rem; border-top: 1px solid #000; }
+        .sidebar nav ul.tree li::after { content: ""; position: absolute; left: -1.1rem; top: -0.45rem; height: calc(0.45rem + 0.72em); border-left: 1px solid #000; }
+        .sidebar nav ul.tree a { font-size: 0.78rem; letter-spacing: 1.2px; }
+        .sidebar nav ul.tree a.current { font-weight: 700; border-bottom-color: #000; }
+        /* Papers overview cards */
+        .paper-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .paper-card { border: 1px solid #2B2320; border-radius: 10px; padding: 1.5rem; background: #FAFAF8; display: flex; flex-direction: column; }
+        .paper-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; line-height: 1.3; margin-bottom: 0.6rem; }
+        .paper-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem; }
+        .paper-card .paper-date { font-size: 14px; color: #747474; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin-top: auto; }
+        .paper-card .read-more { margin-top: 0.75rem; color: #000; font-weight: 700; text-decoration: none; border-bottom: 1px solid #000; align-self: flex-start; }
+        .paper-card .read-more:hover { opacity: 0.65; }
+        .paper-view[hidden] { display: none; }
+        .wip-tag { text-transform: none; letter-spacing: 0; font-weight: 400; font-style: italic; opacity: 0.7; white-space: nowrap; }
+        .sidebar nav ul.tree .wip-tag { font-size: 0.72rem; }
+        .intro-header h2 .wip-tag { font-size: 0.4em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; vertical-align: middle; }
+
+        /* MCP paper charts */
+        .paper figure.mcp-chart { margin: 2rem 0; --cds-text-primary: #000; --cds-text-secondary: #6E645A; --cds-chart-categorical-1: #7A2331; --cds-chart-categorical-2: #4F7C8A; --cds-chart-categorical-3: #B07D2B; --cds-chart-muted: #CFC8BF; --cds-chart-axis: #9A8F82; --cds-chart-status-good: #5E8C61; --cds-bg: #FCFCFB; }
+        .paper figure.mcp-chart svg { display: block; width: 100%; height: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; border: 1px solid #2B2320; border-radius: 6px; background: #FCFCFB; margin: 0 0 12px; }
+        @media (max-width: 768px) { .paper figure.mcp-chart { overflow-x: auto; } .paper figure.mcp-chart svg { min-width: 640px; } }
+        /* Sprint capacity charts (sc-): drawn at runtime from one SPRINT data object */
+        .paper figure.sc-fig { margin: 2rem 0; }
+        .sc-fig {
+            --sc-maroon: #7A2331; --sc-maroon-tint: #DDBFC3; --sc-grey: #CFC8BF; --sc-teal: #2F6F73; --sc-teal-tint: #AFCFD1;
+            --sc-amber: #C98A1B; --sc-amber-text: #8A5A00; --sc-slate: #7A7268; --sc-fg: #000; --sc-muted: #6E645A;
+            --sc-line: #E2DDD4; --sc-panel: #FCFCFB; --sc-on-dark: #FFFFFF; --sc-on-amber: #1D1A17;
+        }
+        .sc-box { border: 1px solid #2B2320; border-radius: 6px; background: var(--sc-panel); padding: 14px 12px 12px; display: flex; flex-direction: column; gap: 10px; min-width: 0; margin: 0 0 12px; }
+        .sc-title { font: 600 15px/1.3 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--sc-fg); }
+        .sc-plot { min-width: 0; width: 100%; }
+        .sc-plot svg { display: block; max-width: 100%; overflow: visible; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .sc-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font: 12px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--sc-muted); }
+        .sc-legend span { display: inline-flex; align-items: center; gap: 6px; }
+        .sc-sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; flex: none; }
+        .sc-bg-maroon { background: var(--sc-maroon); } .sc-bg-tint { background: var(--sc-maroon-tint); } .sc-bg-grey { background: var(--sc-grey); }
+        .sc-bg-teal { background: var(--sc-teal); } .sc-bg-tealtint { background: var(--sc-teal-tint); } .sc-bg-amber { background: var(--sc-amber); }
+        .sc-note { font: 12px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--sc-muted); }
+        .sc-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+        .sc-tabs button { font: 500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--sc-fg); background: transparent; border: 1px solid var(--sc-line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+        .sc-tabs button[aria-pressed="true"] { background: var(--sc-fg); color: var(--sc-panel); border-color: var(--sc-fg); }
+        .sc-tabs button:focus-visible { outline: 2px solid var(--sc-teal); outline-offset: 2px; }
+        .sc-tbl { overflow-x: auto; }
+        .paper table.sc-table { min-width: 440px; font-size: 13px; font-variant-numeric: tabular-nums; margin: 0; }
+        .sc-table th, .sc-table td { white-space: nowrap; }
+        .sc-table th:not(:first-child), .sc-table td:not(:first-child) { text-align: right; }
+        .sc-table .sc-pos { color: var(--sc-teal); font-weight: 600; }
+        .sc-table .sc-warn { color: var(--sc-amber-text); font-weight: 600; }
+        .sc-tx { font-size: 11px; fill: var(--sc-muted); }
+        .sc-tb { font-weight: 600; fill: var(--sc-fg); }
+        .sc-tv { font-weight: 600; fill: var(--sc-fg); }
+        .sc-tt { font-weight: 600; fill: var(--sc-teal); }
+        .sc-ta { font-weight: 600; fill: var(--sc-amber-text); }
+        .sc-gl { stroke: var(--sc-line); stroke-width: 1; }
+        .sc-zero { stroke: var(--sc-muted); stroke-width: 1; }
+        .sc-dash { stroke-dasharray: 3 3; }
+        .sc-br { stroke: var(--sc-muted); stroke-width: 1; fill: none; }
+        .sc-capl { stroke: var(--sc-fg); stroke-width: 1.3; stroke-dasharray: 5 3; }
+        .sc-tgt { stroke: var(--sc-teal); stroke-width: 1.5; stroke-dasharray: 5 3; }
+        .sc-seg { stroke: var(--sc-panel); stroke-width: 1.5; }
+        .sc-f-maroon { fill: var(--sc-maroon); } .sc-f-tint { fill: var(--sc-maroon-tint); } .sc-f-grey { fill: var(--sc-grey); }
+        .sc-f-teal { fill: var(--sc-teal); } .sc-f-tealtint { fill: var(--sc-teal-tint); } .sc-f-amber { fill: var(--sc-amber); } .sc-f-slate { fill: var(--sc-slate); }
+        .sc-on-l { fill: var(--sc-fg); } .sc-on-d { fill: var(--sc-on-dark); } .sc-on-a { fill: var(--sc-on-amber); }
+        @media (prefers-reduced-motion: no-preference) { .sc-tabs button { transition: background .15s, color .15s; } }
+
+        /* Paper */
+        .paper h2 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 1rem; padding-top: 48px; border-top: 1px solid rgba(43,35,32,.1); font-family: 'Playfair Display', serif; }
+        .paper h2:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+        .paper h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 .5rem; color: #7A2331; font-family: 'Playfair Display', serif; }
+        .paper h4 { font-size: 1rem; font-weight: 600; margin: 2.5rem 0 .5rem; color: #000; font-family: 'Playfair Display', serif; }
+        .paper p, .paper li { font-size: 16px; line-height: 1.8; margin: 0 0 1.2rem; }
+        .paper ul, .paper ol { padding-left: 1.4rem; margin-bottom: 1.2rem; }
+        .paper ul.tight-list li { margin-bottom: 0; }
+        .paper a { color: #7A2331; }
+        .paper figure { margin: 2rem 0; }
+        .paper figure img { display: block; width: 100%; height: auto; margin: 0 0 12px; border: 1px solid #2B2320; border-radius: 6px; }
+        .paper .img-group { border: 1px solid #2B2320; border-radius: 6px; overflow: hidden; margin: 0 0 12px; }
+        .paper .img-group img { border: 0; border-radius: 0; margin: 0; }
+        .paper figcaption { color: #9A8F82; font-size: .85rem; text-align: center; }
+        .paper p.callout, .paper div.callout { background: rgba(154,143,130,.16); border-left: 4px solid #74716C; border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 15px; line-height: 1.7; }
+        .paper div.callout { margin: 0 0 1.2rem; }
+        .paper p.tldr-title { margin: 2rem 0 1rem; padding-top: 48px; border-top: 1px solid rgba(43,35,32,.1); font-weight: 700; }
+        .paper .table-wrap.tldr-wrap { margin: 0 0 1.5rem; overflow: hidden; background: rgba(154,143,130,.16); border-radius: 10px; }
+        .paper table.tldr-table { table-layout: fixed; }
+        .paper h2[id="1-introduction"] { border-top: 2px solid #2B2320; }
+        .paper table.spec-table tbody tr:last-child td { border-bottom: 0; }
+        .paper .table-wrap.no-end-rule tbody tr:last-child td { border-bottom: 0; }
+        .paper table.spec-table td:first-child { color: #6E645A; font-weight: 600; }
+        .paper table.tldr-table .tldr-note { display: block; margin-top: .75em; font-size: calc(1em - 2px); font-style: normal; font-weight: 700; }
+        .paper table.tldr-table .tldr-note::before { content: "\2022"; font-size: .75em; margin-right: .5em; vertical-align: .1em; }
+        .paper table.tldr-table th { color: #7A2331; }
+        .paper table.tldr-table th, .paper table.tldr-table td { padding-top: 1.1em; padding-bottom: 1.1em; }
+        .paper table.tldr-table tbody tr:last-child td { border-bottom: 0; }
+        .paper table.tldr-table td, .paper table.tldr-table th { white-space: normal; overflow-wrap: anywhere; }
+        @media (max-width: 768px) { .paper table.tldr-table col:first-child { width: 34% !important; } .paper table.tldr-table col:last-child { width: 66% !important; } }
+        .paper div.callout ul { margin: 0; padding-left: 1.2rem; }
+        .paper div.callout li { font-size: inherit; line-height: inherit; margin: 0 0 .4rem; }
+        .paper div.callout li:last-child { margin-bottom: 0; }
+        .paper td p, .paper th p { font-size: inherit; line-height: inherit; margin: 0; }
+        .paper td p + p { margin-top: .6em; }
+        .paper td li, .paper th li { font-size: inherit; line-height: inherit; margin: 0 0 .4rem; }
+        .paper td li:last-child, .paper th li:last-child { margin-bottom: 0; }
+        .paper td ul, .paper td ol { margin: 0; }
+        .paper .table-wrap { overflow-x: auto; margin: 2rem 0; }
+        .paper table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.45; }
+        .paper th, .paper td { padding: .55em .7em; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(43,35,32,.1); }
+        .paper td[colspan] { padding-top: 1.6em; }
+        .paper table.results-table { table-layout: fixed; }
+        @media (min-width: 769px) { .paper table.results-table td:not(:first-child) { white-space: nowrap; } }
+        .paper th { color: #6E645A; font-weight: 600; border-bottom: 1px solid #2B2320; }
+        .paper h4 + .table-wrap { margin-top: .75rem; }
+        .paper p.table-key { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; margin: -1.5rem 0 2rem; font-size: 14px; line-height: 1.5; }
+        .paper p.table-lead { margin-bottom: 0; }
+        .paper p.table-lead + .table-wrap { margin-top: .75rem; }
+        .paper .blur-overlay { position: relative; filter: blur(6px); opacity: .85; user-select: none; pointer-events: none; }
+
+        /* Search box */
+        .search-row { display: flex; align-items: center; gap: 0.3rem; }
+        .search-input-wrap { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 3px; overflow: hidden; flex: 1; }
+        .search-input-wrap input { flex: 1; border: none; outline: none; padding: 0.56rem 0.4rem; font-size: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: transparent; min-width: 0; }
+        .search-clear { background: none; border: none; cursor: pointer; padding: 0 0.35rem; font-size: 0.75rem; color: #999; line-height: 1; display: none; }
+        .search-clear:hover { color: #000; }
+        .search-go { background: #000; color: #fff; border: none; padding: 0.56rem 0.55rem; font-size: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: 0.5px; cursor: pointer; border-radius: 3px; white-space: nowrap; }
+        .search-go:hover { opacity: 0.75; }
+
+        /* Separator between search and menu items (matches the rule under page titles) */
+        .sidebar nav li.nav-separator {
+            border-top: 1px solid #000;
+            margin: 0.9rem 0 0.9rem;
+            height: 0;
+        }
+
+        /* Mobile: keep search visible in the fixed top bar */
+        .mobile-search { display: none; }
+        @media (max-width: 768px) {
+            body { padding-top: 116px; }
+            .mobile-search { display: block; padding: 0 1.25rem 0.75rem; }
+            .sidebar nav li.nav-search, .sidebar nav li.nav-separator { display: none; }
+        }
+    
+
+        /* Body text: 16px desktop, 18px phone */
+        @media (max-width: 768px) {
+            .note p, .note li, .note ul li, .about-content p, .work-item p,
+            .paper p, .paper li, .article-content p, .article-content > ul > li {
+                font-size: 18px;
+            }
+            .paper table {
+                font-size: 16px;
+            }
+                    font-size: 16px;
+            }
+            .paper p.callout, .paper div.callout {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../layout.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <header class="site-header">
+            <div class="header-top">
+                <div class="brand">
+                    <img src="../Images/profile.webp?v=6" alt="Sheldon De Sousa" class="profile-image">
+                    <div class="brand-text">
+                        <h1>Sheldon De Sousa</h1>
+                        <p class="tagline tagline-desktop">Product Manager | AI Optimist</p>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                </div>
+                <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav(this)">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="mobile-search">
+                            <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn-m" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                </div>
+            <div class="menu">
+                <p class="tagline tagline-menu">Product Manager | AI Optimist</p>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">About me</a></li>
+                        <li><a href="../notes.html">My Notes</a></li>
+                        <li><a href="../working-with-ai.html">Working with AI</a></li>
+                        <li><a href="../social-experiments.html">Social Experiments</a></li>
+                        <li><a href="../personal-projects.html">Vibe-Coding</a></li>
+                        <li class="nav-tree">
+                            <a href="../papers.html" class="tree-link tree-root active">Papers</a>
+                            <ul class="tree">
+                                <li><a href="uncork.html" class="tree-link current">Uncork</a></li>
+                                <li><a href="ai-coding-llms-mcp.html" class="tree-link">AI-Coding, LLMs &amp; MCP</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="social-links"><span class="connect-label">Let's connect: </span><a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <!-- Main Content -->
+        <main class="main-content">
+          <section class="paper-view" id="view-uncork" data-title="Building a Grounded, AI Sommelier with an On-Device Model">
+
+            <div class="intro-header">
+                <h2>Building a Grounded, AI Sommelier with an On-Device Model</h2>
+                <p>A Case Study on Uncork: A Self-Taught Journey from Consumer Friction to Functional RAG-supported Edge AI</p>
+                <p class="paper-date">November 1, 2026</p>
+            </div>
+
+            <article class="paper">
+<figure><img src="../papers/uncork/images/uncork-cover.webp" alt="Uncork: Building a grounded AI sommelier. On-device AI, retrieval, product decisions"></figure>
+<p class="tldr-title">TL;DR</p>
+<div class="table-wrap tldr-wrap"><table class="tldr-table"><colgroup><col style="width:26%"><col style="width:74%"></colgroup><thead><tr><th style="text-align:left">Focus</th><th style="text-align:left">What I did</th></tr></thead><tbody><tr><td style="text-align:left">AI Product Strategy &amp; Architecture</td><td style="text-align:left">Designed and built a hybrid, on-device Retrieval-Augmented Generation (RAG) mobile application using Gemma 4 E2B to solve offline user connectivity gaps; implemented a parallel SQLite fallback architecture to maintain a 100% data retrieval rate.</td></tr><tr><td style="text-align:left">Latency Optimization</td><td style="text-align:left">Reduced AI-generated user profile card response latency by 85% (from 48.13s to ~7s, 2.9s for first card) by restructuring JSON payloads, introducing compact initial cards, and implementing progressive, token-streamed UI rendering.<span class="tldr-note">Scrapped due to hallucination. Code handles wine options.</span></td></tr><tr><td style="text-align:left">Data Integrity &amp; Evaluation</td><td style="text-align:left">Established a rigorous LLM-as-a-judge evaluation framework backed by automated statistical validation (95% Wilson confidence intervals), driving application claims precision to 98.3% and overall recall to 99.7%.</td></tr><tr><td style="text-align:left">Systemic Risk Mitigation</td><td style="text-align:left">Identified a critical “algorithmic feedback loop” vulnerability regarding unsupervised web-search synthesis writing to local offline databases; architected a human-in-the-loop “Pending Verification” framework to prevent closed-loop data decay.</td></tr><tr><td style="text-align:left"><strong>Observations</strong></td><td style="text-align:left">Despite the high performance scores, the results are reflections of structured test questions. Low temperature, including k-values, produces a robotic interaction with reduced graceful handling of detracted conversations. Tighter guardrails prevent creativity and diminish the personification of a sommelier. Loosening them increases errors and unsupported facts, reducing trust in the system.</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="spec-table"><colgroup><col style="width:26%"><col style="width:74%"></colgroup><tbody><tr><td style="text-align:left">Device</td><td style="text-align:left">Google Pixel 10 Pro Fold, 16GB RAM</td></tr><tr><td style="text-align:left">Model</td><td style="text-align:left">Gemma 4 E2B</td></tr><tr><td style="text-align:left">Import via</td><td style="text-align:left">Hugging Face</td></tr><tr><td style="text-align:left">Dataset</td><td style="text-align:left">Kaggle</td></tr><tr><td style="text-align:left">AI-Coding</td><td style="text-align:left">Claude Code, Codex</td></tr><tr><td style="text-align:left">Support</td><td style="text-align:left">Claude, ChatGPT, Gemini, Gemma 26B</td></tr></tbody></table></div>
+<h2 id="1-introduction">Introduction</h2>
+<p>A few days ago, I found myself in a familiar predicament: I was standing in the basement of my local wine shop trying to choose a bottle of wine. There was no reception, no knowledgeable staff nearby, and I lacked deep domain expertise to confidently distinguish one option from another. &quot;Bring something that&#39;s red, feels rich, smooth, dry, but not too dry&quot;, I was told. Now, I appreciate a fine wine, but I&#39;m not a sommelier by any stretch of the imagination.</p>
+<p>Technically, it was a trivial problem. I could have consulted an existing wine app or a web search by stepping outside briefly. But in that moment of apparent disconnection, a more compelling question emerged: could I build a tool that provided qualified guidance, leveraging intelligence running on my mobile phone?</p>
+<p>What really drew me in, though, was the opportunity to find out what on-device language models were capable of in a real-world, offline environment, and to build that solution myself.</p>
+<h3 id="executive-summary">Executive Summary</h3>
+<p>Uncork is a pocket wine advisor powered by a small on-device language model with RAG support.</p>
+<p>It isn&#39;t a single-tap install. On first launch, the user downloads a model with a personal access token to authorise it. Gemma 4 E2B was used in this instance. The app also ships with a bundled wine and grape-review database, a wine production repository, a winery directory, and a web search via API at the user&#39;s request. The app also has a database that is updated when a web search finds recommendations not present in other databases. This helps the on-board knowledge bank grow, in turn reducing dependency on the web.</p>
+<p>The development tools used were Codex and Claude Code. Claude, ChatGPT, Gemini, and a local Gemma 26B model to help scaffold the implementation: scoping problems, brainstorming, weighing trade-offs, and working through decisions.</p>
+<h3 id="what-the-app-does">What the App Does</h3>
+<p>Here&#39;s a quick walkthrough of what the app does, feature by feature.</p>
+<p><strong>Find</strong> is aimed at users who know what they want. It lets you set any mix of wine type, grape variety, country, province, body, tannin, and acidity, each one a single tap through selection.</p>
+<p>Results are real wines reviewed by critics from the bundled dataset, split into two score tabs (91–100 and 80–90 points), ten results at a time, ranked by the wine&#39;s own critic score. No AI reads or ranks these results.</p>
+<p><strong>Chat</strong> offers two interaction modes for users who want to talk through a decision. The &#39;curious workflow&#39; hands the conversation to an open-ended on-device chat. This is purely generative AI currently. The &#39;find a wine workflow&#39; walks you through three quick questions: type, country, and taste. Each answer is matched instantly against a vocabulary of aliases and demonyms, with no model call needed. The workflow then lands you on the same results page that the Find feature produces.</p>
+<p>A wine <strong>Profile Page</strong> displays details about origin, body, tannin, acidity, flavour notes, and either a critic review or an AI summary. A Save button on the profile page adds the wine to My Wine List, where you can rate it from 1 to 10 and add your own notes, all kept on the device for future reference. (The latter part of the feature is still under research at the time of writing.)</p>
+<p><strong>Ask</strong> can be invoked on every wine&#39;s Profile Page. It opens a focused conversation about the wine: its grape, flavours, aromas, characteristics, winery, what reviewers said, how it&#39;s made (restricted). But it&#39;s not limited to this. Ask only answers from what the app actually has on file, and says so plainly when a question falls outside the selected bottle, rather than guessing. This is where RAG was introduced.</p>
+<p><strong>Menu</strong>, reached from the main page, opens two reference browsers: a Winery Directory you can drill into by country, region, and sub-region, and a Wine Production guide covering how specific grapes are made in specific places. Both are plain lookups against the bundled data. Neither calls the model.</p>
+<h3 id="what-controls-the-experience"><span>What Controls the Experience</span></h3>
+<p>Throughout the project, workarounds, failed attempts, and poor experience forced a recurring uncomfortable question: <strong>Where should an AI product trust the model, and where should the surrounding system take control?</strong></p>
+<p>That answer changed considerably as I built Uncork. The initial versions gave the model responsibility for most of the application: understanding conversations, tracking what the user said, holding answers, deciding what to ask next, producing structured state, and generating recommendations from the model&#39;s knowledge.</p>
+<p>Being a non-technical product manager, I must mention that technical expertise would have been immensely helpful in guiding some of my choices. As this was a solo effort, the results reflect the limits of my abilities.</p>
+<p>In the current architecture, the model is still very important, but it&#39;s not central. The application deliberately controls how ownership is assigned, making the system faster and more predictable. A RAG system was put in place to ground Gemma, reducing hallucinations significantly.</p>
+<p>I tested the result two ways: how well it handled plain conversation, and how well it performed once it was given that data to ground its answers. This case study walks through the decisions, the trade-offs, and what worked and what didn’t.</p>
+<h2 id="2-two-gaps-and-an-opportunity">Two Gaps and an Opportunity</h2>
+<p>The vision came from two sources of friction and one selfish motivation:</p>
+<p><strong>A. The Connectivity Gap (The &quot;Blackout&quot; Problem)</strong></p>
+<p>In many high-intent shopping environments, network connectivity can be unreliable or non-existent. For a user looking for immediate, contextual guidance, a &quot;Cloud-only&quot; AI is useless.</p>
+<p><strong>B. The Expertise Gap (The &quot;Non-Expert&quot; Problem)</strong></p>
+<p>Wine is a category defined by complexity and jargon. For a consumer who is not an expert, it can be quite daunting. The problem isn&#39;t just about finding a name; it is about finding a recommendation based on unique preferences, even when the user lacks the vocabulary to express them.</p>
+<p><strong>C. The Technical Opportunity</strong></p>
+<p>Beyond solving a practical problem, there was a real motivation to experiment: the opportunity to explore the emerging landscape of <strong>on-device language models</strong> and their potential for personalised, private, and offline intelligence.</p>
+<h2 id="3-scoping-the-solution-choosing-the-ingredients">Scoping the Solution: Choosing the Ingredients</h2>
+<p>I was building for my own device, a Google Pixel Fold 10 Pro, which meant writing the app natively in Kotlin. In selecting a model, I tested Gemma 4 E4B, the larger of the two on-device variants, considered better for reasoning. It ran into problems that I couldn&#39;t fully diagnose at the time. So I moved to <strong>Gemma 4 E2B</strong> instead, which ran reliably, and built the rest of the app around it. I will attempt to swap it for E4B at a later point to explore differences.</p>
+<p>Running a language model locally gives the application independence from the cloud, but it also introduces a much tighter memory, context, and inference budget than a frontier model served remotely. A small local model could provide useful intelligence, but only if the rest of the product was designed around its limits.</p>
+<p>Further research led to a <strong>Kaggle dataset</strong> (DB-1) of roughly 119,000 wine reviews. The Kaggle dataset was chosen as an independent, <strong>SQLite-queryable fallback</strong> for whenever Gemma turned up nothing conclusive. But it had its own limitations: it was last updated in 2017. The dataset also carried unnecessary columns and limited synthesised information. A lot of what mattered was nested in long-form text.</p>
+<p>Regardless, I wanted to continue experimenting and needed some hard data to ground the deterministic and conversational flow.</p>
+<p>The first version and the original plan didn&#39;t include retrieval at all. It centred everything on Gemma: the model answered from its own training data, and only fell back to the Kaggle database (DB-1) when Gemma turned up nothing conclusive.</p>
+<p>That solution morphed into parallel lookups from Kaggle, Cache (a second database, DB-2), Web search, and finally RAG. But this happened only after testing confirmed the need to adapt and switch.</p>
+<p>A lot of those trades and pivots became critical because of hallucinations, insufficient data, and latency.</p>
+<h2 id="4-the-fallback-chain-engineering-for-resilience">The Fallback Chain: Engineering for Resilience</h2>
+<figure><div class="img-group"><img src="../papers/uncork/images/first-vs-final-data-calls-v1.svg?v=5" alt="Diagram: first version of the data calls, a linear flow from user question to Gemma, with DB-1 only as a fallback"><img src="../papers/uncork/images/first-vs-final-data-calls-v2.svg?v=5" alt="Diagram: final version, with Find tab and Find a Wine going to parallel DB-1 and DB-2 results, then web search or grounded Ask; Open Chat going to Gemma, ungrounded and constrained by prompt"></div></figure>
+<h3 id="41-the-strategic-pivot-from-full-llm-to-hybrid-architecture">The Strategic Pivot: From Full-LLM to Hybrid Architecture</h3>
+<p>The defining challenge of Uncork was managing the inherent volatility of on-device intelligence.</p>
+<p>The objective was straightforward: pull inputs out of the conversation and turn them into search criteria for Gemma to draw a set of recommendations from its own knowledge. Those same criteria doubled as the query for the Kaggle database. Getting the model to reliably surface those inputs turn after turn proved difficult.</p>
+<p><span>I started with a purely prompt-based approach. Gemma would do the heavy lifting. As testing continued, the prompt grew more sophisticated. Latency increased, messages were cut off, hallucinations rose, earlier answers were forgotten, and Gemma began to repeat itself. So, I iterated on prompts: more concise wording, stricter guardrails, few-shot examples.</span></p>
+<p class="callout">At the time, I was not aware that the runtime was using a 4,096-token context window; the app had not explicitly configured a larger one.</p>
+<p><span>During testing, I made deliberate attempts to challenge the system, deviating from the perfect script, attempting to &#39;break it&#39;. Those rounds exposed vulnerabilities underneath. For instance, I provided false claims that Gemma confidently accepted. </span></p>
+<p>Originally, Gemma was responsible for three JSON structures, extracting key responses through user interaction. Gemma would give the app information alongside its conversational reply, such as type, country or taste preference that the code used as filters for a SQLite query against the database.</p>
+<h3 id="gemma-handling-json">Gemma handling JSON</h3>
+<p><strong>FIELD_COVERAGE</strong> tracked which questions had been answered and which should come next, regenerated on every turn. <strong>STATE_SNAPSHOT</strong> recorded the final preferences once the conversation reached a meaningful end. <strong>WINE_CARDS</strong> carried the generated recommendations.</p>
+<p><strong>The implementation faced several errors:</strong></p>
+<ul><li><p>Hidden markers leaked into the visible reply.</p></li><li><p>Gemma dropped a block, changed a field name, or returned malformed JSON, breaking the app&#39;s parsing.</p></li><li><p>It repeated questions the user had already answered, or sometimes overwrote a state it should have preserved.</p></li><li><p>The growing system prompt, combined with the accumulating conversation, ate into the model&#39;s limited context.</p></li></ul>
+<h3 id="code-handling-json">Code handling JSON</h3>
+<p>It was clear that Gemma could not be trusted to own state and language at the same time. Despite my best efforts, things had to change.</p>
+<p>I moved <strong>FIELD_COVERAGE</strong> and <strong>STATE_SNAPSHOT</strong> off Gemma and onto the code through a sequential question set. The code took over interpreting and storing each answer: during Q1, &quot;red&quot; becomes type = Red; during Q2, &quot;France&quot; becomes country = France; during Q3, &quot;smooth&quot; becomes tannin = Smooth; &quot;any&quot; or &quot;no preference&quot; becomes &#39;Unknown&#39; and drops out of the search.</p>
+<p>The downside, however, was that if a user&#39;s phrasing falls outside the intended vocabulary list, the code can&#39;t interpret it and just re-asks the question, rather than inferring the intent as an LLM might. Also, when a user response included multiple relevant entities (like a French Red), the code picked the one apt for the active question.</p>
+<p>The app&#39;s matching vocabulary was expanded to include alternative names, nationality terms, and common synonyms. Separately, after recognising an answer to the current question, the code checked the same reply for other unanswered preferences. So &#39;a French red&#39; could answer both wine type and country in one turn, letting the app skip the country question.</p>
+<p>Testing exposed two more gaps. A reply that opened with a skip word, such as &#8220;any red&#8221;, was read as &#8220;no preference&#8221;, so the red was thrown away. A skip now only counts when the reply gives no usable answer to a question that is still open. And when someone named two countries, like &#8220;French or Italian&#8221;, the code kept whichever it found first and silently dropped the other. It now records up to two countries, and the results page draws from both in turn: five wines from each per page, with the other country filling in if one runs short. A reply that answers a different question than the one asked, such as &#8220;Italian&#8221; when asked for the type, is kept instead of discarded.</p>
+<p>And if a reply still doesn&#39;t match a known answer, the app no longer just repeats itself blindly. It offers a short polite apology and the same question again.</p>
+<p>The code holds the complete structured state. It uses that state to build a DB query. Initially, it also sent those same preferences to Gemma, so Gemma could generate its own wine candidates. Gemma&#39;s candidates and DB-1&#39;s results were separate, parallel outputs.</p>
+<h3 id="42-the-seamless-interaction-loop-maintaining-immersion">The Seamless Interaction Loop: Maintaining Immersion</h3>
+<p>In earlier versions, it was a single flow: one conversation that handled everything, from open-ended questions to narrowing down a wine. I swapped that for two entry points, Find a wine and Curious about wine, so that code could manage the new JSON handling instead of leaving it to the model.</p>
+<p>The flow forks now. A &quot;<em><strong>curious</strong></em>&quot; path lets the conversation run freely, open-ended and unstructured. A &quot;<em><strong>guided</strong></em>&quot; path poses three questions (wine type, country/province, and taste characteristics) covering the same choices as the Find tab, but asks them one at a time in natural language, with the code matching each answer deterministically behind the scenes.</p>
+<p><span>The two paths inside Chat are built to feel identical. The user experiences an AI sommelier that is listening, understanding, and responding intelligently to everything they say.</span></p>
+<p><span>Only the &quot;<em>curious</em>&quot; path is genuinely model-driven start to finish. The &quot;<em>guided</em>&quot; path is closer to Wizard of Oz: the code runs the actual logic, tracking which question is active, matching the answer, deciding what comes next, while Gemma supplies the natural language around it. </span></p>
+<h3 id="the-handover-and-handback">The Handover &amp; Handback</h3>
+<p>Irrespective of how the conversation originates - whether &#39;Find a wine&#39; or &#39;Curious about wine&#39;, the user is passed between code and Gemma as the interaction progresses.</p>
+<p>If a reply contains a question mark, or runs to four words or more (unrelated to the three questions), the code hands it to Gemma for a real response instead of matching it against the vocabulary list. Short, recognised answers like &quot;full-bodied&quot;, &quot;Spanish red&quot;, or &quot;smooth&quot; stay with the code. Anything longer or genuinely inquisitive is handed over to Gemma.</p>
+<p>If a user shows intent to pick a wine, Gemma acknowledges, informs the user it needs a few decisive answers, and hands it back to code to funnel through the questions.</p>
+<p>But there is a trade-off: an incidental word in a longer answer can occasionally resolve a question the user never actually meant to answer &#8212; &quot;I&#39;m looking for something similar to a French Red&quot; resolves Country and Type.</p>
+<h3 id="43-measuring-and-fixing-latency">Measuring and Fixing Latency</h3>
+<p>Gemma takes roughly 3s to initialise on GPU (with CPU fallback). A splash screen with a progress bar and annotations runs for 3.5 s to cover the loading time. This is currently done once the app is opened.</p>
+<p>DB-1&#39;s SQLite query was nearly instantaneous. Card generation is super quick and the app manages it efficiently.</p>
+<div class="table-wrap"><table><thead><tr><th style="text-align:left">Score tab</th><th style="text-align:left">SQLite query</th><th style="text-align:left">Tap to cards ready</th><th style="text-align:left">Cards</th></tr></thead><tbody><tr><td style="text-align:left">91–100</td><td style="text-align:left">126 ms</td><td style="text-align:left">132 ms</td><td style="text-align:left">10</td></tr><tr><td style="text-align:left">80–90</td><td style="text-align:left">124 ms</td><td style="text-align:left">132 ms</td><td style="text-align:left">10</td></tr></tbody></table></div>
+<p>For the open-ended conversation, responses stream as tokens arrive, so the user sees text after 400 ms instead of a blank screen. Earlier implementations batched the conversation block, which put response times between 6s and 18s, depending on content.</p>
+<p>I added latency tracking for Gemma, measuring how long it takes to deliver a response (first word) after a user sends a message. The data below covers the open-ended chat only. It&#39;s a measure of sustained responsiveness across a conversation of 10 turns. Response time settled quickly after the first turn, closely conforming to Doherty&#39;s law.</p>
+<p><strong>O<strong></strong></strong><strong>pen </strong><strong>C</strong><strong>onversation</strong><strong> </strong><strong>T</strong><strong>im</strong><strong>e</strong><strong> </strong><strong>T</strong><strong>r</strong><strong>ac</strong><strong>k</strong><strong>i</strong><strong>ng</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Turns</th><th style="text-align:left">Average Response time</th></tr></thead><tbody><tr><td>1</td><td style="text-align:left">1,238 ms</td></tr><tr><td>2</td><td style="text-align:left">374 ms</td></tr><tr><td>3</td><td style="text-align:left">368 ms</td></tr><tr><td>4</td><td style="text-align:left">381 ms</td></tr><tr><td>5</td><td style="text-align:left">409 ms</td></tr><tr><td>6</td><td style="text-align:left">400 ms</td></tr><tr><td>7</td><td style="text-align:left">403 ms</td></tr><tr><td>8</td><td style="text-align:left">405 ms</td></tr><tr><td>9</td><td style="text-align:left">404 ms</td></tr><tr><td>10</td><td style="text-align:left">399 ms</td></tr></tbody></table></div>
+<h3 id="wine-card-generation-time-tracking">Wine Card Generation Time Tracking</h3>
+<p>Addressing Gemma&#39;s card-generation times was the bigger issue. Cards opened into a detailed wine profile page which consisted of several key characteristics, including a generated summary. Initially, summary generation and all card fields were rolled into a single card call on the results page.</p>
+<p>Tracking stage-by-stage progress showed where time went. Nearly the entire cost resided in one stage - generating output, which ran for 45–50 seconds, and dropped to almost half that when the generated summary was excluded.</p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Avg generation time</th><th>What changed / result</th></tr></thead><tbody><tr><td style="text-align:left"><span>48.13s </span></td><td><span>Historical baseline: Gemma wrote the full profile, with the summary, in the card call. The first card appeared at 16–18s, after cards were published as they finished. (GPU)</span></td></tr><tr><td style="text-align:left"><span>25.76s </span></td><td>Removed summary card generation. (Mixed CPU/GPU)</td></tr><tr><td style="text-align:left">22.72s</td><td>Refined prompts, reused user-supplied preferences, normalised fields, repaired parsing/recovery. (Mixed CPU/GPU)</td></tr><tr><td style="text-align:left"><span>10.12s </span></td><td>Switched to compact initial cards, deferred non-displayed card information to a second call. Much faster. (Mixed CPU and GPU)</td></tr><tr><td style="text-align:left"><span>7.95s </span></td><td>Updated JSON response structure. (GPU)</td></tr><tr><td style="text-align:left"><span>6.28s</span></td><td><span>Average cards generated at 2.96s, 4.32s, and 6.19s respectively, in sequence. (GPU)</span></td></tr><tr><td style="text-align:left">6.91s</td><td>Stable successful three-card run. (GPU)</td></tr></tbody></table></div>
+<p class="callout">Response times saw clear improvements. However, the quality of output / accuracy of information did not. Gemma outputs revealed invented wine names with inconsistent supporting information.</p>
+<p><strong>Time reduction strategies</strong></p>
+<ul><li><p>Less generated text: an initial card asks for name, country, province, and variety, not a full profile.</p></li><li><p>Details on demand: taste characteristics, summary, and other fields generate only for the wine card the user opens. (a second call is necessary)</p></li><li><p><span>Reused preferences: the app fills in whatever the user already supplied, so Gemma never has to repeat it. (later revealed a critical error)</span></p></li><li><p>Progressive display: each card appears the moment it&#39;s complete, instead of the whole response waiting on the slowest one.</p></li><li><p>More reliable parsing: a standardised JSON structure, field aliases, and recovery logic turn generated output into usable cards more consistently.</p></li><li><p>A smaller output allowance: cut from 1,024 to 384 tokens for the compact card request.</p></li></ul>
+<p>Across Gemma-generated card evals, successful compact three-card runs averaged just under 7 s, about 85–86% below the 48.13-second baseline. Wine detailed pages still take roughly 8 s to 11 s once a card is opened. The app-generated cards remained under 150ms in all tested cases.</p>
+<figure><img src="../papers/uncork/images/card-generation-time.svg?v=5" alt="Chart: card generation time fell from 48.13 seconds to about 7 seconds"><figcaption>Card-generation Time Logs</figcaption></figure>
+<h3 id="ditching-gemma-generated-cards">Ditching Gemma Generated Cards</h3>
+<p>Card generation worked, but the reliability of the cards remained poor. The more pressure put on Gemma through prompt guardrails resulted in zero finds. After much persistence, I decided to let DB searches lead card generation without Gemma support.</p>
+<h3 id="44-uncork-prompt-evaluation">Preliminary System Prompt Testing</h3>
+<h3 id="testing-the-open-conversation-prompts">Testing the Gemma-led Open Conversation</h3>
+<p>Using Claude, I tested Gemma against 50 sample conversations covering nine types of questions — wine facts, beginner questions, follow-ups, trick questions with made-up wines, food pairing, off-topic requests, health questions, abuse, and attempts to misuse the app. Each conversation was run three times per version to check consistency. Claude compared how the AI responded before and after three rounds of prompt changes. I ran manual testing alongside Claude to review and compare results.</p>
+<p><strong>v1 → v2:</strong> Iterated rules telling the AI to admit when it doesn&#39;t recognise a wine, winery, or grape, rather than guessing. Stricter rules to decline food pairing, health advice, and abuse. Tightened the reply length.</p>
+<p><strong>v2 → v3a → v3b:</strong> Fixed two problems v2 introduced: the AI briefly revealed which underlying model it runs on when asked to reveal its instructions, and it lost track of the conversation on a two-part question. Both were fixed with a small example added to the prompt.</p>
+<div class="table-wrap"><table><thead><tr><th>Category</th><th>Tests</th><th>v1</th><th>v2</th><th>v3b</th></tr></thead><tbody><tr><td>Named variety/region</td><td>10</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Wine knowledge</td><td>8</td><td>2</td><td>2</td><td>2</td></tr><tr><td>Beginner/vague</td><td>5</td><td>3</td><td>4</td><td>4</td></tr><tr><td>Follow-up</td><td>5</td><td>3</td><td>3</td><td>4</td></tr><tr><td>Fake-wine traps</td><td>6</td><td>2</td><td>5</td><td>6</td></tr><tr><td>Pairing (should decline)</td><td>4</td><td>2</td><td>3</td><td>4</td></tr><tr><td>Off-topic</td><td>3</td><td>2</td><td>3</td><td>3</td></tr><tr><td>Health</td><td>4</td><td>4</td><td>4</td><td>4</td></tr><tr><td>Safety/misuse</td><td>5</td><td>5</td><td>4</td><td>5</td></tr><tr><td>Total</td><td>50</td><td>31 (62%)</td><td>36 (72%)</td><td>40 (80%)</td></tr></tbody></table></div>
+<h3 id="learnings">Learnings</h3>
+<p>Prompt changes can make Gemma behave better, but they cannot make it know more. Across three prompt versions, passes rose from 31 to 36 to 40 out of 50, driven by rules and short examples that taught it to decline, admit when it doesn&#39;t recognise a wine, and stay in scope.</p>
+<p>Wine-knowledge performance remained at 2 out of 8 in every version, because the model answers from its own memory and gets common facts wrong with full confidence, such as what “corked” means, how rosé is made and what temperature to serve white wine.</p>
+<p>In a wine app, a confident wrong answer does more harm than good, so factual accuracy is the main risk. Prompt gains were also shrinking by v3, so further tweaking is unlikely to help. The next gains are likely to come from supplying verified facts to the model through RAG.</p>
+<p class="callout">These were preliminary testing rounds to help dial the prompt in. The number of tests for items other than wine knowledge would be scaled during evals.</p>
+<h3 id="45-extending-the-chain-web-search-and-a-growing-db-2">Extending the Chain: Web Search and a Growing DB-2</h3>
+<p>DB-2 and web search weren&#39;t part of the roadmap. I discovered their value through errors and gaps. Gemma and DB-1 together still had a ceiling: Gemma&#39;s own knowledge was frozen (January 2025) and lacked the nuance and breadth of larger models, and DB-1&#39;s 119,030 reviews were frozen in 2017. A wine missing from both simply had no conclusive recommendation.</p>
+<p><span>A live web search was added, the only online layer in the chain. I wanted to use Google&#39;s Custom Search API, but working through the decision ruled it out in favour of Brave, which had a free tier that comfortably covered my expected usage. </span></p>
+<p>Web search is never automatic. In both Find and Chat result pages, it&#39;s offered as a standing option after a Gemma and DB-1 response, and it only runs if the user invokes it, producing the standard result card structure via Gemma synthesis.</p>
+<!-- HIDDEN FOR NOW: <p><span>But then a new problem surfaced. I asked for 12 results per search. Sending Gemma all 12 results, full HTML included, produced a payload of over <strong>14,000 characters</strong>, large enough that the small on-device model ran past its output budget. </span></p> -->
+<p>I reduced the fetch to the top 3 results and stripped HTML tags and entities from each snippet, which brought the same payload down to about <strong>3,400 characters</strong>.</p>
+<p>Since web was dependent on network connectivity, the very use case I was building around, I thought I could use those pockets of opportunity to build a database that extended beyond DB-1&#39;s knowledge.</p>
+<p>Whenever a web search turned up something, that result was written back into the local database, so the app&#39;s offline coverage grew over time, reducing the dependency on web.</p>
+<figure><img src="../papers/uncork/images/cache-growth-loop.svg?v=5" alt="Diagram: every web search result is saved to DB-2, so offline coverage grows"><figcaption>DB-2 growth loop · web search result feeds the offline database</figcaption></figure>
+<h3 id="web-search-brave-api-usage">Web Search - Brave API Usage</h3>
+<p>Over a week, the app made 29 successful search requests during deliberately intensive testing.</p>
+<figure><img src="../papers/uncork/images/brave-search-usage.svg?v=5" alt="Chart: Brave Search requests per day in September 2026, peaking at 11 on Sep 19"><figcaption>Brave Search dashboard · September 2026 (1wk)</figcaption></figure>
+<p>At $0.14 of a $4.99 monthly credit balance, the burn rate sits at roughly $0.023 a day, with about 215 days of runway left at that pace.</p>
+<p>DB-2 correctly updated on each run.</p>
+<h2 id="5-a-knowledge-base-for-gemma-points-and-bias">A Knowledge Base for Gemma, Points and Bias</h2>
+<h3 id="gemmas-new-wine-library">Gemma&#39;s New Wine Library</h3>
+<p>Seeing Gemma scores through the wine knowledge questions was an eye-opener. Gemma wasn&#39;t competent at the task, practically defeating the purpose of an AI Sommelier.</p>
+<p>Since we know Gemma can follow behavioural constraints, it was only natural to add verified data that Gemma could lean on. With no public database I could borrow, I decided to build a knowledge bank myself by gathering the information from the internet.</p>
+<p>Now, there are over 10,000 grape varieties in existence, around 10–15% for commercial winemaking globally, and just under 35 cover over 50% of the world&#39;s total vineyard area.</p>
+<p>I built a separate grape knowledge bank, <strong>Grape_Profile_Internal</strong>: 69 entries covering the most common varieties, each with body, acidity, tannin, aromas, flavours, ageing, origin, and key regions, plus a short beginner-friendly summary written in Uncork&#39;s voice. The data was cross-checked using multiple LLMs to see if anything flagged differently. Blends like &quot;Cabernet Sauvignon-Merlot&quot; get notes for each grape they name.</p>
+<p>Additionally, code supplies Gemma with data from:</p>
+<ul><li><p><strong>Wine_Reviews:</strong> about 119,000 critic reviews Gemma reads and summarises on Ask for an impartial reply.</p></li><li><p><strong>Grape_Profile_Extracted:</strong> Grapes outside the 69 mentioned above. Built using LLMs to synthesise and populate wine characteristics from rich text.</p></li><li><p><strong>French_Wine_Production_Repository:</strong> how specific grapes are made in specific places. Currently, Merlot in Bordeaux and Chardonnay in Burgundy have been set up.</p></li><li><p><strong>Wineries_Directory:</strong> wineries by country, region and sub-region.</p></li></ul>
+<h3 id="how-gemma-uses-it">How Gemma uses it</h3>
+<p>The app does the lookup and pastes the results straight into its prompt rather than running any kind of vector search.</p>
+<p class="callout">In Ask, Gemma answers only from facts the app supplies. The app replies with a fixed message when its query surfaces nothing.</p>
+<h3 id="points-and-bias">Points and Bias in the Kaggle Dataset</h3>
+<p>The app holds a little over 119,000 critic reviews, every score between 80 and 100. About 26% of wines score 91 or higher, about 46% score 87–90, and about 27% score 80–86. Only 688 rows carry more than one review, so most wines have just one. The dataset lists 701 variety names, but after merging aliases, such as Syrah and Shiraz, that collapses to 404 single grapes, 189 blends, 8 style labels, and 2 stray entries.</p>
+<figure><img src="../papers/uncork/images/review-score-bands.svg?v=5" alt="Chart: share of reviewed wines by critic score band"><figcaption>From the review-score breakdown above</figcaption></figure>
+<p>The implementation I selected introduced significant biases.</p>
+<ul><li><p><strong>Only the top scores show</strong>: results were always sorted highest first, with only the top three kept. Users never saw the middle or lower-scored wines.</p></li><li><p><strong>Alphabetical tie-break</strong>: wines with the same score were ordered by winery name. The same wineries won every time, and names early in the alphabet were favoured.</p></li><li><p><strong>Praise-only summary</strong>: the first review summary sounded more positive than the full set of reviews actually supported.</p></li></ul>
+<h3 id="the-fix-1">The Fix</h3>
+<p>Results now show two score tabs, 91–100 (the default) and 80–90, ten wines at a time with a More button. Equal scores are shuffled into a random order that changes with each search, instead of falling back to the winery&#8217;s name. A single Sort menu offers Top ranked, By Country, and By Variety.</p>
+<h4 id="critic-review-on-a-bottles-profile">Critic Review on a bottle&#8217;s profile</h4>
+<p>If a bottle has one review, the app shows it as written. If it has two to six, Gemma summarizes them into one impartial summary. If it has more than six, the app splits them into thirds and picks two at random from each. If no reviews are present, the app says so.</p>
+<h4 id="what-gemma-reads-on-the-ask-screen">What Gemma reads on the Ask screen</h4>
+<p>When someone asks Gemma what people say about a grape or variety in a country, the app looks across all the reviews of that grape from that country. It splits them into highest-scored, middle, and lowest-scored thirds and picks one review at random from each, so Gemma gets three reviews. The picks are random. Each review is cut to about 200 characters and tagged with its province. Gemma combines the three into an impartial overview.</p>
+<h3 id="critical-risk-identification">Critical risk identification</h3>
+<h4 id="the-product-risk-algorithmic-feedback-loops-and-data-decay">The Product Risk: Algorithmic Feedback Loops and Data Decay</h4>
+<p>Relying on an unsupervised on-device model to synthesise real-time web search results and write them directly into the offline database (DB-2) threatens data integrity.</p>
+<p>Because the model has an inherent 5.9% False Positive (hallucination) rate, it will occasionally generate unsupported claims or incorrect wine profiles from web snippets. By automatically writing these errors into the database, an AI mistake becomes a permanent application &quot;fact.&quot;</p>
+<p>Over time, the app&#39;s knowledge base decays. In future, the RAG system will pull these fabrications as &quot;ground truth,&quot; causing the AI to confidently repeat its own hallucinations and erode user trust.</p>
+<p>At this time, I am evaluating a couple of options:</p>
+<ul>
+<li>Human-in-the-loop: Tag all DB-2 additions with Verified or Pending Verification. I would have to then go through the database and manually validate each entry tagged &#39;pending&#39; and/or use an LLM to verify the details as a second pair of eyes.</li>
+<li>Update UI so that the user is aware of the current state of the produced result that comes from DB-2</li>
+<li>Strict entity extraction during synthesis with tight creative affordance to the model.</li>
+</ul>
+<h2 id="6-ask-talking-to-gemma-after-a-wine-is-picked">Ask: Talking to Gemma After a Wine Result is Picked</h2>
+<p>Once a wine is chosen through the result page, tapping Ask opens a focused conversation with Gemma about that specific bottle with RAG in place. RAG has been deliberately excluded from open-chat until pending bugs are addressed.</p>
+<h3 id="the-prompt">The prompt</h3>
+<p class="table-lead"><strong>What Gemma is given</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Wine details</td><td style="text-align:left">Source wine characteristics and review</td></tr></tbody></table></div>
+<p class="table-lead"><strong>When grape information is requested:</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Grape Profiles</td><td style="text-align:left">Summary, colour, body, acidity, tannin, aromas, ageing, origin and known regions; a blend explanation where applicable.</td></tr><tr><td style="text-align:left">Extracted Profiles</td><td style="text-align:left">Only if no internal grape profile matches and the country is known: up to three regional profiles containing body, tannin, acidity and flavours.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>When winery information is requested:</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Winery location</td><td style="text-align:left">Matching entries from the wineries directory, where available (the bottle&#8217;s own winery, or any winery named in the question), with a warning that the directory establishes location only and says nothing about what a winery is known for.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>What wine enthusiasts say</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Reviews</td><td style="text-align:left">When a user asks what people, critics or reviewers think, the app adds a random review sample of the same grape from the same country: one review each from the highest, middle and lowest-scored thirds, three in total, as 200-character excerpts. The picks change each time the question is asked.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>Rules Gemma follows</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Limits</td><td style="text-align:left">It never states bottle specifics beyond the facts (vintage, price, alcohol, store). It never recommends one wine over another, remaining impartial.</td></tr><tr><td style="text-align:left">Facts only</td><td style="text-align:left">It uses only facts written in the notes and does not add praise or comparisons. Opinion words and foreign-script characters trigger a retry.</td></tr><tr><td style="text-align:left">Tone</td><td style="text-align:left">The rules were rewritten to match Open-Chat’s guardrails: an excited but natural tone, up to 6 plain sentences.</td></tr><tr><td style="text-align:left">Scope</td><td style="text-align:left">Gemma is restricted to conversations over wine only. Off-topics are discouraged with a call back to wine.</td></tr><tr><td style="text-align:left">Safety</td><td style="text-align:left">Health, abuse, and sexual user entries are declined gracefully, shifting the topic back to wine.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>What the app now handles itself</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Refusals</td><td style="text-align:left">When no information is surfaced, the app writes “I’m sorry, I do not have that information.” and doesn’t call Gemma.</td></tr><tr><td style="text-align:left">Price and availability</td><td style="text-align:left">Price, availability, alcohol, and vintage questions get an app-written “I do not have information on prices for…”.</td></tr><tr><td style="text-align:left">Follow-ups</td><td style="text-align:left">Follow-ups such as “And in France?” are rewritten into standalone questions before lookup.</td></tr><tr><td style="text-align:left">Minimum inputs</td><td style="text-align:left">Each lookup has a minimum it needs, such as a grape plus a place for wine production. If something is missing, Gemma is told to ask for it.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>Keeping Gemma focused</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Reminder</td><td style="text-align:left">A short reminder before every follow-up repeats the wine and guardrails. Gemma reads only about the last 512 tokens closely, so the key rule needs to sit near the question.</td></tr><tr><td style="text-align:left">Memory window</td><td style="text-align:left">The memory window was raised to 8,192 tokens after a smaller default caused cut-off and empty replies. An empty reply now triggers one rebuild and retry. An attempt to scale the token window size will be made provided it does not degrade quality, performance, or risk app kill.</td></tr><tr><td style="text-align:left">Warm-up</td><td style="text-align:left">Gemma reads the facts while the welcome is showing (a warm-up whose reply is discarded), so the first real answer comes back faster.</td></tr></tbody></table></div>
+<p class="table-lead"><strong>The welcome message</strong></p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:24%"><col style="width:76%"></colgroup><thead><tr><th style="text-align:left">Information</th><th style="text-align:left">What is included</th></tr></thead><tbody><tr><td style="text-align:left">Evolution</td><td style="text-align:left">It went from a plain welcome, to custom wording plus a topic list, to the current version: “Hi! I’m Uncork, your AI sommelier. I can help you with questions about {wine name}.”</td></tr><tr><td style="text-align:left">Topics</td><td style="text-align:left">That is followed by “I can help you with:” and the topics Grape Varieties, Flavours and aromas, Wineries, Consumer reviews, Wine production.</td></tr></tbody></table></div>
+<h3 id="the-window-size-bug">The Window-Size Bug</h3>
+<p>Gemma&#39;s reply would stop mid-sentence. Sometimes it would get stuck in a loop showing &quot;Could you say a bit more about that?&quot; as if Gemma had forgotten the conversation. Checking the token size of my prompts made things clearer. I faced the same issue before when building the original Chat feature. So I read Gemma&#39;s model card and ran a few checks to see where I had gone wrong.</p>
+<p>I increased the context window explicitly to 8,192 tokens and focused on concise instructions. With the fix in place, replies came back quickly, with the first word in about half a second, and three questions into a conversation used an estimated 4,000 to 5,000 of the 8,192 tokens.</p>
+<h3 id="what-i-learned-about-the-kv-cache">What I learned about the KV cache</h3>
+<p><span>The KV cache holds Gemma&#39;s cached representations of all previous tokens in a conversation, which is why it doesn&#39;t re-read the whole chat on every turn and why follow-ups come back fast. The KV cache is sized to match the maximum allowed context window, and the phone&#39;s inference engine reserves that KV cache space in RAM up front, whether or not the conversation ever fills it.</span></p>
+<h3 id="what-i-learned-about-the-512token-sliding-window">What I learned about the 512-token sliding window</h3>
+<p>Gemma 4 E2B / 4B use a 512 token sliding window. A majority of Gemma&#39;s layers only look closely at the most recent 512 tokens, so the facts stay available as a conversation continues but get held less firmly beyond a point. Gemma&#39;s global layers look at the complete context. But because of the mathematics of the attention mechanism, some data loses signal.</p>
+<p class="callout">Which is why I added the reminder with each question.</p>
+<p>On a phone, the cost is time and memory, and processing a large prompt still incurs an initial computational cost.</p>
+<h3 id="kv-and-cross-layer-sharing">KV and Cross-Layer sharing</h3>
+<p>To run efficiently on strict mobile hardware limits, modern models like Gemma 4 optimise this process using Cross-Layer KV Sharing. In a standard network architecture, every individual layer must calculate and allocate RAM for its own unique cache. Gemma 4 eliminates this redundancy by designating a subset of base layers to handle the computations, while subsequent layers completely skip the calculation phase and directly reuse the cached data from the layer beneath them. This hybrid approach slashes the physical memory footprint of the conversation, allowing devices to maintain long-context capabilities without running out of RAM.</p>
+<h3 id="what-i-learned-about-window-size-costs-on-the-phone">What<strong> </strong>I learned about window size costs on the phone</h3>
+<p>The context window is memory reserved in advance, used or not, and it&#39;s one engine setting, shared by every Gemma feature in the app. Gemma 4 E2B has a context window of up to 128K tokens. Google’s model card does not specify the RAM required to use that capacity.</p>
+<p>My phone has 16 GB of RAM. So, I tried to pull data on RAM utilisation. It measured the app&#39;s total footprint at about 2.63 GB, including Gemma and its 8,192-token context window:</p>
+<div class="table-wrap"><table><thead><tr><th>Category</th><th>Measured usage</th><th>What it covers</th></tr></thead><tbody><tr><td>GPU / graphics</td><td>1.74 GB</td><td>Mostly Gemma&#39;s model and processing workspace, plus screen rendering</td></tr><tr><td>Android system / shared</td><td>408 MB</td><td>System resources attributed to the app</td></tr><tr><td>Other private memory</td><td>307 MB</td><td>Allocations the report doesn&#39;t break out individually</td></tr><tr><td>Native working memory</td><td>119 MB</td><td>Processing libraries, including Gemma&#39;s engine</td></tr><tr><td>Code and thread stacks</td><td>46 MB</td><td>Loaded software and execution overhead</td></tr><tr><td>App working memory</td><td>35 MB</td><td>App logic and data</td></tr></tbody></table></div>
+<p>I plan to increase Uncork’s context window incrementally and measure RAM usage, response time, and stability at each step. Gemma’s memory-saving architecture is encouraging, but testing will determine a practical limit.</p>
+<h2 id="7-grounding-gemmas-answers-retrieval-evals">Grounding Gemma&#39;s Answers: Retrieval Evals</h2>
+<p>I ran a longer series of evals, 20 questions, then 100, then 300, on the retrieval-augmented answers in Ask, the RAG layer that feeds Gemma grounded facts before it replies. Given the fact that Gemma was inventing wine names and was easily coerced into discussing fictional ones, it was imperative that Gemma be grounded in trusted data.</p>
+<p>Three things were expected:</p>
+<ul class="tight-list">
+<li>The query returned data from the DB - Gemma used the information to construct an answer.</li>
+<li>The query turned up nothing - the app returned a pre-determined decline.</li>
+<li>The data existed, but countered a user&#39;s claim - Gemma disagreed politely while surfacing the database facts the app supplied.</li>
+</ul>
+<h3 id="the-approach">The Approach</h3>
+<p>The approach was to test each DB on its own, then test mixed conversations.</p>
+<div class="table-wrap"><table style="table-layout:fixed"><colgroup><col style="width:18%"><col style="width:46%"><col style="width:36%"></colgroup><thead><tr><th style="text-align:left">Stage</th><th style="text-align:left">Question</th><th style="text-align:left">Measured by</th></tr></thead><tbody><tr><td style="text-align:left">Retrieval</td><td style="text-align:left">Did the app surface facts to answer the question?</td><td style="text-align:left">Checked by whether the notes appear in the prompt</td></tr><tr><td style="text-align:left">Relevancy</td><td style="text-align:left">Did facts address the question?</td><td style="text-align:left">Checked by LLM as a judge with human review</td></tr><tr><td style="text-align:left">Generation</td><td style="text-align:left">Does the reply say only what the facts support?</td><td style="text-align:left">No essential information left out. No extra, unsupported information added.</td></tr><tr><td style="text-align:left">Multi-turn</td><td style="text-align:left">Do follow-ups keep their context?</td><td style="text-align:left">Checked by hand on follow-up questions; per-turn timing is saved.</td></tr></tbody></table></div>
+<p>An LLM judge (Claude and ChatGPT) graded every answer against the facts Kotlin supplied, using the 2/1/0 marker, and the same rules were applied across all stages.</p>
+<p><strong>A human review checked the judge in two ways:</strong></p>
+<ul>
+<li>In the 100-question rounds, I blind-reviewed 30 random answers without seeing the judge&#8217;s grades, and we agreed on 30 of 30 for correct versus not fully correct.</li>
+<li>For Run 2, the agreement was 97%. The disagreements were all borderline: extra phrasing that the judge counted as unsupported and I accepted. They never involved a wrong fact. The judge therefore leans strict on wording, and the review corrected that.</li>
+</ul>
+<h3 id="eval-results">Eval Results</h3>
+<p>Uncork draws on several databases. But, this section covers just a few, starting with Grape_Profiles_Internal &amp; Extended. A consolidated eval across all the databases, including multi-turn and complex queries, will be surfaced shortly to close the evals section.</p>
+<p>Grape profiles hold the description and characteristics of each grape, including body, acidity, tannin, aromas, ageing and origin. When a user asks about a grape variety, the app (Kotlin code) surfaces wine facts, which Gemma then uses to construct an answer.</p>
+<h4 id="the-test">The test</h4>
+<p>I began with short tests (50 questions) with more complex harder tests closer to 400 questions as testing intensified. The questions were split between the core profiles and the extended database, and I ran them on the phone. Each half mixed answerable questions with false claims Gemma had to correct, questions with no country (Gemma must ask, triggering a follow-up), and questions with no matching rows (the app must decline).</p>
+<h4 id="grading-rules">Grading rules</h4>
+<div class="table-wrap"><table><thead><tr><th style="text-align:left">Grade</th><th style="text-align:left">Marker</th></tr></thead><tbody><tr><td style="text-align:left">2</td><td style="text-align:left">Covers what the question asked for, with nothing wrong, missed, or invented.</td></tr><tr><td style="text-align:left">1</td><td style="text-align:left">Partly correct. Some information is incorrect, invented, or missed.</td></tr><tr><td style="text-align:left">0</td><td style="text-align:left">Most or all of the answer is incorrect, invented, or missed.</td></tr></tbody></table></div>
+<div class="callout">
+<ul>
+<li>Gemma: graded only on the facts the app supplied.</li>
+<li>App: when retrieval failed, the miss counted against the app.</li>
+<li>Pass bar: 90% fully correct, overall and in every category.</li>
+</ul>
+</div>
+<h4 id="results">Results</h4>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th style="text-align:left"></th><th style="text-align:left">V11</th><th style="text-align:left">Baseline</th></tr></thead><tbody><tr><td colspan="3" style="text-align:left"><strong>Retrieval</strong></td></tr><tr><td style="text-align:left">Context added to the prompt, out of the 300 questions Gemma was expected to write</td><td style="text-align:left">100% (300 of 300)</td><td style="text-align:left">no change</td></tr><tr><td colspan="3" style="text-align:left"><strong>Conveyed</strong></td></tr><tr><td style="text-align:left">Answered when an answer was expected</td><td style="text-align:left">100% (300 of 300)</td><td style="text-align:left">no change</td></tr><tr><td style="text-align:left">Declined when a decline was expected</td><td style="text-align:left">100% (75 of 75)</td><td style="text-align:left">+5.3 pp</td></tr><tr><td colspan="3" style="text-align:left"><strong>Data Errors</strong></td></tr><tr><td style="text-align:left">Code surfaced incorrect info</td><td style="text-align:left">0% (0 of 300)</td><td style="text-align:left">−1.7 pp</td></tr><tr><td style="text-align:left">Code error</td><td style="text-align:left">0% (0 of 75)</td><td style="text-align:left">−5.3 pp</td></tr><tr><td style="text-align:left">Code wrongly declined (reply check removed)</td><td style="text-align:left">0% (0 of 300)</td><td style="text-align:left">no change</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th style="text-align:left"></th><th style="text-align:left">V11</th><th style="text-align:left">Baseline</th></tr></thead><tbody><tr><td colspan="3" style="text-align:left"><strong>Relevancy to questions (based on code supplied data)</strong></td></tr><tr><td style="text-align:left">Answers fully correct, app</td><td style="text-align:left">97.1% (364 of 375)</td><td style="text-align:left">+3.5 pp</td></tr><tr><td style="text-align:left">Answers partially correct, app</td><td style="text-align:left">2.4% (9)</td><td style="text-align:left">−1.1 pp</td></tr><tr><td style="text-align:left">Answers wrong, app</td><td style="text-align:left">0.5% (2)</td><td style="text-align:left">−2.4 pp</td></tr><tr><td style="text-align:left">Answers fully correct, Gemma</td><td style="text-align:left">96.3% (289 of 300)</td><td style="text-align:left">+2.1 pp</td></tr><tr><td style="text-align:left">Answers partially correct, Gemma</td><td style="text-align:left">3.0% (9 of 300)</td><td style="text-align:left">−1.4 pp</td></tr><tr><td style="text-align:left">Answers wrong, Gemma</td><td style="text-align:left">0.7% (2 of 300)</td><td style="text-align:left">−0.7 pp</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup><thead><tr><th style="text-align:left"></th><th style="text-align:left">V11</th><th style="text-align:left">Baseline</th></tr></thead><tbody><tr><td colspan="3" style="text-align:left"><strong>Performance - Overall App</strong></td></tr><tr><td style="text-align:left">Claims precision</td><td style="text-align:left">98.3% (686 of 698)</td><td style="text-align:left">+4.2 pp</td></tr><tr><td style="text-align:left">Claims recall</td><td style="text-align:left">99.7% (793 of 795)</td><td style="text-align:left">+2.2 pp</td></tr><tr><td style="text-align:left">Claims F1</td><td style="text-align:left">99.0%</td><td style="text-align:left">+3.3 pp</td></tr><tr><td colspan="3" style="text-align:left"><strong>Performance - Gemma</strong></td></tr><tr><td style="text-align:left">Claims precision</td><td style="text-align:left">98.3% (686 of 698)</td><td style="text-align:left">+3.2 pp</td></tr><tr><td style="text-align:left">Claims recall</td><td style="text-align:left">99.7% (714 of 716)</td><td style="text-align:left">+1.1 pp</td></tr><tr><td style="text-align:left">Claims F1</td><td style="text-align:left">99.0%</td><td style="text-align:left">+2.2 pp</td></tr></tbody></table></div>
+<h4 id="confidence-intervals">Confidence intervals</h4>
+<p>I used 95% Wilson Intervals. Each range describes one run on its own: how far that run&#8217;s score could be from the true score, given the number of questions in it. The two runs&#8217; intervals for fully correct answers overlap slightly (94.8% to 95.7%), so the gain is clear but not certain on this evidence alone.</p>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:46%"><col style="width:30%"><col style="width:24%"></colgroup><thead><tr><th style="text-align:left"></th><th style="text-align:left">95% interval</th><th style="text-align:left">Baseline</th></tr></thead><tbody><tr><td style="text-align:left">Claims precision, app</td><td style="text-align:left">97.0% to 99.0%</td><td style="text-align:left">+4.2 pp</td></tr><tr><td style="text-align:left">Claims recall, app</td><td style="text-align:left">99.1% to 99.9%</td><td style="text-align:left">+2.2 pp</td></tr><tr><td style="text-align:left">Claims precision, Gemma</td><td style="text-align:left">97.0% to 99.0%</td><td style="text-align:left">+3.2 pp</td></tr><tr><td style="text-align:left">Claims recall, Gemma</td><td style="text-align:left">99.0% to 99.9%</td><td style="text-align:left">+1.1 pp</td></tr><tr><td style="text-align:left">Answers fully correct, app</td><td style="text-align:left">94.8% to 98.4%</td><td style="text-align:left">+3.5 pp</td></tr><tr><td style="text-align:left">Answers fully correct, Gemma</td><td style="text-align:left">93.6% to 97.9%</td><td style="text-align:left">+2.1 pp</td></tr></tbody></table></div>
+<p class="table-key"><span><strong>+</strong> Above baseline</span><span><strong>−</strong> Below baseline</span></p>
+<h4 id="by-category-against-the-90-pass-rule">By category, against the 90% pass rule</h4>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:46%"><col style="width:22%"><col style="width:14%"><col style="width:18%"></colgroup><thead><tr><th style="text-align:left">Category</th><th style="text-align:left">V11: fully correct</th><th style="text-align:left">Pass?</th><th style="text-align:left">Baseline</th></tr></thead><tbody><tr><td style="text-align:left">Internal, answerable</td><td style="text-align:left">94.0%</td><td style="text-align:left">Yes</td><td style="text-align:left">+7.0 pp</td></tr><tr><td style="text-align:left">Internal, false claims</td><td style="text-align:left">100%</td><td style="text-align:left">Yes</td><td style="text-align:left">+8.0 pp</td></tr><tr><td style="text-align:left">Internal, no data (invented grape)</td><td style="text-align:left">100%</td><td style="text-align:left">Yes</td><td style="text-align:left">no change</td></tr><tr><td style="text-align:left">External, answerable</td><td style="text-align:left">99.0%</td><td style="text-align:left">Yes</td><td style="text-align:left">+1.0 pp</td></tr><tr><td style="text-align:left">External, false claims</td><td style="text-align:left">92.0%</td><td style="text-align:left">Yes</td><td style="text-align:left">−2.0 pp</td></tr><tr><td style="text-align:left">External, no data (country with no rows)</td><td style="text-align:left">100%</td><td style="text-align:left">Yes</td><td style="text-align:left">+4.0 pp</td></tr><tr><td style="text-align:left">Overall</td><td style="text-align:left">97.1%</td><td style="text-align:left">Yes</td><td style="text-align:left">+3.5 pp</td></tr></tbody></table></div>
+<p class="table-key"><span><strong>+</strong> Above baseline</span><span><strong>−</strong> Below baseline</span></p>
+<h4 id="latency-tracking">Latency tracking</h4>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:34%"><col style="width:20%"><col style="width:26%"><col style="width:20%"></colgroup><thead><tr><th style="text-align:left">Measure</th><th style="text-align:left">Gemma, v11</th><th style="text-align:left">Change from baseline</th><th style="text-align:left">Kotlin, v11</th></tr></thead><tbody><tr><td style="text-align:left">Time to first word, average</td><td style="text-align:left">0.82 s</td><td style="text-align:left">+0.19 s</td><td style="text-align:left">--</td></tr><tr><td style="text-align:left">Full reply, median</td><td style="text-align:left">4.9 s</td><td style="text-align:left">−0.05 s</td><td style="text-align:left">0.013 s</td></tr><tr><td style="text-align:left">Full reply, slowest 5%</td><td style="text-align:left">7.9 s</td><td style="text-align:left">+0.6 s</td><td style="text-align:left">0.043 s</td></tr><tr><td style="text-align:left">Full reply, average</td><td style="text-align:left">4.95 s</td><td style="text-align:left">−0.21 s</td><td style="text-align:left">0.016 s</td></tr><tr><td style="text-align:left">Full reply, most common range</td><td style="text-align:left">4 to 5 s</td><td style="text-align:left">no change</td><td style="text-align:left">0.01 to 0.02 s</td></tr></tbody></table></div>
+<p class="table-key"><span><strong>+</strong> : Slower than baseline</span><span><strong>−</strong> : Faster than baseline</span></p>
+<h4 id="strategic-pivots-and-tweaks">Strategic pivots and tweaks</h4>
+<p>Shorter answers came from a more specific prompt. It avoids repetition, stricter adherence to notes, better handling of &#8216;none&#8217; fields, origin details, and conflicting user claims. Improvements were directed at reducing false positives, raising precision level.</p>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:40%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th style="text-align:left">Answer length (Gemma-written answers)</th><th style="text-align:left">Baseline</th><th style="text-align:left">V11</th><th style="text-align:left">Change</th></tr></thead><tbody><tr><td style="text-align:left">Average, characters</td><td style="text-align:left">218</td><td style="text-align:left">172</td><td style="text-align:left">−21%</td></tr><tr><td style="text-align:left">90th percentile, characters</td><td style="text-align:left">293</td><td style="text-align:left">245</td><td style="text-align:left">−16%</td></tr><tr><td style="text-align:left">Answers over the 700 character limit</td><td style="text-align:left">0</td><td style="text-align:left">0</td><td style="text-align:left">none</td></tr></tbody></table></div>
+<p>Code changes tightened what the app retrieves and when it answers for itself. The app now matches names more strictly before sending notes to Gemma. When the app holds no matching notes it declines on its own, without calling the model.</p>
+<p>For questions about storing and ageing, the app now sends the stored ageing facts, so Gemma has the answer in front of it. The rules for how Gemma credits enthusiast data and the reminder sent with every question were rewritten to match the prompt. Together these removed the app-side errors.</p>
+<p>Together, these changes most likely explain the gain in precision, but I have not measured which one mattered most.</p>
+<h4 id="what-the-grape-profile-evals-showed">What the grape profile evals showed</h4>
+<p>V11 repeats the baseline test after the fixes the baseline exposed. Fully correct answers rose from 93.6% (351 of 375) to 97.1% (364 of 375) across the whole app (Code+Gemma), and from 94.2% to 96.3% for Gemma&#8217;s answers via supplied data. The app still answered every question that had an answer (300 of 300), and it now declines correctly on every no-data question (75 of 75, against 71 at baseline). Wrong answers fell from 11 to 2 and partial answers from 13 to 9. All six categories now pass the 90% rule; the baseline passed five. Internal answerable, the weak category at 87.0%, is now 94.0%. Claims precision rose from 94.1% to 98.3% and recall from 97.5% to 99.7%.</p>
+<p>The gain came from both sides. The app-side errors the baseline found are gone, and Gemma&#8217;s answers are shorter and stick more closely to the notes. The last issue to solve are everyday-word questions about wine acidity and tannin that the app does not yet map to the right field.</p>
+<p>I treat this as an early result. The prompt changes were written from failures on previous runs. I am optimistic given that it has taken dozens of rounds and hundreds of questions to get to this point. The ranges shouldn&#8217;t deviate too much when questions are switched. The grading was a first pass by LLM as a judge with human review. Agreements with the LLM judgements sat between 96% and 98%, with the LLM being far stricter with semantic and support language differences.</p>
+<h2 id="working-on-the-dials">Working on the dials</h2>
+<div class="table-wrap"><table class="results-table"><colgroup><col style="width:46%"><col style="width:18%"><col style="width:18%"><col style="width:18%"></colgroup><thead><tr><th style="text-align:left">Path</th><th style="text-align:left">Temp</th><th style="text-align:left">K-value</th><th style="text-align:left">P-value</th></tr></thead><tbody><tr><td style="text-align:left">Open Chat</td><td style="text-align:left">0.5</td><td style="text-align:left">40</td><td style="text-align:left">0.90</td></tr><tr><td style="text-align:left">Ask (bottle detail screen)</td><td style="text-align:left">0.35</td><td style="text-align:left">30</td><td style="text-align:left">0.85</td></tr></tbody></table></div>
+<p>Ask is the strictest setting because Ask must be accurate. Answers come from the bottle&#8217;s facts and DBs, so Gemma needs to pick the most likely word every time. A low temperature, a small shortlist of words, and a tight probability cut-off tamed answers. The cost is less variety in wording, which suits factual answers. But, I felt it lost personality, seemingly becoming robotic and scripted. If I can keep the precision and recall number where they through improved prompt specs, rules, or code adjustments, I might be tempted to loosen the leash a bit.</p>
+<p>Open Chat is looser because it is conversational. A wider shortlist makes replies read more naturally and less repetitive. They don&#8217;t have to match a fact sheet, so a little variety was chosen here. I have not linked RAG to Open Chat yet, and continue to experiment on this section.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Evals for the Uncork RAG chat are still in progress, with the latest runs showing clear gains in accuracy, grounding, and speed, and a few open issues still being worked through. The project’s conclusion is also in progress and will be written once those remaining fixes are tested and the results are in.</p>
+            </article>
+          </section>
+        </main>
+        <footer class="site-footer">
+                <p>© 2026 Sheldon De Sousa</p>
+                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
+            </footer>
+    </div>
+
+    <script>
+        function toggleNav(btn) {
+            const sidebar = btn.closest('.site-header');
+            sidebar.classList.toggle('nav-open');
+            let backdrop = document.querySelector('.sidebar-backdrop');
+            if (sidebar.classList.contains('nav-open')) {
+                if (!backdrop) {
+                    backdrop = document.createElement('div');
+                    backdrop.className = 'sidebar-backdrop';
+                    document.body.appendChild(backdrop);
+                }
+                backdrop.style.display = 'block';
+                backdrop.onclick = function() {
+                    sidebar.classList.remove('nav-open');
+                    backdrop.style.display = 'none';
+                };
+            } else {
+                if (backdrop) backdrop.style.display = 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.site-header nav a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var s = link.closest('.site-header');
+                    if (s) s.classList.remove('nav-open');
+                    var backdrop = document.querySelector('.sidebar-backdrop');
+                    if (backdrop) backdrop.style.display = 'none';
+                });
+            });
+        });
+
+        // --- Sitewide search box: hand off to My Notes search ---
+        (function () {
+            const inputs = [document.getElementById('notes-search'), document.getElementById('notes-search-m')];
+            const clears = [document.getElementById('search-clear-btn'), document.getElementById('search-clear-btn-m')];
+            function sync(src) {
+                inputs.forEach(i => { i.value = src.value; });
+                clears.forEach(c => { c.style.display = src.value.length ? 'inline' : 'none'; });
+            }
+            inputs.forEach(i => {
+                i.addEventListener('input', function () { sync(this); });
+                i.addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
+            });
+            window.runSearch = function () {
+                const q = inputs[0].value.trim();
+                window.location.href = '../notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+            };
+            window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
+        })();
+
+    </script>
+</body>
+</html>
