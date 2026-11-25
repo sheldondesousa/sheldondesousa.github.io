@@ -552,6 +552,7 @@
             }
         }
     </style>
+    <link rel="canonical" href="https://sheldondesousa.com/personal-projects.html">
     <link rel="stylesheet" href="layout.css">
 </head>
 <body>
@@ -613,110 +614,11 @@
                 <p>A running log of experiments, ideas, and apps built with AI-assisted coding to test the boundaries of what's possible.</p>
             </div>
                 <div class="paper-cards no-dates">
-                    <div class="paper-card"><h3>Developing a Mobile Hydration Tracker</h3><p>Exploring multi-input intake recordings and generative AI summaries</p><a class="read-more" href="#hydration-tracker" data-view="hydration-tracker">Read &rarr;</a></div>
-                    <div class="paper-card"><h3>Building Hush: A Break From the Noise</h3><p>A minimalist breathing and meditation app with AI-generated voice-assistance.</p><a class="read-more" href="#hush" data-view="hush">Read &rarr;</a></div>
-                    <div class="paper-card"><h3>Building a World Cup Predictor</h3><p>A weekend experiment in Elo ratings and Poisson distributions</p><a class="read-more" href="#world-cup-predictor" data-view="world-cup-predictor">Read &rarr;</a></div>
-                    <div class="paper-card"><h3>Building Loomis: A Private Knowledge Hub</h3><p>A personal knowledge workspace exploring local AI, semantic retrieval and source-grounded research.</p><a class="read-more" href="#loomis" data-view="loomis">Read &rarr;</a></div>
+                    <div class="paper-card"><h3>Developing a Mobile Hydration Tracker</h3><p>Exploring multi-input intake recordings and generative AI summaries</p><a class="read-more" href="personal-projects/hydration-tracker.html">Read &rarr;</a></div>
+                    <div class="paper-card"><h3>Building Hush: A Break From the Noise</h3><p>A minimalist breathing and meditation app with AI-generated voice-assistance.</p><a class="read-more" href="personal-projects/hush.html">Read &rarr;</a></div>
+                    <div class="paper-card"><h3>Building a World Cup Predictor</h3><p>A weekend experiment in Elo ratings and Poisson distributions</p><a class="read-more" href="personal-projects/world-cup-predictor.html">Read &rarr;</a></div>
+                    <div class="paper-card"><h3>Building Loomis: A Private Knowledge Hub</h3><p>A personal knowledge workspace exploring local AI, semantic retrieval and source-grounded research.</p><a class="read-more" href="personal-projects/loomis.html">Read &rarr;</a></div>
                 </div>
-            </section>
-            <section class="paper-view" id="view-hydration-tracker" data-title="Developing a Mobile Hydration Tracker" hidden>
-                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
-                <div class="intro-header"><h2>Developing a Mobile Hydration Tracker</h2><p>Exploring multi-input intake recordings and generative AI summaries</p></div>
-                <article class="note"><div class="note-preview expanded">
-                        <p>I'd noticed people consistently complain about not consuming enough drinking water during the day. The topic was a frequent favourite at work, particularly because we bounced from meeting to meeting with few breaks in between. Coffee and tea were excessive replacements.</p>
-                        <p>Folks would bring in their personal bottles, a few with volume markers. They had every good intention of hitting their target. But even the best laid plans tanked. The trouble with those bottles was that most people spent most of their time away from their desk.</p>
-                        <p>None of this had much to do with why I built a hydration tracker. I simply wanted a weekend project and an opportunity to prove that the PRD still mattered - a subject of much debate and anxiety on LinkedIn.</p>
-                        <p>Now, I've built prototypes without a scaffold before, and I know how frustrating those experiences can be. It's for good reason that the latest build processes like Spec-kit and AI-DLC depend on good specifications.</p>
-                        <div style="border:1px solid #2B2320;border-radius:6px;overflow:hidden;padding:5%;margin:24px 0;">
-                            <img src="Images/Hydra.webp" alt="Hydra: Track, Monitor, Remind hydration app screens" style="width:100%;display:block;border-radius:6px;">
-                        </div>
-                        <div class="table-wrap" style="margin-bottom:32px;"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody><tr><td>Recommended Intake</td><td>A goal based on your body and your day. The app combines them into a daily target using a bio-data formula and shows the result as a range instead of a single number.</td></tr><tr><td>Customize Intake</td><td>Define a personalised target</td></tr><tr><td>Activity levels / ambient temperature</td><td>Includes planned exercise and weather conditions in your location.</td></tr><tr><td>Multi-inputs</td><td>Logging can be done with quick-add buttons, by typing an exact amount, or by swiping to estimate.</td></tr><tr><td>Reminders</td><td>Reminders that match your routine. Set reminder times, or set an interval. The app schedules them on your device, so no account or server is involved. It asks for notification permission only when you turn reminders on.</td></tr><tr><td>Daily tracker</td><td>Progress you can see. A progress ring and water animation show how close you are to today's goal.</td></tr><tr><td>Dashboards</td><td>Trends. A dashboard that displays current performance against target, current week stats with your average over the previous four weeks, and a calendar view for daily goal achievements.</td></tr></tbody></table></div>
-                        <p>The project (HYL01) was simple enough to scope (or so I thought). It's meant to calculate a sensible daily target from personal bio-data, track water intake during the day, and remind me when I'm behind. Nothing that hasn't been done before. So I wrote a PRD like I would any other.</p>
-                        <p>It's built in React Native. I underestimated the complexity of a hydration calculator. Biomarkers, activity, climate, medical history, health circumstances, and other variable factors all pull on the number in different directions. Additionally, the research behind how they interact with each other is not something I have any real grounding in.</p>
-                        <p>I settled on a formula that's reasonable. I can't call it validated. But it covered planned activity for the day and local weather conditions. Integration with personal tracking devices was left out of scope.</p>
-                        <details class="stack-accordion">
-                        <summary>Tech stack</summary>
-                        <div class="table-wrap"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Framework</td><td>Expo 57 and React Native 0.86 (React 19, TypeScript)</td></tr><tr><td>Navigation</td><td>React Navigation</td></tr><tr><td>Graphics</td><td>react-native-svg</td></tr><tr><td>State</td><td>zustand</td></tr><tr><td>Local data</td><td>SQLite (expo-sqlite)</td></tr><tr><td>Sign-in</td><td>Google OAuth (expo-auth-session) with expo-secure-store</td></tr><tr><td>Reminders*</td><td>expo-notifications</td></tr><tr><td>Location</td><td>Google Places</td></tr><tr><td>Backend</td><td>None</td></tr></tbody></table></div>
-                        </details>
-                        <h4>What the App Does</h4>
-                        <p>HYL01 works out a target that fits you. It also provides multiple ways to record consumption, and makes it fun while doing so.</p>
-                        <p>I could build the app. The interface, the state management, the reminders, the mechanics, all of it came together in a weekend. What I couldn't build my way past was domain knowledge. That still needs someone who understands the dynamics better.</p>
-                        <p>The most important thing to come out of this project was confirming that a well-prepared PRD with articulated stories and acceptance criteria drove down development time significantly over my previous "decide while doing" projects.</p>
-                        <p>The PRD is an absolute necessity even if it's just a prototype or proof of concept you're going after. You need some sort of a compass. Skipping it, particularly in complex builds, opens the doors to misalignment and rework.</p>
-                        <p>So, I'll stay clear from the predictions of gurus and pundits claiming the PRD is optional. Or that a prototype is the new PRD. I guess, if you don't know where you are going, any road will take you there. And while I do appreciate an adventure, time is important to me.</p>
-                    </div></article>
-            </section>
-<section class="paper-view" id="view-hush" data-title="Building Hush: A Break From the Noise" hidden>
-                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
-                <div class="intro-header"><h2>Building Hush: A Break From the Noise</h2><p>A minimalist breathing and meditation app with AI-generated voice-assistance.</p></div>
-                <article class="note"><div class="note-preview expanded">
-                        <p>My commute to the office was short, but never calm. Every morning, the roads offered the same experience. Horns without reason. Vehicles threading gaps that didn't exist. An ambient aggression that nobody seems to notice anymore, because it's just how things work now.</p>
-                        <p>It struck me at some point that nobody stops. Not physically, not mentally. There's a pressure baked into ordinary life that most people have simply accepted as normal.</p>
-                        <p>I didn't want to accept it.</p>
-                        <p>I had been experimenting with AI-assisted coding at work, as a product manager. I was curious about the possibilities when building stops being the bottleneck. So when this idea surfaced, developing something to address it felt natural. This wasn't just a side project. It was more of a question I wanted to answer: could I build something real, by myself, that might actually help?</p>
-                        <p>Hush started from a simple premise. People are overwhelmed. They don't stop to breathe anymore. And most wellness apps make that problem worse. They are noisy, gamified, full of nudges designed to keep you inside them longer. I wanted the opposite. A space defined by what it leaves out.</p>
-                        <div style="border:1px solid #2B2320;border-radius:6px;overflow:hidden;padding:5%;margin:24px 0;">
-                            <img src="Images/Hush.webp" alt="Hush: Learn, Follow, Practice breathing techniques" style="width:100%;display:block;border-radius:6px;">
-                        </div>
-                        <div class="table-wrap" style="margin-bottom:32px;"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody><tr><td>Guided exercises</td><td>Eight evidence-based breathing exercises. Smooth on-screen animations.</td></tr><tr><td>Meditation (disabled)</td><td>Eight meditation techniques to calm the mind.</td></tr><tr><td>Recommendations</td><td>Tell Hush what you need, such as calm, focus, sleep or stress relief, and it suggests the exercise that fits.</td></tr><tr><td>Personalise</td><td>Change the number of cycles or set your breathing pace.</td></tr><tr><td>Learn as you practice</td><td>Every exercise explains what it does, its rhythm, tips for doing it well and safety guidance, so you know why it works.</td></tr><tr><td>Modes</td><td>Pick from three modes that suit your space, from bright daytime to a low-glare bedtime screen.</td></tr><tr><td>Track progress</td><td>See your sessions and mindful minutes build up over time. Your data stays on your device.</td></tr></tbody></table></div>
-                        <p>I built it with Claude Code with React Native, TypeScript and Expo, with smooth native animations and fully on-device data storage.</p>
-                        <p>What surprised me wasn't the sheer speed of going from concept to working MVP. It was how the collaboration changed the nature of building itself. I managed the intention, the philosophy, the feeling I wanted the app to convey, while Claude helped me execute it.</p>
-                        <p>The result is eight evidence-based breathing techniques, canvas animations timed to your breathing, and a recommender that matches technique to emotional state. All of it designed to disappear once you're in a session.</p>
-                        <p>The visual language followed the same logic: minimal and spacious. If the interface is doing its job, you stop noticing it. Designed with light and muted shades, chosen from colour psychology, it's focused on an assuring calm without the distraction.</p>
-                        <p>While the MVP provides the elementary layers, the project is being extended to voice-enabled features, to remove dependency on visual cues. Haptics were already introduced as state change evidence but it relies on human awareness of exercise stage.</p>
-                        <p>I don't think one app changes a culture. But I think individuals can choose, moment by moment, to slow down. Hush is my attempt to make that choice a little easier. To offer a pause in a world that's forgotten how to take one.</p>
-                    </div></article>
-            </section>
-<section class="paper-view" id="view-world-cup-predictor" data-title="Building a World Cup Predictor" hidden>
-                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
-                <div class="intro-header"><h2>Building a World Cup Predictor</h2><p>A weekend experiment in Elo ratings and Poisson distributions</p></div>
-                <article class="note"><div class="note-preview expanded">
-                        <p>Last week I sat in on a conversation between friends, all neck-deep in predictions, numerical tables, and gut feelings about the FIFA 2026 World Cup. I wasn't really following the match talk as much as I was thinking prediction modelling in general.</p>
-                        <p>At the time I was exploring conditional probabilities like Markov's chain and logistic regression at work. So the football conversation seemed like a worthy enough excuse to try something.</p>
-                        <p>I want to be clear about the intent here. This wasn't an attempt to compete with the serious forecasters, or with Paul the octopus, for that matter. Real prediction models are a different order of complexity entirely — big data, machine learning, supercomputers, statistical modelling weighing thousands of variables: injuries, form, tactics, fatigue accumulated over a tournament. That's a different ball game.</p>
-                        <p>Mine was a small subset of that. I pulled historical international football results off Kaggle, then layered Elo ratings and Poisson distributions on top. The kind of mathematics I wish I'd paid more attention to in school. In less than an hour, Claude Code and I had a working model.</p>
-                        <div style="border:1px solid #2B2320;border-radius:6px;overflow:hidden;padding:5%;margin:24px 0;">
-                            <img src="Images/MatchOutlookApp.png" alt="Match Outlook app screen" style="width:100%;display:block;border-radius:6px;">
-                        </div>
-                        <details class="stack-accordion">
-                        <summary>Tech stack</summary>
-                        <div class="table-wrap"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Language</td><td>Python 3 (backend and model), JavaScript (web frontend)</td></tr><tr><td>Rating engine</td><td>World Football Elo (custom, src/elo.py)</td></tr><tr><td>Match model</td><td>Elo gap &rarr; expected goals &rarr; Poisson scoreline model (src/simulate.py)</td></tr><tr><td>Simulation</td><td>Monte Carlo knockout-bracket simulation (10,000+ runs) with extra time and penalties, using numpy 1.26</td></tr><tr><td>Data handling</td><td>pandas 2.2</td></tr><tr><td>Web app</td><td>Custom single-page &ldquo;Match Outlook&rdquo; app in vanilla HTML, CSS and JS, with inline SVG graphics. There is no frontend framework.</td></tr><tr><td>API</td><td>FastAPI, served by uvicorn. It also serves the static frontend and handles CSV uploads (python-multipart) and request validation (pydantic).</td></tr><tr><td>Data source</td><td>Kaggle international results dataset via kagglehub, or a direct results.csv upload</td></tr><tr><td>Local storage</td><td>Flat CSV files, plus in-memory state in the API. There is no database.</td></tr></tbody></table></div>
-                        </details>
-                        <p>It doesn't weigh fitness, form streaks, or any of the finer variables the advanced models factor in. It works to the extent that my own knowledge permits, and not further.</p>
-                        <p>That turned out to be the real lesson. I got some experience out of the exercise, sure, but the sharper takeaway was seeing the exact boundary of my own competence.</p>
-                        <p>I'm not a data scientist. I'm not a mathematician. If I were good at either, I'd have known which variables mattered, what to tweak, what to clean up, what algorithm actually fit the problem. That's domain knowledge, and no amount of AI substitutes for it.</p>
-                        <p>AI didn't close that gap for me. If anything, it made the gap easier to see. Every decision in the build still needed a level of judgement the tool couldn't supply.</p>
-                        <p>I think this is exactly where product management is heading. AI will amplify PMs, but only as far as the product sense they've developed already extends. It won't hand anyone the judgement or expertise they don't already have. That will become obvious as roles start to blur.</p>
-                        <p>Quality "AI-powered" work is really just a reflection of how much sense the person behind it brings to the table — and I suspect, at least in the near term, we're quietly building an age of pseudo-competence, where we assume the tool covers for whatever we're missing.</p>
-                    </div></article>
-            </section>
-<section class="paper-view" id="view-loomis" data-title="Building Loomis: A Private Knowledge Hub" hidden>
-                <p class="back-link"><a href="#overview" data-view="overview">&larr; Back to Vibe-Coding</a></p>
-                <div class="intro-header"><h2>Building Loomis: A Private Knowledge Hub</h2><p>A personal knowledge workspace exploring local AI, semantic retrieval and source-grounded research.</p></div>
-                <article class="note"><div class="note-preview expanded">
-                        <p>I love reading articles that help me understand new things. Pieces that help me put the puzzle together. There's a peculiar satisfaction in finding and saving a good research paper. You feel as though you've acquired something valuable. And perhaps you have.</p>
-                        <p>I've become rather good at collecting information. I'd save things on my phone or laptop, intending to return to them later. But time and life would run their course, and I'd forget where I'd saved something, assuming I remembered saving it at all.</p>
-                        <p>NotebookLM was a wonderful answer to my predicament. And for a while, it worked. It still does based on my circumstance.</p>
-                        <p>At the time, I was flying frequently between India and the UK. Those long hours in the air seemed like the perfect opportunity to revisit the information I'd been accumulating. Unfortunately, NotebookLM required an internet connection. So I spent some of that time thinking about an alternative and drafting a product plan.</p>
-                        <p>That's how Loomis came about.</p>
-                        <p>A personal research workspace where I can accumulate articles, books, research papers and notes, and have conversations across them. Just quick lookups and research on topics or sub-topics.</p>
-                        <p>I wanted to run the intelligence locally, retain control over my source material and have the flexibility to experiment with different language models. I was also looking for an excuse to learn about embeddings, multimodal retrieval and designing cross-platform experiences. This seemed like the perfect use case &mdash; dense information, multiple document formats and the ambition to make knowledge accessible across desktop and mobile.</p>
-                        <div class="table-wrap" style="margin-bottom:32px;"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody><tr><td>Knowledge capture</td><td>Save web articles, research papers, PDFs, Word documents, eBooks and notes.</td></tr><tr><td>Semantic search</td><td>Retrieve relevant information based on meaning rather than just matching keywords.</td></tr><tr><td>Multi-document research</td><td>Explore, compare and synthesise information across the knowledge library.</td></tr><tr><td>Graph interpretation</td><td>Retrieve supported charts from saved web articles and interpret them using vision-capable models.</td></tr><tr><td>Source citations</td><td>Trace AI-generated answers back to their supporting documents and excerpts.</td></tr><tr><td>Local AI</td><td>Select and experiment with different compatible language models running on your own machine.</td></tr><tr><td>Knowledge storage</td><td>Store source documents in Google Drive, with search indexes and embeddings maintained locally.</td></tr><tr><td>Conversation memory</td><td>Revisit previous research conversations and continue exploring a subject.</td></tr><tr><td>Knowledge synchronisation</td><td>Automatically index accessible new content and reconcile changed or deleted sources.</td></tr><tr><td>Conversation Notes</td><td>Retain research summaries with links to their original conversations.</td></tr></tbody></table></div>
-                        <h4>How it works</h4>
-                        <p>Loomis stores my source documents in Google Drive while maintaining a local, searchable knowledge index. When I ask a question, it uses embeddings to identify relevant passages and supported graphs across my library. Rather than feeding entire documents into a language model, it retrieves relevant evidence, verifies its sources and passes it to a locally running LLM. The answers are accompanied by citations, allowing me to trace the information back to its source.</p>
-                        <p>The interesting part of building Loomis wasn't getting an LLM to answer a question. It was working out what information to give it before it answered. Particularly when that information was scattered across multiple documents, or contained in a graph rather than a paragraph.</p>
-                        <details class="stack-accordion">
-                        <summary>Tech stack</summary>
-                        <div class="table-wrap"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Frontend</td><td>React, TypeScript</td></tr><tr><td>Backend</td><td>Python, FastAPI</td></tr><tr><td>Local LLM inference</td><td>LM Studio</td></tr><tr><td>Embedding model</td><td>EmbeddingGemma 2</td></tr><tr><td>Embedding inference</td><td>llama-server</td></tr><tr><td>Retrieval</td><td>Multimodal retrieval-augmented generation (RAG)</td></tr><tr><td>Local database</td><td>SQLite</td></tr><tr><td>Visual text recognition</td><td>Apple Vision</td></tr><tr><td>Document storage</td><td>Google Drive</td></tr><tr><td>Authentication</td><td>Google OAuth</td></tr><tr><td>Platform</td><td>macOS desktop, browser-based interface</td></tr></tbody></table></div>
-                        </details>
-                        <p>It also made me think about the lifecycle of knowledge. What happens when a source changes? Or when I delete it? Can I still trust a conversation I had with the AI a month ago? How should the product communicate the limitations of what the AI knows?</p>
-                        <p>These are product problems as much as they are engineering problems. And they're particularly interesting when designing experiences around a technology that is inherently probabilistic.</p>
-                        <p>Perhaps the opportunity with personal knowledge AI isn't simply to help us consume more information, but to help us establish connections between the things we've read and build upon it over time.</p>
-                        <h4>What's next?</h4>
-                        <p>This is Phase I of Loomis &mdash; establishing the foundational architecture and research experience on desktop.</p>
-                        <p>The next phase will be more experimental, developing evals, iterating on prompts and testing the experience across multiple local language models as I extend it to mobile. I'm particularly interested in understanding the trade-offs between retrieval quality, data sync, citation accuracy, response times and the computational constraints of different model types.</p>
-                        <p>Building the product is one part of the exercise. Understanding how reliably it performs across models and devices is the next. And that's something I'm equally keen to explore, learn from, and share.</p>
-                    </div></article>
             </section>
         </main>
         <footer class="site-footer">
@@ -791,26 +693,11 @@
     </script>
 
     <script>
-        // Card overview <-> article views (same pattern as Papers)
+        // Legacy links like personal-projects.html#loomis now live at their own URLs
         (function () {
-            const links = Array.prototype.slice.call(document.querySelectorAll('.paper-card .read-more[data-view], .back-link a'));
-            const views = {};
-            document.querySelectorAll('.paper-view').forEach(function (v) { views[v.id.replace('view-', '')] = v; });
-            function show(name, push) {
-                if (!views[name]) name = 'overview';
-                Object.keys(views).forEach(function (k) { views[k].hidden = (k !== name); });
-                document.title = views[name].dataset.title + ' - Sheldon De Sousa';
-                if (push) window.scrollTo(0, 0);
-            }
-            links.forEach(function (l) {
-                l.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    history.pushState(null, '', '#' + l.dataset.view);
-                    show(l.dataset.view, true);
-                });
-            });
-            window.addEventListener('popstate', function () { show(location.hash.slice(1), false); });
-            show(location.hash.slice(1), false);
+            var slugs = ['hydration-tracker', 'hush', 'world-cup-predictor', 'loomis'];
+            var h = location.hash.slice(1);
+            if (slugs.indexOf(h) !== -1) location.replace('personal-projects/' + h + '.html');
         })();
     </script>
 </body>
