@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCEERXTRF4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LCEERXTRF4');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnCork: Finding the Boundaries of On-Device AI - Sheldon De Sousa</title>
+    <meta name="description" content="An exploration of on-device intelligence, grounded AI and the balance between probabilistic and deterministic systems.">
+    <link rel="canonical" href="https://sheldondesousa.com/personal-projects/uncork.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Sheldon De Sousa">
+    <meta property="og:title" content="UnCork: Finding the Boundaries of On-Device AI">
+    <meta property="og:description" content="An exploration of on-device intelligence, grounded AI and the balance between probabilistic and deterministic systems.">
+    <meta property="og:url" content="https://sheldondesousa.com/personal-projects/uncork.html">
+    <meta name="twitter:card" content="summary">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Caslon Text', 'Georgia', serif;
+            line-height: 1.8;
+            color: #000;
+            background: #FCFCFB;
+        }
+
+        /* Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            background: #FAFAF8;
+            color: #000;
+            padding: 3rem 1.5rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid #E2E2E1;
+        }
+
+        .sidebar h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 30%;
+            border: 1px solid #000;
+            flex-shrink: 0;
+        }
+
+        .sidebar .tagline {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 0.25rem;
+            font-family: 'Libre Caslon Text', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        .sidebar .social-links {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar nav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: opacity 0.3s;
+            display: inline-block;
+            border-bottom: 1px solid transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .sidebar nav a:hover {
+            border-bottom-color: #000;
+        }
+
+        .sidebar nav a.active {
+            font-weight: 700;
+        }
+
+        .sidebar footer {
+            font-size: 0.75rem;
+            color: rgba(0,0,0,0.5);
+            margin-top: auto;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem;
+            max-width: 700px;
+            overflow-y: auto;
+        }
+
+        /* Header intro */
+        .intro-header {
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .intro-header h2 {
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .intro-header p {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Section headers */
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+            opacity: 0.5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Writing - Newsletter style */
+        .note {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .note:last-child {
+            border: none;
+        }
+
+        .note h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .note .meta {
+            font-size: 14px;
+            color: #747474;
+            margin-bottom: 1.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .note p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .note h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .note h5 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            line-height: 1.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .note ul {
+            margin: 0 0 1rem 1.25rem;
+        }
+
+        .note li {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .note .table-wrap { overflow-x: auto; margin: 0.75rem 0 1.5rem; }
+        .note table { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.45; table-layout: fixed; }
+        .note th, .note td { padding: .55em .7em; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(43,35,32,.1); }
+        .note th { color: #6E645A; font-weight: 600; border-bottom: 0.5px solid #2B2320; }
+        .note p.table-lead { margin-bottom: 0; }
+
+        .note details.stack-accordion + h4 { margin-top: 32px; }
+        .note details.stack-accordion { display: none; margin: 32px 0; border-top: 1px solid #2B2320; }
+        .note details.stack-accordion summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: .7em 0; font-weight: 600; font-size: 16px; }
+        .note details.stack-accordion summary::-webkit-details-marker { display: none; }
+        .note details.stack-accordion summary::after { content: '+'; font-size: 1.25rem; line-height: 1; opacity: .6; }
+        .note details.stack-accordion[open] summary::after { content: '\2212'; }
+        .note details.stack-accordion .table-wrap { margin: 0 0 1rem; }
+
+        .note-preview {
+            max-height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .note-preview.expanded {
+            max-height: none;
+        }
+
+        .note-preview:not(.expanded)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #FCFCFB);
+        }
+
+        .expand-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: none;
+            padding: 0.5rem 0;
+            margin-top: 1rem;
+            transition: opacity 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            cursor: pointer;
+            background: #FCFCFB;
+        }
+
+        .expand-toggle:hover {
+            opacity: 0.6;
+        }
+
+        .chevron {
+            transition: transform 0.3s;
+            font-size: 0.75rem;
+        }
+
+        .expand-toggle.expanded .chevron {
+            transform: rotate(180deg);
+        }
+
+        /* Work section - more compact */
+        .work-list {
+            margin-bottom: 4rem;
+        }
+
+        .work-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .work-item:last-child {
+            border: none;
+        }
+
+        .work-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .work-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.5;
+            margin-bottom: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .work-item p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* About section */
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            flex-direction: column;
+            gap: 5px;
+            flex-shrink: 0;
+            margin-left: auto;
+            align-self: center;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #000;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .sidebar.nav-open .hamburger span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .sidebar.nav-open .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+        .sidebar.nav-open .hamburger span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                padding: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 64px;
+            }
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                padding: 0;
+                height: auto;
+                border-right: none;
+                border-bottom: none;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                z-index: 100;
+                background: #FAFAF8;
+            }
+            .sidebar-header {
+                padding: 0.85rem 1.25rem;
+            }
+            .sidebar-header .profile-section {
+                margin-bottom: 0;
+                flex: 1;
+            }
+            .sidebar-header .profile-image {
+                width: 36px;
+                height: 36px;
+            }
+            .sidebar-header h1 {
+                font-size: 28px;
+            }
+            .sidebar-header h1 br {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .sidebar-backdrop {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.25);
+                z-index: 99;
+            }
+            .sidebar-collapsible {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #FAFAF8;
+                border-left: 1px solid #000;
+                padding: 2rem 1.5rem 5rem;
+                transform: translateX(110%);
+                transition: transform 0.35s ease;
+                z-index: 100;
+                overflow-y: auto;
+                display: block;
+            }
+            .sidebar.nav-open .sidebar-collapsible {
+                transform: translateX(0);
+            }
+            .sidebar footer {
+                display: none;
+            }
+            .sidebar.nav-open footer {
+                display: block;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 80%;
+                max-width: 340px;
+                background: #FAFAF8;
+                padding: 1rem 1.5rem;
+                border-top: 1px solid #eee;
+                border-left: 1px solid #000;
+                z-index: 100;
+                margin-top: 0;
+                font-size: 14px;
+            }
+            .main-content {
+                padding: 1.5rem;
+            }
+            .intro-header h2 {
+                font-size: 32px;
+            }
+            .sidebar .tagline {
+                font-size: 20px;
+            }
+            .sidebar .social-links {
+                font-size: 18px;
+            }
+            .sidebar nav a {
+                font-size: 20px;
+            }
+            .intro-header p {
+                font-size: 18px;
+            }
+            .section-title {
+                font-size: 14px;
+            }
+            .meta {
+                font-size: 14px;
+            }
+            .note p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 1.25rem;
+            }
+            .intro-header h2 {
+                font-size: 28px;
+            }
+            .note h3 {
+                font-size: 24px;
+            }
+            .note p {
+                font-size: 18px;
+            }
+            .meta {
+                font-size: 14px;
+            }
+            .sidebar .tagline {
+                font-size: 20px;
+            }
+        }
+
+        /* Search box */
+        .search-row { display: flex; align-items: center; gap: 0.3rem; }
+        .search-input-wrap { display: flex; align-items: center; border: 1px solid #ccc; border-radius: 3px; overflow: hidden; flex: 1; }
+        .search-input-wrap input { flex: 1; border: none; outline: none; padding: 0.56rem 0.4rem; font-size: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: transparent; min-width: 0; }
+        .search-clear { background: none; border: none; cursor: pointer; padding: 0 0.35rem; font-size: 0.75rem; color: #999; line-height: 1; display: none; }
+        .search-clear:hover { color: #000; }
+        .search-go { background: #000; color: #fff; border: none; padding: 0.56rem 0.55rem; font-size: 0.75rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: 0.5px; cursor: pointer; border-radius: 3px; white-space: nowrap; }
+        .search-go:hover { opacity: 0.75; }
+
+        /* Separator between search and menu items (matches the rule under page titles) */
+        .sidebar nav li.nav-separator {
+            border-top: 1px solid #000;
+            margin: 0.9rem 0 0.9rem;
+            height: 0;
+        }
+
+        /* Mobile: keep search visible in the fixed top bar */
+        .mobile-search { display: none; }
+        @media (max-width: 768px) {
+            body { padding-top: 116px; }
+            .mobile-search { display: block; padding: 0 1.25rem 0.75rem; }
+            .sidebar nav li.nav-search, .sidebar nav li.nav-separator { display: none; }
+        }
+    
+
+        /* Body text: 16px desktop, 18px phone */
+        @media (max-width: 768px) {
+            .note p, .note li, .note ul li, .about-content p, .work-item p,
+            .paper p, .paper li, .article-content p, .article-content > ul > li {
+                font-size: 18px;
+            }
+            .note table {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="../layout.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <header class="site-header">
+            <div class="header-top">
+                <div class="brand">
+                    <img src="../Images/profile.webp?v=6" alt="Sheldon De Sousa" class="profile-image">
+                    <div class="brand-text">
+                        <h1>Sheldon De Sousa</h1>
+                        <p class="tagline tagline-desktop">Product Manager | AI Optimist</p>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                </div>
+                <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav(this)">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <div class="mobile-search">
+                            <div class="search-row">
+                                <div class="search-input-wrap">
+                                    <input type="text" id="notes-search-m" placeholder="Search notes…" autocomplete="off">
+                                    <button class="search-clear" id="search-clear-btn-m" aria-label="Clear search" onclick="clearSearch()">&#x2715;</button>
+                                </div>
+                                <button class="search-go" onclick="runSearch()">Go</button>
+                            </div>
+                </div>
+            <div class="menu">
+                <p class="tagline tagline-menu">Product Manager | AI Optimist</p>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">About me</a></li>
+                        <li><a href="../notes.html">My Notes</a></li>
+                        <li><a href="../working-with-ai.html">Working with AI</a></li>
+                        <li><a href="../social-experiments.html">Social Experiments</a></li>
+                        <li><a href="../personal-projects.html" class="active">Vibe-Coding</a></li>
+                        <li><a href="../papers.html">Papers</a></li>
+                    </ul>
+                </nav>
+                <p class="social-links"><span class="connect-label">Let's connect: </span><a href="https://www.linkedin.com/in/sheldondesousa" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#0A66C2" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="paper-view" id="view-uncork" data-title="UnCork: Finding the Boundaries of On-Device AI">
+                <p class="back-link"><a href="../personal-projects.html">&larr; Back to Vibe-Coding</a></p>
+                <div class="intro-header"><h2>UnCork: Finding the Boundaries of On-Device AI</h2><p>An exploration of on-device intelligence, grounded AI and the balance between probabilistic and deterministic systems.</p></div>
+                <article class="note"><div class="note-preview expanded">
+                        <p>I appreciate a good wine. Though I'm certainly no sommelier.</p>
+                        <p>Standing in the basement of my local wine shop, I was trying to decipher a rather subjective brief &mdash; something red, rich, smooth and dry, but not too dry. With no mobile reception and nobody nearby to help, I found myself contemplating the capabilities of on-device AI.</p>
+                        <p>Could I build something that offered reasonably informed guidance without relying on an internet connection?</p>
+                        <p>That's how UnCork came about.</p>
+                        <p>A pocket wine advisor powered by Gemma 4 E2B, running locally on my Android phone. It was also an excuse to learn about small language models, retrieval-augmented generation (RAG) and the practical constraints of running intelligence on mobile devices.</p>
+                        <div class="table-wrap" style="margin-bottom:32px;"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody><tr><td>Wine discovery</td><td>Find wines based on origin, grape variety, body, tannin and acidity.</td></tr><tr><td>Guided conversation</td><td>Discover wines through a conversational experience managed by deterministic logic.</td></tr><tr><td>Open conversation</td><td>Explore wine-related questions with a locally running language model.</td></tr><tr><td>Grounded AI (RAG)</td><td>Ask questions about selected wines using information retrieved from local databases.</td></tr><tr><td>Wine profiles</td><td>Explore wine characteristics, tasting notes and critic reviews.</td></tr><tr><td>Winery directory</td><td>Discover wineries by country, region and subregion.</td></tr><tr><td>Wine production</td><td>Explore how different grape varieties are produced across regions.</td></tr><tr><td>Offline intelligence</td><td>Access core knowledge and conversational capabilities without internet connectivity.</td></tr><tr><td>Web search</td><td>Supplement existing knowledge through optional online searches.</td></tr></tbody></table></div>
+                        <h4>How it works</h4>
+                        <p>UnCork combines a local database of approximately 119,000 wine reviews with grape profiles, winery directories and wine production data. Conventional code manages wine discovery, preferences and recommendations, while Gemma facilitates conversations and constructs answers from retrieved information.</p>
+                        <p>Getting there involved several pivots. I initially entrusted most of the experience to Gemma. But as prompts grew, so did latency, hallucinations and inconsistencies. I eventually abandoned model-generated wine recommendations altogether, despite having significantly improved their generation times.</p>
+                        <p>The more interesting question became: where should the model's responsibility begin and end?</p>
+                        <details class="stack-accordion">
+                        <summary>Tech stack</summary>
+                        <div class="table-wrap"><table><colgroup><col style="width:28%"><col style="width:72%"></colgroup><thead><tr><th>Layer</th><th>Technology</th></tr></thead><tbody><tr><td>Platform</td><td>Native Android</td></tr><tr><td>Development</td><td>Kotlin</td></tr><tr><td>Language model</td><td>Gemma 4 E2B</td></tr><tr><td>Model distribution</td><td>Hugging Face</td></tr><tr><td>Database</td><td>SQLite</td></tr><tr><td>Dataset</td><td>Kaggle wine reviews</td></tr><tr><td>AI architecture</td><td>Hybrid deterministic and RAG-supported generative AI</td></tr><tr><td>Evaluation</td><td>LLM-as-a-judge with human validation</td></tr><tr><td>Statistical validation</td><td>95% Wilson confidence intervals</td></tr><tr><td>AI-assisted development</td><td>Claude Code and Codex</td></tr><tr><td>Test device</td><td>Google Pixel 10 Pro Fold, 16 GB RAM</td></tr></tbody></table></div>
+                        </details>
+                        <h4>What's next?</h4>
+                        <p>Early structured retrieval evals achieved 98.3% claims precision and 99.7% recall. However, tighter guardrails also diminished the natural personality I'd envisaged for a sommelier.</p>
+                        <p>The next phase involves broader evals, prompt iterations and experimenting with model parameters to understand whether I can retain that conversational character without compromising factual reliability.</p>
+                        <p>Perhaps the most valuable learning from building UnCork has been understanding not just where to use AI, but where not to.</p>
+                    </div></article>
+            </section>
+        </main>
+        <footer class="site-footer">
+                <p>© 2026 Sheldon De Sousa</p>
+                <p style="color: #000; margin-top: 0.25rem;"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:4px;"><path d="M12 2l2.121 7.879L22 12l-7.879 2.121L12 22l-2.121-7.879L2 12l7.879-2.121z"/></svg>Lovingly built with AI</p>
+            </footer>
+    </div>
+
+    <script>
+        function toggleNote(noteId, button) {
+            const notePreview = document.getElementById(noteId);
+            notePreview.classList.toggle('expanded');
+            button.classList.toggle('expanded');
+            if (notePreview.classList.contains('expanded')) {
+                button.innerHTML = 'Less <span class="chevron">&#9660;</span>';
+                const article = button.closest('.note');
+                const title = article ? article.querySelector('h3').textContent : noteId;
+                gtag('event', 'article_expand', { article_title: title, page: 'Build Experiments' });
+            } else {
+                button.innerHTML = 'More <span class="chevron">&#9660;</span>';
+            }
+        }
+
+        function toggleNav(btn) {
+            const sidebar = btn.closest('.site-header');
+            sidebar.classList.toggle('nav-open');
+            let backdrop = document.querySelector('.sidebar-backdrop');
+            if (sidebar.classList.contains('nav-open')) {
+                if (!backdrop) {
+                    backdrop = document.createElement('div');
+                    backdrop.className = 'sidebar-backdrop';
+                    document.body.appendChild(backdrop);
+                }
+                backdrop.style.display = 'block';
+                backdrop.onclick = function() {
+                    sidebar.classList.remove('nav-open');
+                    backdrop.style.display = 'none';
+                };
+            } else {
+                if (backdrop) backdrop.style.display = 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.site-header nav a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    var s = link.closest('.site-header');
+                    if (s) s.classList.remove('nav-open');
+                    var backdrop = document.querySelector('.sidebar-backdrop');
+                    if (backdrop) backdrop.style.display = 'none';
+                });
+            });
+        });
+
+        // --- Sitewide search box: hand off to My Notes search ---
+        (function () {
+            const inputs = [document.getElementById('notes-search'), document.getElementById('notes-search-m')];
+            const clears = [document.getElementById('search-clear-btn'), document.getElementById('search-clear-btn-m')];
+            function sync(src) {
+                inputs.forEach(i => { i.value = src.value; });
+                clears.forEach(c => { c.style.display = src.value.length ? 'inline' : 'none'; });
+            }
+            inputs.forEach(i => {
+                i.addEventListener('input', function () { sync(this); });
+                i.addEventListener('keydown', function (e) { if (e.key === 'Enter') runSearch(); });
+            });
+            window.runSearch = function () {
+                const q = inputs[0].value.trim();
+                window.location.href = '../notes.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+            };
+            window.clearSearch = function () { inputs[0].value = ''; sync(inputs[0]); inputs[0].focus(); };
+        })();
+    </script>
+
+</body>
+</html>
+
